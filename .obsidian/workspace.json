@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "模版/我的日记.md",
+                "file": "日记/2023-03-20.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "模版/我的日记.md",
+                "file": "日记/2023-03-20.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "模版/我的日记.md",
+                "file": "日记/2023-03-20.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "模版/我的日记.md"
+                "file": "日记/2023-03-20.md"
               }
             }
           }
@@ -152,6 +152,8 @@
   },
   "active": "ffe8d4ca2042cdd9",
   "lastOpenFiles": [
+    "模版/我的日记.md",
+    "日记/2023-03-20.md",
     "模版/其他模版.md",
     "日记/2023-03-19.md",
     "代码/未命名 3.md",
@@ -170,7 +172,6 @@
     "textgenerator/prompts/default/getEmailPos.md",
     "textgenerator/prompts/default/getEmailNeg.md",
     "图库.md",
-    "模版/我的日记.md",
     "textgenerator/prompts/default/summarize.md",
     "textgenerator/prompts/default",
     "textgenerator/prompts",
@@ -183,7 +184,6 @@
     "模版",
     "新的文章.md",
     "日记/2023-03-16.md",
-    "日记/2023-03-15.md",
     "ic_withdraw_success.png",
     "代码",
     "abc"
