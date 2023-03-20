@@ -1,0 +1,29 @@
+name: Send submodule updates to parent repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: guanpj/quartz
+          token: ${{ secrets.TOKEN }}
+          submodules: 'true'
+
+      - name: Pull & update submodules recursively
+        run: |
+          git submodule update --init --recursive
+          git submodule update --recursive --remote          
+      - name: Commit
+        run: |
+          git config user.email "guanpj.me@gmail.com"
+          git config user.name "guanpj"
+          git add --all
+          git commit -m "Update Submodules" || echo "No changes to commit"
+          git push
