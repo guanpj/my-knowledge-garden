@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1757406483b3d9fe",
+            "id": "c7ae3611c73e0598",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Home.md",
+                "file": "AboutTheGarden.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Home.md",
+                "file": "AboutTheGarden.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Home.md",
+                "file": "AboutTheGarden.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Home.md"
+                "file": "AboutTheGarden.md"
               }
             }
           }
@@ -150,42 +150,54 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "1757406483b3d9fe",
+  "active": "c7ae3611c73e0598",
   "lastOpenFiles": [
-    "日记/2023-03-20.md",
-    "Home.md",
-    "模版/我的日记.md",
-    "模版/其他模版.md",
-    "日记/2023-03-19.md",
-    "代码/未命名 3.md",
-    "代码/未命名 2.md",
-    "代码/未命名.md",
-    "代码/未命名 1.md",
-    "代码/1.md",
-    "代码/2.md",
-    "textgenerator/prompts/default/getOutline.md",
-    "textgenerator/prompts/default/simplify.md",
-    "textgenerator/prompts/default/rewrite.md",
-    "textgenerator/prompts/default/getTitles.md",
-    "textgenerator/prompts/default/getTags.md",
-    "textgenerator/prompts/default/getParagraph.md",
-    "textgenerator/prompts/default/getIdeas.md",
-    "textgenerator/prompts/default/getEmailPos.md",
-    "textgenerator/prompts/default/getEmailNeg.md",
-    "图库.md",
-    "textgenerator/prompts/default/summarize.md",
-    "textgenerator/prompts/default",
-    "textgenerator/prompts",
-    "textgenerator",
-    "一张图.canvas",
-    "日记/2023-03-18.md",
-    "哈哈hh.md",
-    "未命名.md",
-    "日记",
-    "模版",
-    "新的文章.md",
-    "ic_withdraw_success.png",
-    "代码",
-    "abc"
+    "Extras/Zotero/我的文库.json",
+    "Extras/Zotero",
+    "Extras/Templates/其他/思维思考模板/康奈尔笔记法模板.md",
+    "Extras/Templates/其他/思维思考模板/六顶思考帽模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid stateDiagram 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid sequenceDiagram 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid graph 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid pie 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid journal 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid flow chart 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid gantt 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid class diagram 模板.md",
+    "Extras/Templates/其他/dict/dict.md",
+    "Extras/Templates/其他/领域入门模板.md",
+    "Extras/Templates/其他/模板来源.md",
+    "Extras/Templates/其他/更新日志模板.md",
+    "Extras/Templates/其他/思维思考模板",
+    "Extras/Templates/其他/工作流模板.md",
+    "Extras/Templates/其他/tp_学习测试.md",
+    "Extras/Templates/其他/mermaid模板",
+    "Extras/Templates/其他/dict",
+    "Extras/Templates/其他",
+    "Extras/Templates/Spaces模板/Resource创建模板.md",
+    "Extras/Templates/Spaces模板/Project创建模板.md",
+    "Extras/Templates/Spaces模板/Area创建模板.md",
+    "Extras/Templates/Spaces模板/Archive创建模板.md",
+    "Extras/Templates/Spaces模板",
+    "Extras/Templates/Calendar模板/文章发布模板/发文章-前言模板.md",
+    "Extras/Templates/Calendar模板/文章发布模板/文章草稿-模板.md",
+    "Extras/Templates/Calendar模板/文章发布模板/发文章-写在最后模板.md",
+    "Extras/Templates/Calendar模板/回顾总结模板/月度模板.md",
+    "Extras/Templates/Calendar模板/文章发布模板",
+    "Extras/Templates/Calendar模板/回顾总结模板",
+    "Extras/Templates/Calendar模板/会议相关模板",
+    "Extras/Templates/Calendar模板",
+    "Extras/Media/Pasted Image 20220821142616_556.png",
+    "Extras/Media/Pasted Image 20220821142613_148.png",
+    "Extras/Media/Pasted Image 20220821140912_644.png",
+    "Extras/Media/Pasted Image 20220821140907_040.png",
+    "Extras/Media/Pasted Image 20220821140630_196.png",
+    "Extras/Media/Pasted Image 20220821140520_014.png",
+    "Extras/Media/Pasted Image 20220320202815_760.png",
+    "Extras/Media/Pasted Image 20220320203200_352.png",
+    "Extras/Media/Pasted Image 20220320203031_118.png",
+    "Extras/Media/Pasted Image 20220320202845_759.png",
+    "一张图.canvas"
   ]
 }
