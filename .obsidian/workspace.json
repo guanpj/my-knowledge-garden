@@ -143,11 +143,7 @@
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "remotely-save:Remotely Save": false,
-      "obsidian-textgenerator-plugin:Generate Text!": false,
-      "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
-      "templater-obsidian:Templater": false
+      "command-palette:打开命令面板": false
     }
   },
   "active": "c7ae3611c73e0598",
