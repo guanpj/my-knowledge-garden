@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ffe8d4ca2042cdd9",
+            "id": "1757406483b3d9fe",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日记/2023-03-20.md",
+                "file": "Home.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日记/2023-03-20.md",
+                "file": "Home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日记/2023-03-20.md",
+                "file": "Home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日记/2023-03-20.md"
+                "file": "Home.md"
               }
             }
           }
@@ -150,10 +150,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "ffe8d4ca2042cdd9",
+  "active": "1757406483b3d9fe",
   "lastOpenFiles": [
-    "模版/我的日记.md",
     "日记/2023-03-20.md",
+    "Home.md",
+    "模版/我的日记.md",
     "模版/其他模版.md",
     "日记/2023-03-19.md",
     "代码/未命名 3.md",
@@ -183,7 +184,6 @@
     "日记",
     "模版",
     "新的文章.md",
-    "日记/2023-03-16.md",
     "ic_withdraw_success.png",
     "代码",
     "abc"
