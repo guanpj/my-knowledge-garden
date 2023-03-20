@@ -3,5 +3,6 @@
   "obsidian-textgenerator-plugin",
   "note-refactor-obsidian",
   "templater-obsidian",
-  "quickadd"
+  "quickadd",
+  "obsidian-git"
 ]
