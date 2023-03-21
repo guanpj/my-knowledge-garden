@@ -13,7 +13,55 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "模版/我的日记.md",
+                "file": "AboutTheGarden.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7bbda181e6323c45",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "知识体系/Java/基础/泛型.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c864fc03efef49e3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "知识体系/Java/基础/IO.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d37de4ee8ed51317",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AboutTheGarden.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "098742fed110b91b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "日记/2023-03-20.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "模版/我的日记.md",
+                "file": "AboutTheGarden.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +150,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "模版/我的日记.md",
+                "file": "AboutTheGarden.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,12 +173,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "模版/我的日记.md"
+                "file": "AboutTheGarden.md"
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -152,11 +200,19 @@
   },
   "active": "c7ae3611c73e0598",
   "lastOpenFiles": [
+    "知识体系/Java/基础/泛型.md",
+    "知识体系/Java/基础/IO.md",
+    "AboutTheGarden.md",
+    "日记/2023-03-20.md",
+    "知识体系/Android/未命名.md",
+    "知识体系/Java/基础",
+    "知识体系/Java",
+    "知识体系/Android",
+    "知识体系",
+    "模版/我的日记.md",
     "模版/其他模版.md",
     "代码/2.md",
     "代码/1.md",
-    "AboutTheGarden.md",
-    "日记/2023-03-20.md",
     "新的文章.md",
     "图库.md",
     "一张图.canvas",
@@ -177,20 +233,12 @@
     "Extras/Templates/Sources模板/读书笔记模板.md",
     "Extras/Templates/Sources模板/电视剧笔记模板.md",
     "Extras/Templates/Sources模板/播客笔记模板.md",
-    "Extras/Templates/Cards模板/Card卡片_标准模板.md",
-    "Extras/Templates/Calendar模板/Daily notes模板.md",
-    "Extras/Templates/Calendar模板/文章发布模板/文章草稿-模板.md",
-    "Extras/Templates/Calendar模板/文章发布模板/发文章-写在最后模板.md",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
     "Extras/Templates/其他/思维思考模板",
     "Extras/Templates/其他/mermaid模板",
     "Extras/Templates/其他/dict",
     "Extras/Templates/其他",
-    "Extras/Templates/Spaces模板",
-    "Extras/Templates/Calendar模板/文章发布模板",
-    "Extras/Templates/Calendar模板/回顾总结模板",
-    "Extras/Templates/Calendar模板/会议相关模板",
     "Extras/Media/Pasted Image 20220821142616_556.png",
     "Extras/Media/Pasted Image 20220821142613_148.png",
     "Extras/Media/Pasted Image 20220821140912_644.png",
