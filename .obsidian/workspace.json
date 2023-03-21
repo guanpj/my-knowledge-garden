@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "Extras/Templates/微信读书同步模板.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "Extras/Templates/微信读书同步模板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "Extras/Templates/微信读书同步模板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AboutTheGarden.md"
+                "file": "Extras/Templates/微信读书同步模板.md"
               }
             }
           }
@@ -150,10 +150,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c7ae3611c73e0598",
+  "active": "815115909afc80af",
   "lastOpenFiles": [
-    "ic_withdraw_success.png",
     "AboutTheGarden.md",
+    "ic_withdraw_success.png",
     "哈哈哈哈哈哈哈.md.md",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
@@ -197,7 +197,6 @@
     "Extras/Media/Pasted Image 20220320202815_760.png",
     "Extras/Media/Pasted Image 20220320203200_352.png",
     "Extras/Media/Pasted Image 20220320203031_118.png",
-    "Extras/Media/Pasted Image 20220320202845_759.png",
     "一张图.canvas"
   ]
 }
