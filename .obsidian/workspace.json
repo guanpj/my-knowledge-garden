@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "图库.md",
+                "file": "日记/2023-03-15.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "图库.md",
+                "file": "日记/2023-03-15.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "图库.md",
+                "file": "日记/2023-03-15.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "图库.md"
+                "file": "日记/2023-03-15.md"
               }
             }
           }
@@ -164,11 +164,18 @@
   },
   "active": "c7ae3611c73e0598",
   "lastOpenFiles": [
-    "Atlas/MOCs/Library.md",
+    "日记/2023-03-20.md",
+    "日记/2023-03-19.md",
+    "日记/2023-03-16.md",
     "AboutTheGarden.md",
+    "一张图.canvas",
+    "新的文章.md",
+    "哈哈hh.md",
+    "Atlas/About Atlas.md",
+    "图库.md",
+    "Atlas/MOCs/Library.md",
     "Atlas/MOCs/∑ MOCs.md",
     "哈哈哈哈哈哈哈.md.md",
-    "Atlas/About Atlas.md",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
     "Extras/Templates/其他/思维思考模板/康奈尔笔记法模板.md",
@@ -187,15 +194,9 @@
     "Extras/Templates/其他/模板来源.md",
     "Extras/Templates/其他/更新日志模板.md",
     "Extras/Templates/其他/思维思考模板",
-    "Extras/Templates/其他/工作流模板.md",
-    "Extras/Templates/其他/tp_学习测试.md",
     "Extras/Templates/其他/mermaid模板",
     "Extras/Templates/其他/dict",
     "Extras/Templates/其他",
-    "Extras/Templates/Spaces模板/Resource创建模板.md",
-    "Extras/Templates/Spaces模板/Project创建模板.md",
-    "Extras/Templates/Spaces模板/Area创建模板.md",
-    "Extras/Templates/Spaces模板/Archive创建模板.md",
     "Extras/Templates/Spaces模板",
     "Extras/Templates/Calendar模板/文章发布模板",
     "Extras/Templates/Calendar模板/回顾总结模板",
@@ -209,7 +210,6 @@
     "Extras/Media/Pasted Image 20220320202815_760.png",
     "Extras/Media/Pasted Image 20220320203200_352.png",
     "Extras/Media/Pasted Image 20220320203031_118.png",
-    "Extras/Media/Pasted Image 20220320202845_759.png",
-    "一张图.canvas"
+    "Extras/Media/Pasted Image 20220320202845_759.png"
   ]
 }
