@@ -1,6 +1,9 @@
 ---
+comments: true
 date created: 2022-08-06
 date modified: 2023-03-14
+id: home
+layout: page
 tags:
   - 本库教程
 title: AboutTheGarden
