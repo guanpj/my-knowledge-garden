@@ -4,5 +4,6 @@
   "note-refactor-obsidian",
   "templater-obsidian",
   "quickadd",
-  "obsidian-git"
+  "obsidian-git",
+  "obsidian-linter"
 ]

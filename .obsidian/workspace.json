@@ -13,19 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Extras/Templates/微信读书同步模板.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5f4b534ff5b8fd12",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AboutTheGarden.md",
+                "file": "模版/我的日记.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Extras/Templates/微信读书同步模板.md",
+                "file": "模版/我的日记.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Extras/Templates/微信读书同步模板.md",
+                "file": "模版/我的日记.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Extras/Templates/微信读书同步模板.md"
+                "file": "模版/我的日记.md"
               }
             }
           }
@@ -164,6 +152,17 @@
   },
   "active": "c7ae3611c73e0598",
   "lastOpenFiles": [
+    "模版/其他模版.md",
+    "代码/2.md",
+    "代码/1.md",
+    "AboutTheGarden.md",
+    "日记/2023-03-20.md",
+    "新的文章.md",
+    "图库.md",
+    "一张图.canvas",
+    "ic_withdraw_waiting.png",
+    "ic_withdraw_success.png",
+    "Extras/Templates/微信读书同步模板.md",
     "Extras/Templates/其他/更新日志模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid journal 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid gantt 模板.md",
@@ -173,7 +172,6 @@
     "Extras/Templates/其他/思维思考模板/六顶思考帽模板.md",
     "Extras/About Extras.md",
     "Extras/Index for Extras.md",
-    "Extras/Templates/微信读书同步模板.md",
     "Extras/Templates/anki卡片模板.md",
     "Extras/Templates/Sources模板/课程笔记模板.md",
     "Extras/Templates/Sources模板/读书笔记模板.md",
@@ -183,14 +181,6 @@
     "Extras/Templates/Calendar模板/Daily notes模板.md",
     "Extras/Templates/Calendar模板/文章发布模板/文章草稿-模板.md",
     "Extras/Templates/Calendar模板/文章发布模板/发文章-写在最后模板.md",
-    "Extras/Templates/Calendar模板/文章发布模板/发文章-前言模板.md",
-    "Extras/Templates/Calendar模板/会议相关模板/会议纪要模板.md",
-    "Extras/Templates/Calendar模板/回顾总结模板/周记模板.md",
-    "Extras/Templates/Calendar模板/回顾总结模板/月度模板.md",
-    "Extras/Templates/Atlas模板/TOC模板.md",
-    "Extras/Templates/Atlas模板/MOC模板.md",
-    "Extras/Templates/其他/tp_学习测试.md",
-    "一张图.canvas",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
     "Extras/Templates/其他/思维思考模板",
@@ -208,8 +198,6 @@
     "Extras/Media/Pasted Image 20220821140630_196.png",
     "Extras/Media/Pasted Image 20220821140520_014.png",
     "Extras/Media/Pasted Image 20220320202815_760.png",
-    "Extras/Media/Pasted Image 20220320203200_352.png",
-    "Extras/Media/Pasted Image 20220320203031_118.png",
-    "Extras/Media/Pasted Image 20220320202845_759.png"
+    "Extras/Media/Pasted Image 20220320203200_352.png"
   ]
 }
