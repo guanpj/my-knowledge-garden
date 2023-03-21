@@ -4,5 +4,8 @@
   "strictLineBreaks": false,
   "legacyEditor": false,
   "showLineNumber": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": ""
 }
