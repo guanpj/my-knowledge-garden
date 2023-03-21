@@ -13,6 +13,18 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Extras/Templates/其他/更新日志模板.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5f4b534ff5b8fd12",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "AboutTheGarden.md",
                 "mode": "source",
                 "source": false
@@ -48,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#b",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "Extras/Templates/其他/更新日志模板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "Extras/Templates/其他/更新日志模板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AboutTheGarden.md"
+                "file": "Extras/Templates/其他/更新日志模板.md"
               }
             }
           }
@@ -144,41 +156,48 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "remotely-save:Remotely Save": false,
       "obsidian-textgenerator-plugin:Generate Text!": false,
       "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "remotely-save:Remotely Save": false
     }
   },
   "active": "c7ae3611c73e0598",
   "lastOpenFiles": [
-    "ic_withdraw_success.png",
-    "AboutTheGarden.md",
-    "哈哈哈哈哈哈哈.md.md",
-    "Extras/Zotero/我的文库.json",
-    "Extras/Zotero",
-    "Extras/Templates/其他/思维思考模板/康奈尔笔记法模板.md",
-    "Extras/Templates/其他/思维思考模板/六顶思考帽模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid stateDiagram 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid sequenceDiagram 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid graph 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid pie 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid journal 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid flow chart 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid gantt 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid class diagram 模板.md",
     "Extras/Templates/其他/dict/dict.md",
-    "Extras/Templates/其他/领域入门模板.md",
+    "Extras/Templates/其他/思维思考模板/康奈尔笔记法模板.md",
+    "Extras/Templates/其他/思维思考模板/六顶思考帽模板.md",
+    "Extras/About Extras.md",
+    "Extras/Index for Extras.md",
+    "Extras/Templates/微信读书同步模板.md",
+    "Extras/Templates/anki卡片模板.md",
+    "Extras/Templates/Sources模板/课程笔记模板.md",
+    "Extras/Templates/Sources模板/读书笔记模板.md",
+    "Extras/Templates/Sources模板/电视剧笔记模板.md",
+    "Extras/Templates/Sources模板/播客笔记模板.md",
+    "Extras/Templates/Cards模板/Card卡片_标准模板.md",
+    "Extras/Templates/Calendar模板/Daily notes模板.md",
+    "Extras/Templates/Calendar模板/文章发布模板/文章草稿-模板.md",
+    "Extras/Templates/Calendar模板/文章发布模板/发文章-写在最后模板.md",
+    "Extras/Templates/Calendar模板/文章发布模板/发文章-前言模板.md",
+    "Extras/Templates/Calendar模板/会议相关模板/会议纪要模板.md",
+    "Extras/Templates/Calendar模板/回顾总结模板/周记模板.md",
+    "Extras/Templates/Calendar模板/回顾总结模板/月度模板.md",
+    "Extras/Templates/Atlas模板/TOC模板.md",
+    "Extras/Templates/Atlas模板/MOC模板.md",
+    "Extras/Templates/其他/tp_学习测试.md",
     "Extras/Templates/其他/模板来源.md",
-    "Extras/Templates/其他/更新日志模板.md",
+    "一张图.canvas",
+    "Extras/Zotero/我的文库.json",
+    "Extras/Zotero",
     "Extras/Templates/其他/思维思考模板",
     "Extras/Templates/其他/mermaid模板",
     "Extras/Templates/其他/dict",
     "Extras/Templates/其他",
     "Extras/Templates/Spaces模板",
-    "Extras/Templates/Calendar模板/文章发布模板/发文章-前言模板.md",
-    "Extras/Templates/Calendar模板/文章发布模板/文章草稿-模板.md",
     "Extras/Templates/Calendar模板/文章发布模板",
     "Extras/Templates/Calendar模板/回顾总结模板",
     "Extras/Templates/Calendar模板/会议相关模板",
