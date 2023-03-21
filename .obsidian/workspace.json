@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Extras/Templates/微信读书同步模板.md",
+                "file": "Extras/Templates/Sources模板/播客笔记模板.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Extras/Templates/微信读书同步模板.md",
+                "file": "Extras/Templates/Sources模板/播客笔记模板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Extras/Templates/微信读书同步模板.md",
+                "file": "Extras/Templates/Sources模板/播客笔记模板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Extras/Templates/微信读书同步模板.md"
+                "file": "Extras/Templates/Sources模板/播客笔记模板.md"
               }
             }
           }
@@ -150,54 +150,54 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "815115909afc80af",
+  "active": "c7ae3611c73e0598",
   "lastOpenFiles": [
-    "AboutTheGarden.md",
     "Extras/Templates/微信读书同步模板.md",
-    "知识体系/Java/基础/IO.md",
-    "知识体系/Java/基础/泛型.md",
-    "知识体系/Java/基础",
-    "知识体系/Android/未命名.md",
-    "知识体系/Java",
-    "知识体系/Android",
-    "知识体系",
-    "Extras/Templates/我的日记.md",
-    "Extras/Templates/其他模版.md",
-    "ic_withdraw_success.png",
-    "哈哈哈哈哈哈哈.md.md",
+    "Extras/Templates/其他/更新日志模板.md",
+    "Extras/Templates/其他/工作流模板.md",
+    "Extras/Draws/∑ excalidraw 白板创建入口.md",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
     "Extras/Templates/其他/思维思考模板/康奈尔笔记法模板.md",
     "Extras/Templates/其他/思维思考模板/六顶思考帽模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid stateDiagram 模板.md",
+    "Extras/Templates/其他/思维思考模板",
     "Extras/Templates/其他/mermaid模板/mermaid模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid stateDiagram 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid sequenceDiagram 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid graph 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid pie 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid journal 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid flow chart 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid graph 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid gantt 模板.md",
+    "Extras/Templates/其他/mermaid模板/mermaid flow chart 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid class diagram 模板.md",
+    "Extras/Templates/其他/mermaid模板",
     "Extras/Templates/其他/dict/dict.md",
+    "Extras/Templates/其他/dict",
     "Extras/Templates/其他/领域入门模板.md",
     "Extras/Templates/其他/模板来源.md",
-    "Extras/Templates/其他/更新日志模板.md",
-    "Extras/Templates/其他/思维思考模板",
-    "Extras/Templates/其他/工作流模板.md",
     "Extras/Templates/其他/tp_学习测试.md",
-    "Extras/Templates/其他/mermaid模板",
-    "Extras/Templates/其他/dict",
     "Extras/Templates/其他",
     "Extras/Templates/Spaces模板/Resource创建模板.md",
+    "Extras/Templates/Spaces模板/Project创建模板.md",
+    "Extras/Templates/Spaces模板/Area创建模板.md",
+    "Extras/Templates/Spaces模板/Archive创建模板.md",
+    "Extras/Templates/Spaces模板",
+    "Extras/Templates/Sources模板/课程笔记模板.md",
+    "Extras/Templates/Sources模板/读书笔记模板.md",
+    "Extras/Templates/Sources模板/论文笔记模板.md",
+    "Extras/Templates/Sources模板",
+    "Extras/Templates/Cards模板",
+    "Extras/Templates/Calendar模板/文章发布模板",
     "Extras/Media/Pasted Image 20220821142616_556.png",
     "Extras/Media/Pasted Image 20220821142613_148.png",
     "Extras/Media/Pasted Image 20220821140912_644.png",
     "Extras/Media/Pasted Image 20220821140907_040.png",
     "Extras/Media/Pasted Image 20220821140630_196.png",
     "Extras/Media/Pasted Image 20220821140520_014.png",
-    "Extras/Media/Pasted Image 20220320202815_760.png",
     "Extras/Media/Pasted Image 20220320203200_352.png",
     "Extras/Media/Pasted Image 20220320203031_118.png",
+    "Extras/Media/Pasted Image 20220320202845_759.png",
+    "Extras/Media/Pasted Image 20220320202815_760.png",
     "一张图.canvas"
   ]
 }
