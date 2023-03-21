@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Extras/Templates/其他/更新日志模板.md",
-                "mode": "source",
+                "file": "Extras/Templates/微信读书同步模板.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Extras/Templates/其他/更新日志模板.md",
+                "file": "Extras/Templates/微信读书同步模板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Extras/Templates/其他/更新日志模板.md",
+                "file": "Extras/Templates/微信读书同步模板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Extras/Templates/其他/更新日志模板.md"
+                "file": "Extras/Templates/微信读书同步模板.md"
               }
             }
           }
@@ -164,6 +164,7 @@
   },
   "active": "c7ae3611c73e0598",
   "lastOpenFiles": [
+    "Extras/Templates/其他/更新日志模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid journal 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid gantt 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid class diagram 模板.md",
@@ -189,7 +190,6 @@
     "Extras/Templates/Atlas模板/TOC模板.md",
     "Extras/Templates/Atlas模板/MOC模板.md",
     "Extras/Templates/其他/tp_学习测试.md",
-    "Extras/Templates/其他/模板来源.md",
     "一张图.canvas",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
