@@ -13,18 +13,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日记/2023-03-15.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5f4b534ff5b8fd12",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "AboutTheGarden.md",
                 "mode": "source",
                 "source": false
@@ -60,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#b",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "日记/2023-03-15.md",
+                "file": "AboutTheGarden.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "日记/2023-03-15.md",
+                "file": "AboutTheGarden.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "日记/2023-03-15.md"
+                "file": "AboutTheGarden.md"
               }
             }
           }
@@ -156,25 +144,16 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
+      "remotely-save:Remotely Save": false,
       "obsidian-textgenerator-plugin:Generate Text!": false,
       "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
-      "templater-obsidian:Templater": false,
-      "remotely-save:Remotely Save": false
+      "templater-obsidian:Templater": false
     }
   },
   "active": "c7ae3611c73e0598",
   "lastOpenFiles": [
-    "日记/2023-03-20.md",
-    "日记/2023-03-19.md",
-    "日记/2023-03-16.md",
+    "ic_withdraw_success.png",
     "AboutTheGarden.md",
-    "一张图.canvas",
-    "新的文章.md",
-    "哈哈hh.md",
-    "Atlas/About Atlas.md",
-    "图库.md",
-    "Atlas/MOCs/Library.md",
-    "Atlas/MOCs/∑ MOCs.md",
     "哈哈哈哈哈哈哈.md.md",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
@@ -198,6 +177,8 @@
     "Extras/Templates/其他/dict",
     "Extras/Templates/其他",
     "Extras/Templates/Spaces模板",
+    "Extras/Templates/Calendar模板/文章发布模板/发文章-前言模板.md",
+    "Extras/Templates/Calendar模板/文章发布模板/文章草稿-模板.md",
     "Extras/Templates/Calendar模板/文章发布模板",
     "Extras/Templates/Calendar模板/回顾总结模板",
     "Extras/Templates/Calendar模板/会议相关模板",
