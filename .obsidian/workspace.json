@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#b",
+                "query": "<strong>",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -150,7 +151,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "204d5af8f539a11e",
+  "active": "5b6f6bee600a9536",
   "lastOpenFiles": [
     "知识体系/Java/基础/泛型.md",
     "知识体系/Java/基础/泛型.md",
