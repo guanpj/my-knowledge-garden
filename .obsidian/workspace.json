@@ -4,143 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "e4bc0d773043683d",
+        "id": "c824634a7526ba31",
         "type": "tabs",
         "children": [
           {
-            "id": "c7ae3611c73e0598",
+            "id": "204d5af8f539a11e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AboutTheGarden.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "371d334582ca7321",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "模板/其他模版.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "aada99a19b237977",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AboutTheGarden.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "38a73f2f45cee726",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "模板/其他模版.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e6013e80743a28b3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "模板/其他模版.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "406179a7f7449f4d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "模板/我的日记.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d80fa592ebcb9eae",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AboutTheGarden.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7bbda181e6323c45",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "知识体系/Java/基础/泛型.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c864fc03efef49e3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "知识体系/Java/基础/IO.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d37de4ee8ed51317",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AboutTheGarden.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "098742fed110b91b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "日记/2023-03-20.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "vertical"
@@ -169,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#b",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -206,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AboutTheGarden.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -223,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AboutTheGarden.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -245,13 +118,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "AboutTheGarden.md"
-              }
+              "state": {}
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -265,60 +136,60 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
+      "remotely-save:Remotely Save": false,
       "obsidian-textgenerator-plugin:Generate Text!": false,
       "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
-      "templater-obsidian:Templater": false,
-      "remotely-save:Remotely Save": false
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "d80fa592ebcb9eae",
+  "active": "815115909afc80af",
   "lastOpenFiles": [
-    "Atlas/Index for Atlases.md",
+    "Extras/Draws/数字时代如何更好地工作与生活 - 图.md",
+    "Extras/Draws/∑ excalidraw 白板创建入口.md",
+    "Atlas/Dataviews/EXTERNAL.md",
+    "Extras/Draws/README 2022-08-21.svg",
+    "Extras/Draws/README 2022-08-21.md",
+    "Extras/Draws/excalibrain.svg",
+    "Extras/Draws/excalibrain.md",
+    "Extras/Draws/数字时代如何更好地工作与生活 - 图.svg",
+    "Extras/Media/Pasted Image 20220320191818_566.png",
+    "Extras/Media/Pasted Image 20220320202815_760.png",
+    "Extras/Media/Pasted Image 20220320203031_118.png",
+    "Extras/Media/Pasted Image 20220320203200_352.png",
+    "Extras/Media/Pasted Image 20220821140912_644.png",
+    "Extras/Media/Pasted Image 20220821142616_556.png",
+    "Extras/Media/Pasted Image 20220821142613_148.png",
+    "Extras/Templates/Spaces模板/Area创建模板.md",
+    "Extras/Templates/Spaces模板/Archive创建模板.md",
+    "模板/我的日记.md",
+    "模板/其他模版.md",
+    "模板",
+    "Extras/Templates/我的日记 1.md",
+    "Extras/Templates/其他模版 1.md",
+    "Atlas/ACCESS 笔记组织法.md",
     "Atlas/About Atlas.md",
+    "Atlas/Index for Atlases.md",
     "AboutTheGarden.md",
-    "Atlas/TOCs/§ TOCs.md",
-    "Atlas/MOCs/∑ MOCs.md",
-    "Atlas/Dataviews/» 本库常用的dataview工作流.md",
+    "日记/2023-03-19.md",
+    "Extras/Templates/Sources模板/播客笔记模板.md",
+    "Extras/Templates/微信读书同步模板.md",
+    "Extras/Templates/其他/更新日志模板.md",
+    "Extras/Templates/其他/工作流模板.md",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
-    "Extras/Templates/微信读书同步模板.md",
     "Extras/Templates/其他/思维思考模板/康奈尔笔记法模板.md",
     "Extras/Templates/其他/思维思考模板/六顶思考帽模板.md",
+    "Extras/Templates/其他/思维思考模板",
     "Extras/Templates/其他/mermaid模板/mermaid模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid stateDiagram 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid sequenceDiagram 模板.md",
     "Extras/Templates/其他/mermaid模板/mermaid pie 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid journal 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid graph 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid gantt 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid flow chart 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid class diagram 模板.md",
-    "Extras/Templates/其他/dict/dict.md",
-    "Extras/Templates/其他/领域入门模板.md",
-    "Extras/Templates/其他/模板来源.md",
-    "Extras/Templates/其他/更新日志模板.md",
-    "Extras/Templates/其他/思维思考模板",
-    "Extras/Templates/其他/工作流模板.md",
-    "Extras/Templates/其他/tp_学习测试.md",
     "Extras/Templates/其他/mermaid模板",
     "Extras/Templates/其他/dict",
     "Extras/Templates/其他",
-    "Extras/Templates/∑ 模板文件创建入口.md",
-    "Extras/Templates/anki卡片模板.md",
     "Extras/Templates/Spaces模板",
     "Extras/Templates/Sources模板",
     "Extras/Templates/Cards模板",
-    "Extras/Templates/Calendar模板/文章发布模板",
-    "Extras/Media/Pasted Image 20220821142616_556.png",
-    "Extras/Media/Pasted Image 20220821142613_148.png",
-    "Extras/Media/Pasted Image 20220821140912_644.png",
-    "Extras/Media/Pasted Image 20220821140907_040.png",
-    "Extras/Media/Pasted Image 20220821140630_196.png",
-    "Extras/Media/Pasted Image 20220821140520_014.png",
-    "Extras/Media/Pasted Image 20220320203200_352.png",
-    "Extras/Media/Pasted Image 20220320203031_118.png",
-    "Extras/Media/Pasted Image 20220320202845_759.png",
-    "Extras/Media/Pasted Image 20220320202815_760.png",
     "一张图.canvas"
   ]
 }
