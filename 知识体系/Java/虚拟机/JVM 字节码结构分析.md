@@ -19,11 +19,11 @@ tags:
 
 源代码中的各种变量，关键字和运算符号的语义最终都会编译成多条字节码命令。而字节码命令所能提供的语义描述能力是要明显强于 Java 本身的，所以有其他一些同样基于 JVM 的语言能提供许多 Java 所不支持的语言特性。
 
-![](static/boxcnkcdgXBNKvNVzhrXq8VUnRK.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124332.png)
 
 在 Java 中一般是用 javac 命令编译源代码为字节码文件，一个 .java 文件从编译到运行的示例如下。
 
-![](static/boxcnvjHB3lK8C1993rcvvhsAFg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124336.png)
 
 JVM 的指令由一个字节长度的操作码（opcode）和紧随其后的可选的操作数（operand）构成。“字节码”这个名字的由来也是因为操作码的长度用一个字节表示。
 
@@ -81,11 +81,11 @@ ClassFile {
 
 它们的按照以下顺序进行排放：
 
-![](static/boxcnjjpJAE7qORzHAVoIdq9yve.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124342.png)
 
 《Optimizing Java》的作者编了一句顺口溜帮忙记住上面这十部分："My Very Cute Animal Turns Savage In Full Moon Areas."
 
-![](static/boxcnuIbBA41MB7NR382pr0gYQ1.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124346.png)
 
 以下面这个类为例：
 
@@ -260,7 +260,7 @@ SourceFile: "ByteCodeDemo.java"
 
 紧接着主版本号之后的字节为常量池入口。常量池整体上分为两部分：常量池计数器（存储常量池大小计数）以及常量池数据区（存储常量池项），如下图所示。
 
-![](static/boxcnRAcBVKioatXxFhpOOr3F9e.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124353.png)
 
 ### 常量池计数器（constant_pool_count）
 
@@ -295,11 +295,11 @@ SourceFile: "ByteCodeDemo.java"
 
 从前文示例中的字节码摘取一个 cp_info 结构，如下图所示。
 
-![](static/boxcnlJJ3NIsuvEuTTWfzB3gJWb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124358.png)
 
 将它翻译过来后，其含义为：该常量类型为 utf8 字符串，长度为一字节，数据为“a”。
 
-![](static/boxcnoYCKARu6A7fWgD6J8y5OOJ.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124404.png)
 
 下面来逐一详细介绍这些常量池项。
 
@@ -323,7 +323,7 @@ CONSTANT_Utf8_info {
 
 如果要存储的字符串是"hello"，存储结构如下图所示
 
-![](static/boxcnglozJXM2xsd4b9XtXKtMXd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124834.png)
 
 MUTF-8 编码与标准的 UTF-8 编码大部分情况下是相同的，但也有一些细微的区别，比如在 MUTF-8 里空字符("\u0000")用两个字节 0xC080 表示，而在标准的 UTF-8 编码里的表述方式为 0x00，还有一些其它的差异这里不做深入的展开。
 
@@ -344,7 +344,7 @@ CONSTANT_Float_info {
 
 以整型常量 18(0x12) 为例，它在常量池中的布局结构如下图所示：
 
-![](static/boxcnQxx1hRx7YZ5WTY33jM9Jkd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124910.png)
 
 Java 语言规范还定义了 boolean、byte、short 和 char 类型的变量，在常量池中都会被当做 int 来处理，比如用代码定义了下面的常量：
 
@@ -360,7 +360,7 @@ public class MyConstantTest {
 
 编译生成的 class 文件如下图所示：
 
-![](static/boxcnxghxz55lxR24BEeO7J4IFd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124929.png)
 
 #### CONSTANT_Long_info 和 CONSTANT_Double_info
 
@@ -382,7 +382,7 @@ CONSTANT_Double_info {
 
 对应的结构如下图所示：
 
-![](static/boxcnw4fKxeJeUtoutX0LlsH9xd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_124949.png)
 
 以下面的代码为例
 
@@ -404,7 +404,7 @@ Constant pool:
 
 前面提到过，CONSTANT_Long_info 和 CONSTANT_Double_info 占用两个常量池位置，可以看到常量 a 占用了 #3 和 #4 两个位置，下一个常量从索引值 5 开始。
 
-![](static/boxcnYdwhTSIEh2LOVH65Q9Roed.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125043.png)
 
 #### CONSTANT_Class_info
 
@@ -419,7 +419,7 @@ CONSTANT_Class_info {
 
 它由两部分组成，第一个字节是 tag，值为 7，tag 后面的两个字节 name_index 是一个常量池索引，指向类型为 CONSTANT_Utf8_info 常量，这个字符串存储的是类或接口的全限定名。如下图所示：
 
-![](static/boxcnsbv5Pcz2WFCdEy1irInLdc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125114.png)
 
 #### CONSTANT_String_info
 
@@ -444,7 +444,7 @@ public class HelloWorldMain {
 
 CONSTANT_String_info 的存储布局方式为：
 
-![](static/boxcnkuaAMiOGNfEanZiRNtV1dh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125138.png)
 
 #### CONSTANT_Fieldref_info、CONSTANT_Methodref_info 和 CONSTANT_InterfaceMethodref_info
 
@@ -502,7 +502,7 @@ Constant pool:
 
 结构布局示意图如下：
 
-![](static/boxcnX4C4I8q1iJ5YNvckikrLXg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125200.png)
 
 #### CONSTANT_NameAndType_info
 
@@ -531,7 +531,7 @@ public void testMethod(int id, String name) {
 
 CONSTANT_NameAndType_info 的结构布局示意图如下：
 
-![](static/boxcnTMVJQxDbRQr2Yj56r48Ywd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125221.png)
 
 #### CONSTANT_MethodType_info、CONSTANT_MethodHandle_info 和 CONSTANT_InvokeDynamic_info
 
@@ -579,13 +579,13 @@ BootstrapMethods:
 
 整体的结构如下图所示：
 
-![](static/boxcnRDdo2x0Kya4uGFXaka6gNe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125251.png)
 
 ## 类访问标记(Access Flags)
 
 常量池之后存储的是访问标记（Access flags），用来标识一个类是是不是 final、abstract 等，由两个字节表示总共可以有 16 个标记位可供使用，目前只使用了其中的 8 个。
 
-![](static/boxcnIlKqPR8zZnaVqJsjZMEYNg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125310.png)
 
 具体的标记位含义如下
 
@@ -618,7 +618,7 @@ public class HelloWorld {
 
 this_class 为 0x0005，指向常量池中下标为 5 的元素，这个元素是由两部分组成，第一部分是类型，这里是 Class 表示是一个类，第二部分是指向常量池下标 21 的元素，这个元素是字符串 "HelloWorldMain"。
 
-![](static/boxcnYfH6pokcjiBINJXkypd1Wh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125327.png)
 
 super_class 和 interfaces 的原理与之类似。
 
@@ -644,7 +644,7 @@ super_class 和 interfaces 的原理与之类似。
 
 如下图所示:
 
-![](static/boxcneFvQOLATDfINYhTn60HaNp.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125345.png)
 
 ### 字段结构
 
@@ -693,7 +693,7 @@ public static final int DEFAULT_SIZE = 128;
 
 编译后 DEFAULT_SIZE 字段在类文件中存储的访问标记值为 0x0019，则它的访问标记为 ACC_PUBLIC | ACC_STATIC | ACC_FINAL，表示它是一个 public static final 类型的变量。如下图所示：
 
-![](static/boxcnfiGV3FwMsuDmrPfKGeyFsh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125404.png)
 
 ### 字段描述符
 
@@ -726,7 +726,7 @@ JVM 使用一个前置的 “[” 来表示数组类型，如 int[] 类型描述
 
 以文章开头 ByteCodeDemo 类的字节码中的字段表为例，如下图所示。
 
-![](static/boxcnhkYCPUuhnfj6seMHJCkV5L.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125423.png)
 
 0001：字段表计数。实例代码中只有一个字段，故值为 1
 
@@ -754,7 +754,7 @@ JVM 使用一个前置的 “[” 来表示数组类型，如 int[] 类型描述
 
 由表示方法个数的 methods_count 和对应个数的方法项集合组成，如下图所示：
 
-![](static/boxcnYRn6VyBjUALNLwpaaXmCGh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125440.png)
 
 ### 方法结构
 
@@ -805,7 +805,7 @@ private static synchronized void foo() {
 
 生成的类文件中 foo 方法的访问标记等于 0x002a（ACC_PRIVATE | ACC_STATIC | ACC_SYNCHRONIZED），，表示这是一个 private static synchronized 的方法，如下图所示：
 
-![](static/boxcn5MLe8x4tSSIltG15Zix6Bb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125456.png)
 
 ### 方法名与描述符
 
@@ -819,7 +819,7 @@ private static synchronized void foo() {
 
 如下图所示:
 
-![](static/boxcnohqABY9UKJFDi2ic5S6pyb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125513.png)
 
 ### 方法属性表
 
@@ -829,7 +829,7 @@ private static synchronized void foo() {
 
 还是以文章中 ByteCodeDemo 类的字节码中的字段表为例，如下图所示。
 
-![](static/boxcn2QIufOsSvDNcqrr73NMJYe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125530.png)
 
 共分为四个部分：
 
@@ -918,11 +918,11 @@ ConstantValue_attribute {
 
 以 “public static final int DEFAULT_SIZE = 128;” 为例，字段对应的 class 文件如下图高亮部分：
 
-![](static/boxcnrzZizdz4XgrKQI7exQWeSf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125546.png)
 
 它对应的字段结构如下：
 
-![](static/boxcnI5pQuvpSf8UwTkp6TOq8xf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125607.png)
 
 ### Code 属性
 
@@ -979,13 +979,13 @@ public static void main(String[] args) {
 
 如下图所示：
 
-![](static/boxcn8Vve3ec7bNJlvplJIhPbSg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125622.png)
 
 ### 案例分析
 
 同样以 ByteCodeDemo 类的字节码为例，如下图所示。
 
-![](static/boxcnTyhgjV3Q99Kdh9Zn59r0Dc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-ByteCode/clipboard_20230323_125755.png)
 
 0001 表示为属性表计数，这里只有一个附加属性。属性表
 

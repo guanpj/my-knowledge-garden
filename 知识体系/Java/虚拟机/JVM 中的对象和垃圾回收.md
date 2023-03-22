@@ -18,7 +18,7 @@ tags:
 
 ## 对象的创建
 
-![](static/boxcn10RBYpfMovRQajq1qAO2ie.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123009.png)
 
 虚拟机遇到一条 new 指令时，首先检查是否被类加载器加载，如果没有，则必须先执行相应的类加载过程。类加载就是把 class 加载到 JVM 的运行时数据区的过程。
 
@@ -36,13 +36,13 @@ tags:
 
 如果 Java 堆中内存是绝对规整的，所有用过的内存都放在一边，空闲的内存放在另一边，中间放着一个指针作为分界点的指示器，那所分配内存就仅仅是把那个指针向空闲空间那边挪动一段与对象大小相等的距离，这种分配方式称为“<strong>指针碰撞</strong>”。
 
-![](static/boxcnxTmz10LAE2kbvfBvsfLfZe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123013.png)
 
 #### <strong>空闲列表</strong>
 
 如果 Java 堆中的内存并不是规整的，已使用的内存和空闲的内存相互交错，那就没有办法简单地进行指针碰撞了，虚拟机就必须维护一个列表，记录上哪些内存块是可用的，在分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录，这种分配方式称为“<strong>空闲列表</strong>”。
 
-![](static/boxcnV8m2nZdx5BaYthg1V4DWKh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123019.png)
 
 选择哪种分配方式由 Java 堆是否规整决定，而 Java 堆是否规整又由所采用的垃圾收集器是否带有压缩整理功能决定。
 
@@ -58,7 +58,7 @@ tags:
 
 <strong>CAS 机制</strong>
 
-![](static/boxcnjBn0Nebp0DsEqLWhykMAGb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123025.png)
 
 对分配内存空间的动作进行同步处理，虚拟机采用 CAS 配上失败重试的方式保证更新操作的原子性。虽然这种方式解决了并发问题，但是我们不难发现，这种方式增加了复杂度，降低了内存的分配的功效性。
 
@@ -72,7 +72,7 @@ TLAB 只是让每个线程有私有的分配指针，但底下存对象的内存
 
 分配缓冲较 CAS 机制少了比较、预处理，失败重试步骤，极其高效，所以我们一般使用 TLAB 方式，JVM 默认也是此方式。要禁用 TLAB，需指定 -XX:-UseTLAB。
 
-![](static/boxcn9JqE8jgA1pov2UBLyuei1c.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123030.png)
 
 ### <strong>3、内存空间初始化</strong>
 
@@ -100,7 +100,7 @@ TLAB 只是让每个线程有私有的分配指针，但底下存对象的内存
 
 第三部分对齐填充并不是必须的，也没有特别的含义，它仅仅起着占位符的作用。由于 HotSpot 的自动内存管理系统要求对对象的大小必须是 8 字节的整数倍。当对象其他数据部分没有对齐时，就需要通过对齐填充来补全。数据对齐的作用就是<strong>方便进行垃圾回收</strong>。
 
-![](static/boxcntID07QTc6KE013xEOld2dc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123035.png)
 
 ## 对象访问定位
 
@@ -110,7 +110,7 @@ TLAB 只是让每个线程有私有的分配指针，但底下存对象的内存
 
 Java 堆中会划分出一块内存来作为句柄池，reference 中存储的就是对象的句柄地址，而句柄中包含了对象实例数据与类型数据各自的具体地址信息。
 
-![](static/boxcnpmzpNp2fKTT31oFo73g96c.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123040.png)
 
 - <strong>优点：</strong>reference 中存储的是稳定的句柄地址，在对象被移动（垃圾收集时移动对象是非常普遍的行为）时只会改变句柄中的实例数据指针，而 reference 本身不需要修改.
 - <strong>缺点：</strong>需要在堆中维护一个句柄池，而且由于中间多了个句柄池引用过程也多了一个步骤，执行效率受到影响。
@@ -123,7 +123,7 @@ Java 堆中会划分出一块内存来作为句柄池，reference 中存储的�
 
 使用直接指针访问方式的最大好处就是速度更快，它节省了一次指针定位的时间开销，由于对象的访问在 Java 中非常频繁，因此这类开销积少成多后也是一项非常可观的执行成本。
 
-![](static/boxcnsgSNPLFvKHRKU6lS0FNUcf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123100.png)
 
 对 HotSpot 而言，它是使用直接指针访问方式进行对象访问的。
 
@@ -151,7 +151,7 @@ Java 堆中会划分出一块内存来作为句柄池，reference 中存储的�
 
 主流的商用程序（Java、C#）的内存管理子系统都是通过可达性（Reachability Analysis）分析算法来判断对象是否存活。
 
-![](static/boxcnOlPw8Y5iQqLgMY6I87uPeg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123106.png)
 
 #### GC Roots 分类
 
@@ -190,7 +190,7 @@ Java 堆中会划分出一块内存来作为句柄池，reference 中存储的�
 
 经过上面两次标记 & 筛选，仍然留在“即将回收”集合里的对象将会在 GC 到来的时候被回收。
 
-![](static/boxcn8X5YVxnXz76VvveR8VXRO6.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123112.png)
 
 <strong>尽量不要依赖 finalize，因为这个方法太不可靠，在生产中很难控制方法的执行或者对象的调用顺序。可以忽略 finalize 方法，因为在 finalize 方法能做的工作，Java 中有更好的方式，比如 try-finally。</strong>
 
@@ -235,7 +235,7 @@ Java 中一共有四种引用，分别为强引用、弱引用、软引用和虚
 
 一般将 Java 堆分为新生代和老年代，这样我们就可以根据各个年代的特点选择合适的垃圾收集算法。
 
-![](static/boxcnZP6jEoswUJsiLl90ijJ0Hh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123124.png)
 
 - 新生代：复制算法。每次收集都会有大量对象死去，复制算法只需要付出少量对象的复制成本就可以完成每次垃圾收集。当年轻代中的 Eden 区分配满的时候，就会触发年轻代的 GC（Minor GC）。具体过程如下：
 
@@ -281,7 +281,7 @@ GC 过程每次存活的对象，都会放入其中一个 Survivor 区，这个�
 
 在分配时，程序会搜索空闲链表寻找空间大于等于新对象大小 size 的块 block。如果它找到的块等于 size，会直接返回这个分块；如果找到的块大于 size，会将块分割成大小为 size 与 (block - size) 的两部分，返回大小为 size 的分块，并把大小为 (block - size) 的块返回给空闲链表。
 
-![](static/boxcnK1bg9OET8qeznmbUKMfAeg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123130.png)
 
 不足：
 
@@ -290,7 +290,7 @@ GC 过程每次存活的对象，都会放入其中一个 Survivor 区，这个�
 
 #### 标记 - 复制
 
-![](static/boxcnFXxzFSeKIN83QcPgEVPCOd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123135.png)
 
 将内存划分为大小相等的两块，每次只使用其中一块，当这一块内存用完了就将还存活的对象复制到另一块上面，然后再把使用过的内存空间进行一次清理。
 
@@ -301,8 +301,7 @@ GC 过程每次存活的对象，都会放入其中一个 Survivor 区，这个�
 HotSpot 虚拟机的 Eden 和 Survivor 大小比例默认为 8:1，保证了内存的利用率达到 90%。如果每次回收有多于 10% 的对象存活，那么一块 Survivor 就不够用了，此时需要依赖于老年代进行空间分配担保，也就是借用老年代的空间存储放不下的对象。
 
 #### 标记 - 整理
-
-![](static/boxcn14FEWiXqf4jyUx6Wap5ITc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_1231340.png)
 
 标记的过程与“标记 - 清除”算法一样，但后续步骤不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。
 
@@ -318,7 +317,7 @@ HotSpot 虚拟机的 Eden 和 Survivor 大小比例默认为 8:1，保证了内�
 
 如果说垃圾收集算法是内存回收的方法论，那垃圾收集器就是内存回收的实践者。《Java 虚拟机规范》中对垃圾收集器应该如何实现并没有做出任何规定，因此不同的厂商、不同版本的虚拟机所包含的垃圾收集器都有可能会有很大的差别，不同的虚拟机一般也都会提供各种参数供用户根据自己的应用特点和要求组合出各个内存分代所使用的收集器。
 
-![](static/boxcny2nVtOWtdnB2WLNTvVSfeg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123145.png)
 
 以上是 HotSpot 虚拟机中的 7 个垃圾收集器，连线表示垃圾收集器可以配合使用。它们之间涉及到的某些概念，在谈论垃圾收集器的上下文语境中，可以有如下理解：
 
@@ -333,21 +332,19 @@ Serial 翻译为串行，也就是说它以串行的方式执行。
 
 它是单线程的收集器，只会使用一个线程进行垃圾收集工作。它是 Client 场景下的默认新生代收集器，因为在该场景下内存一般来说不会很大。它收集一两百兆垃圾的停顿时间可以控制在一百多毫秒以内。
 
-![](static/boxcnHNvUoxJnbxUPvalXqwHmQc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123150.png)
 
 <strong>优点</strong>
-
 简单高效，在单个 CPU 环境下，由于没有线程交互的开销，因此拥有最高的单线程收集效率。
 
 <strong>缺点</strong>
-
 进行垃圾收集工作的时候必须暂停其他所有的工作线程（Stop The World），直到收集结束。
 
 #### ParNew 收集器
 
 它是 Serial 收集器的多线程版本，除了使用多线程进行垃圾收集外，其余行为（控制参数、收集算法、回收策略等等）和 Serial 收集器完全一样。它是 Server 场景下默认的新生代收集器，除了性能原因外，主要是因为除了 Serial 收集器，只有它能与 CMS 收集器配合使用。
 
-![](static/boxcn3olNYUQuNAsiR9oYGLtntb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123155.png)
 
 #### Parallel Scavenge 收集器
 
@@ -379,7 +376,7 @@ CMS（Concurrent Mark Sweep）收集器是一种以获取最短回收停顿时�
 - 重新标记： 重新标记阶段就是为了修正并发标记期间因为用户程序继续运行而导致标记产生变动的那一部分对象的标记记录，这个阶段也需要<strong>暂停所有的其他线程</strong>。但停顿时间一般会比初始标记阶段的时间稍长，而又远远比并发标记阶段时间短。
 - 并发清除： 开启用户线程，同时 GC 线程开始对未标记的区域做清扫。
 
-![](static/boxcnzuuMqEX3XTJcpYwt8BAfOg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123203.png)
 
 在整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，不需要进行停顿。
 
@@ -397,7 +394,7 @@ G1 (Garbage-First) 是一款<strong>面向服务器</strong>的垃圾收集器�
 
 每一个 Region 都可以根据需要，扮演新生代的 Eden、Survivor 和老年代空间，G1 能够对扮演不同觉得的 Region 采用不同的策略区处理。Region 中还有一类特殊的 Humongous（巨大的） 区域，专门用来储存大对象。
 
-![](static/boxcnSEOmm6HPqtl6LO5SZyEIoh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123208.png)
 
 G1 收集器的运作大致分为以下几个步骤：
 
@@ -406,7 +403,7 @@ G1 收集器的运作大致分为以下几个步骤：
 - 最终标记：为了修正在并发标记期间因用户程序继续运作而导致标记产生变动的那一部分标记记录，虚拟机将这段时间对象变化记录在线程的 Remembered Set Logs 里面，最终标记阶段需要把 Remembered Set Logs 的数据合并到 Remembered Set 中。这阶段需要停顿线程，但是可并行执行。
 - 筛选回收：首先对各个 Region 中的回收价值和成本进行排序，根据用户所期望的 GC 停顿时间来制定回收计划。此阶段其实也可以做到与用户程序一起并发执行，但是因为只回收一部分 Region，时间是用户可控制的，而且停顿用户线程将大幅度提高收集效率。
 
-![](static/boxcnAsMbObq77oxwiiYgMSXh2d.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123216.png)
 
 G1 收集器在后台维护了一个优先列表，每次根据允许的收集时间，优先选择回收价值最大的 Region(这也就是它的名字 Garbage-First 的由来) 。这种使用 Region 划分内存空间以及有优先级的区域回收方式，保证了 G1 收集器在有限时间内可以尽可能高的收集效率（把内存化整为零）。
 
@@ -457,7 +454,7 @@ G1 被视为 JDK1.7 中 HotSpot 虚拟机的一个重要进化特征。它具备
 
 如果不成立的话虚拟机会查看 HandlePromotionFailure 的值是否允许担保失败，如果允许那么就会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果大于，将尝试着进行一次 Minor GC；如果小于，或者 HandlePromotionFailure 的值不允许冒险，那么就要进行一次 Full GC。
 
-![](static/boxcnP0d4GwIwOBAkcW5gvjKUoe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123223.png)
 
 ## Full GC 的触发条件
 
@@ -489,6 +486,6 @@ G1 被视为 JDK1.7 中 HotSpot 虚拟机的一个重要进化特征。它具备
 
 执行 CMS GC 的过程中同时有对象要放入老年代，而此时老年代空间不足（可能是 GC 过程中浮动垃圾过多导致暂时性的空间不足），便会报 Concurrent Mode Failure 错误，并触发 Full GC。
 
-![](static/boxcnT8mtfEs1eSASJ0ca6GARYe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123229.png)
 
-![](static/boxcnxlE7t7AXPhhD2W2inaW5bg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JVM-GC/clipboard_20230323_123234.png)
