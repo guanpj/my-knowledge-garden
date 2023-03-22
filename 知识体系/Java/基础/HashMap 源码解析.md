@@ -24,47 +24,35 @@ HashMap 成员变量和构造方法声明如下（Java 7 和 8 大致相同，�
 public class HashMap<K,V> extends AbstractMap<K,V>  
   
     implements Map<K,V>, Cloneable, Serializable {  
-  
-  
-  
+
     // 初始容量 16  
-  
     static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16  
   
     // 最大容量，该数组最大值为2^31一次方。  
-  
     static final int MAXIMUM_CAPACITY = 1 << 30;  
   
     // 默认的加载因子，如果构造的时候不传则为 0.75  
-  
     static final float DEFAULT_LOAD_FACTOR = 0.75f;  
   
     // @1.8：数组某个位置下的 node 链表转化为红黑树对该链表的最小长度要求  
-  
     static final int TREEIFY_THRESHOLD = 8;  
   
     // @1.8：当一个反树化的阈值，当这个 node 长度减少到该值就会从树转化成链表  
-  
     static final int UNTREEIFY_THRESHOLD = 6;  
   
     // @1.8：数组某个位置下的 node 链表转化为红黑树对元素个数的最小要求  
-  
     static final int MIN_TREEIFY_CAPACITY = 64;  
   
     // 具体存放数据的数组  
-  
     transient Node<K,V>[] table;  
   
     // entrySet，一个存放 k-v 缓冲区  
-  
     transient Set<Map.Entry<K,V>> entrySet;  
   
     // 存放键值对的个数。  
-  
     transient int size;  
   
     // 记录更改 map 结构次数(添加、删除、扩容？)  
-  
     transient int modCount;  
   
     // 临界值，当实际大小(容量*填充因子)超过临界值时，会进行扩容  
@@ -72,56 +60,32 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     int threshold;  
   
     // 填充因子  
-  
     final float loadFactor;  
   
-  
-  
     // 指定初始容量  
-  
     public HashMap(int initialCapacity) {  
-  
         this(initialCapacity, DEFAULT_LOAD_FACTOR);  
-  
     }  
-  
-  
-  
+
     // 默认构造函数  
-  
     public HashMap() {  
-  
         // 默认 threshold 在首次 put 时才复制，Java 7 则是调用  
-  
         // this(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR)  
-  
         this.loadFactor = DEFAULT_LOAD_FACTOR;   
-  
     }  
-  
-  
-  
+
     // 包含另一个 Map  
-  
     public HashMap(Map<? extends K, ? extends V> m) {  
-  
         this.loadFactor = DEFAULT_LOAD_FACTOR;  
   
         putMapEntries(m, false);  
-  
     }  
-  
-  
-  
+
     // 指定初始容量和填充因子  
-  
     public HashMap(int initialCapacity, float loadFactor) {  
-  
         if (initialCapacity < 0) // 容量不能为负数  
   
-            throw new IllegalArgumentException("Illegal initial capaci    
-  
-                ty: " + initialCapacity);  
+            throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity);  
   
         // 当容量大于 2^31 就取最大值 1<<30;   
   
@@ -136,15 +100,11 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         this.loadFactor = loadFactor;  
   
         // tableSizeFor 保证了数组长度一定是 2 的幂次方，是大于等于    initialCapacity 最接近的值。  
-  
         // 这里使用 threshold 暂时保存计算后的 initialCapacity 值  
-  
         this.threshold = tableSizeFor(initialCapacity);  
   
     }  
-  
     ...  
-  
 }  
 ```  
   
@@ -162,18 +122,13 @@ static class Entry<K,V> implements Map.Entry<K,V> {
     Entry<K,V> next;  
   
     int hash;  
-  
-     
-  
+
     ...  
-  
 }  
 ```  
   
 元素的存储结构如下：  
-  
-![](static/boxcn3NQp0EINfW7ahs2Ffr4cYe.png)  
-  
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/HashMap/clipboard_20230322_035018.png)
 Java 8 开始，采用数组 + 链表 + 红黑树方式进行存储，元素类型为 Node 和 TreeNode：  
   
 ```java  
@@ -186,11 +141,8 @@ static class Node<K,V> implements Map.Entry<K,V> {
     V value;  
   
     Node<K,V> next;  
-  
-          
-  
+
     ...  
-  
 }  
   
   
@@ -206,16 +158,14 @@ static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
     TreeNode<K,V> prev;    // needed to unlink next upon deletion  
   
     boolean red;  
-  
-              
-  
+    
     ...  
-  
 }  
 ```  
   
 元素的存储结构如下：
-![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/HashMap/clipboard_20230322_035018.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/HashMap/clipboard_20230322_041741.png)
+
 ## put 流程分析  
   
 ### Java 7 put 流程  
@@ -226,34 +176,27 @@ Java 7 put 流程主要方法源码如下：
   
 ```java  
 public V put(K key, V value)  
-  
     if (table == EMPTY_TABLE) {  
         // 初始化 table  
         inflateTable(threshold);  
     }  
   
     if (key == null) {  
-  
         // 在 table[0] 处插入 key 为 null 元素并返回  
         return putForNullKey(value);  
     }  
   
     // 先进行一次 hash 计算     
-  
     int hash = hash(key);  
   
     // 根据 hash 值计算 table 下标  
-  
     int i = indexFor(hash, table.length);  
   
     // 遍历 table[i] 处的链表  
-  
     for (Entry<K,V> e = table[i]; e != null; e = e.next) {  
         Object k;  
         // hash 一样且 key 相等或者 equals 方法返回 true 才进行替换  
-  
         if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {  
-  
             V oldValue = e.value;  
   
             e.value = value;  
@@ -266,34 +209,24 @@ public V put(K key, V value)
     // 出循环意味着 table[i] 这条链表没有此元素  
     // 更新 modCount  
     modCount++;  
-  
     // 插入新元素  
-  
     addEntry(hash, key, value, i);  
   
     return null;  
 }  
   
 private void inflateTable(int toSize) {  
-  
     // 获取大于  
-  
     int capacity = roundUpToPowerOf2(toSize);  
-  
     // 重新计算阈值  
-  
     threshold = (int) Math.min(capacity * loadFactor,   
-  
             MAXIMUM_CAPACITY + 1);  
   
     // 创建数组  
-  
     table = new Entry[capacity];  
   
     // 根据配置判断是否初始化 hashSeed  
-  
     initHashSeedAsNeeded(capacity);  
-  
 }  
   
 private V putForNullKey(V value) {  
@@ -301,11 +234,8 @@ private V putForNullKey(V value) {
     for (Entry<K,V> e = table[0]; e != null; e = e.next) {  
         // key 为 null 直接替换  
         if (e.key == null) {  
-  
             V oldValue = e.value;  
-  
             e.value = value;  
-  
             e.recordAccess(this);  
   
             return oldValue;  
@@ -325,15 +255,12 @@ void addEntry(int hash, K key, V value, int bucketIndex) {
     // 元素数量达到临界值且 table[bucketIndex] 位置不为空才进行扩容  
     if ((size >= threshold) && (null != table[bucketIndex])) {  
         // 两倍容量  
-  
         resize(2 * table.length);  
   
         // 重新计算 hash  
-  
         hash = (null != key) ? hash(key) : 0;  
   
         // 重新确定数组下标  
-  
         bucketIndex = indexFor(hash, table.length);  
     }
     // 创建并插入新元素  
@@ -352,9 +279,7 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
 ```  
   
 #### 流程图示  
-
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/HashMap/clipboard_20230322_040358.png)
-
 ### Java 8 put 流程  
   
 #### 代码分析  
@@ -363,158 +288,103 @@ Java 8 put 流程主要方法源码如下：
   
 ```java  
 public V put(K key, V value) {  
-  
       // onlyIfAbsent 默认为 false，即元素存在时进行替换  
-  
     return putVal(hash(key), key, value, false, true);  
-  
 }  
   
 final V putVal(int hash, K key, V value,   
-  
           boolean onlyIfAbsent, boolean evict) {  
-  
     Node<K,V>[] tab; Node<K,V> p; int n, i;  
   
     // table 未初始化或者长度为 0，进行扩容  
-  
     if ((tab = table) == null || (n = tab.length) == 0)  
-  
         n = (tab = resize()).length;  
   
     // (n - 1) & hash 确定元素存放位置，位置为空则直接放入该位置  
-  
     if ((p = tab[i = (n - 1) & hash]) == null)  
-  
         tab[i] = newNode(hash, key, value, null);  
   
     // 数组对应位置已经存在元素  
-  
     else {  
-  
         Node<K,V> e; K k;  
   
         // 比较数组中第一个元素  
-  
         if (p.hash == hash &&  
-  
             ((k = p.key) == key || (key != null && key.equals(k))))  
   
                 // 将第一个元素赋值给 e  
-  
                 e = p;  
-  
         // 是否为红黑树结点  
-  
         else if (p instanceof TreeNode)  
-  
             // 放入树中  
-  
             e = ((TreeNode<K,V>)p).putTreeVal(this, tab,   
-  
                         hash, key, value);  
-  
         // 链表结点  
-  
         else {  
-  
             // 遍历链表  
-  
             for (int binCount = 0; ; ++binCount) {  
-  
                 // 到达链表的尾部，说明没有找到相等的 key  
-  
                 if ((e = p.next) == null) {  
-  
                     // 在尾部插入新结点  
-  
                     p.next = newNode(hash, key, value, null);  
   
                     // 判断结点数量是否达到阈值(TREEIFY_THRESHOLD 默认为 8)  
-  
                     if (binCount >= TREEIFY_THRESHOLD - 1) {  
-  
                         // 根据数组长度决定是否树化  
-  
                         treeifyBin(tab, hash);  
-  
                     }  
   
                     // 跳出循环  
-  
                     break;  
-  
                 }  
   
                 // 判断链表中结点的 key 值是否与插入的 key 相等  
-  
                 if (e.hash == hash &&  
-  
                     ((k = e.key) == key ||   
-  
                           (key != null && key.equals(k))))  
-  
                     // key 相等，跳出循环，此时 e 就是目标结点  
-  
                     break;  
   
                 // 与前面的 e = p.next 组合遍历链表  
-  
                 p = e;  
-  
             }  
-  
         }  
   
         // 找到 key 值相等的目标结点  
-  
         if (e != null) {  
   
             V oldValue = e.value;  
   
             // onlyIfAbsent 为 false 或者目标接点值为 null  
-  
             if (!onlyIfAbsent || oldValue == null)  
   
                 //用新值替换旧值  
-  
                 e.value = value;  
   
             // 空实现，用于访问后回调给子类，如 LinkedHashMap  
-  
             afterNodeAccess(e);  
   
             // 返回旧值  
-  
             return oldValue;  
-  
         }  
-  
     }  
   
     // 结构修改，更新 modCount  
-  
     ++modCount;  
   
     // 实际大小大于阈值则扩容  
-  
     if (++size > threshold)  
-  
         resize();  
   
     // 插入后回调  
-  
     afterNodeInsertion(evict);  
   
     return null;  
-  
 }  
 ```  
   
 #### 流程图示  
-
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/HashMap/clipboard_20230322_040522.png)
-
 ## hash 计算与元素位置确定  
   
 ### Java 7  
@@ -527,35 +397,25 @@ int i = indexFor(hash, table.length);
 final int hash(Object k) {  
   
     // 默认为 0，初始化方法见后文  
-  
     int h = hashSeed;  
   
     // 如果 hashSeed 不为零且 key 是 String 类型  
-  
     if (0 != h && k instanceof String) {  
-  
         // 返回特定 hash 值  
-  
         return sun.misc.Hashing.stringHash32((String) k);  
-  
     }  
   
     h ^= k.hashCode();  
   
     // 多次异或  
-  
     h ^= (h >>> 20) ^ (h >>> 12);  
   
     return h ^ (h >>> 7) ^ (h >>> 4);  
-  
 }  
   
 static int indexFor(int h, int length) {  
-  
     // assert Integer.bitCount(length) == 1 : "length must be a non-zero power of 2";  
-  
     return h & (length-1);  
-  
 }  
 ```  
   
@@ -563,19 +423,14 @@ static int indexFor(int h, int length) {
   
 ```java  
 public V put(K key, V value) {  
-  
     return putVal(hash(key), key, value, false, true);  
-  
 }  
 
 static final int hash(Object key) {  
-  
     int h;  
   
     // 让高 16 位和低 16 位异或  
-  
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);  
-  
 }  
 
 p = tab[index = (n - 1) & hash]；  
@@ -602,93 +457,62 @@ Java 7 的 resize 方法相关代码：
   
 ```java  
 void resize(int newCapacity) {  
-  
     Entry[] oldTable = table;  
   
     // 记录旧容量  
-  
     int oldCapacity = oldTable.length;  
   
     // 如果容量已达到上限，则扩容阈值设置成不可能达到的最大值，即后续不再扩容  
-  
     if (oldCapacity == MAXIMUM_CAPACITY) {  
-  
         threshold = Integer.MAX_VALUE;  
   
         return;  
-  
     }  
   
     // 根据新容量创建出新数组  
-  
     Entry[] newTable = new Entry[newCapacity];  
   
     // 将旧数组的节点转移到新数组  
-  
     transfer(newTable, initHashSeedAsNeeded(newCapacity));  
   
     // 新旧易主  
-  
     table = newTable;  
   
     // 根据新容量重新确定新阈值  
-  
     threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);  
-  
 }  
  
 // 从配置中获取是否启用备用 hash，用于减少字符串 hash 冲突  
-  
 final boolean initHashSeedAsNeeded(int capacity) {  
-  
     // 是否已经启用备用 hash  
-  
     boolean currentAltHashing = hashSeed != 0;  
   
     // 虚拟机已经启动且数组容量大于 ALTERNATIVE_HASHING_THRESHOLD  
-  
     boolean useAltHashing = sun.misc.VM.isBooted() &&  
-  
             (capacity >= Holder.ALTERNATIVE_HASHING_THRESHOLD);  
   
     // 异或操作判断是否切换  
-  
     boolean switching = currentAltHashing ^ useAltHashing;  
-  
     if (switching) {  
-  
         // useAltHashing 为 true 则 hashSeed 初始化为也给随机 hash 值  
-  
         hashSeed = useAltHashing  
-  
             ? sun.misc.Hashing.randomHashSeed(this)  
-  
             : 0;  
-  
     }  
-  
     return switching;  
-  
 }  
 
 void transfer(Entry[] newTable, boolean rehash) {  
-  
     int newCapacity = newTable.length;  
   
     // 遍历旧数组  
-  
     for (Entry<K,V> e : table) {  
-  
         // 遍历数组上的链表  
-  
         while(null != e) {  
-  
             // 记录下一个位置  
-  
             Entry<K,V> next = e.next;  
   
             // 判断是否重新计算 hash 值  
-  
             if (rehash) {  
   
                 e.hash = null == e.key ? 0 : hash(e.key);  
@@ -696,23 +520,17 @@ void transfer(Entry[] newTable, boolean rehash) {
             }  
   
             // 根据新容量重新计算位置  
-  
             int i = indexFor(e.hash, newCapacity);  
   
             // 按旧链表的正序遍历链表、在新链表的头部依次插入  
-  
             // 因此扩容后可能出现逆序  
-  
             e.next = newTable[i];  
   
             newTable[i] = e;  
   
             e = next;  
-  
         }  
-  
     }  
-  
 }  
 ```  
   
@@ -728,51 +546,32 @@ Java 8 中的 resize 和 treeifyBin 方法：
   
 ```java  
 final void treeifyBin(Node<K,V>[] tab, int hash) {  
-  
     int n, index; Node<K,V> e;  
-  
     // 如果数组为空或者数组长度小于 64，则进行扩容  
-  
     if (tab == null || (n = tab.length) < MIN_TREEIFY_CAPACITY)  
-  
         resize();  
-  
     // 根据 hash 获取数组下标，该位置有值再进行树化  
-  
     else if ((e = tab[index = (n - 1) & hash]) != null) {  
-  
         TreeNode<K,V> hd = null, tl = null;  
-  
         // 遍历链表  
-  
         do {  
-  
             // Node 节点转换成 TreeNode 节点  
-  
             TreeNode<K,V> p = replacementTreeNode(e, null);  
   
             if (tl == null)  
-  
                 hd = p;  
-  
             else {  
-  
                 p.prev = tl;  
   
                 tl.next = p;  
-  
             }  
   
             tl = p;  
-  
         } while ((e = e.next) != null);  
-  
+        
         if ((tab[index] = hd) != null)  
-  
             hd.treeify(tab);  
-  
     }  
-  
 }  
 
 final Node<K,V>[] resize() {  
@@ -786,47 +585,31 @@ final Node<K,V>[] resize() {
     int newCap, newThr = 0;  
   
     if (oldCap > 0) {  
-  
         // 超过最大值后续不再扩容  
-  
         if (oldCap >= MAXIMUM_CAPACITY) {  
-  
             threshold = Integer.MAX_VALUE;  
-  
             return oldTab;  
-  
         }  
   
         // 否则扩充为原来的2倍  
-  
         else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY && oldCap >= DEFAULT_INITIAL_CAPACITY)  
-  
             newThr = oldThr << 1; // double threshold  
-  
     }  
   
     else if (oldThr > 0) // initial capacity was placed in threshold  
-  
         newCap = oldThr;  
-  
     else {  
-  
         // signifies using defaults  
-  
         newCap = DEFAULT_INITIAL_CAPACITY;  
   
         newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);  
-  
     }  
   
     // 计算新的 resize 上限  
   
     if (newThr == 0) {  
-  
         float ft = (float)newCap * loadFactor;  
-  
         newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ? (int)ft : Integer.MAX_VALUE);  
-  
     }  
   
     threshold = newThr;  
@@ -836,103 +619,58 @@ final Node<K,V>[] resize() {
     Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];  
   
     table = newTab;  
-  
+
     if (oldTab != null) {  
-  
         // 旧数组迁移至新数组  
-  
         for (int j = 0; j < oldCap; ++j) {  
-  
             Node<K,V> e;  
-  
             if ((e = oldTab[j]) != null) {  
-  
                 oldTab[j] = null;  
-  
                 if (e.next == null)  
-  
                     newTab[e.hash & (newCap - 1)] = e;  
-  
                 else if (e instanceof TreeNode)  
-  
                     ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);  
-  
                 else {  
-  
                     Node<K,V> loHead = null, loTail = null;  
-  
                     Node<K,V> hiHead = null, hiTail = null;  
-  
                     Node<K,V> next;  
-  
                     do {  
-  
                         next = e.next;  
-  
                         // 原索引  
-  
                         if ((e.hash & oldCap) == 0) {  
-  
                             if (loTail == null)  
-  
                                 loHead = e;  
-  
                             else  
-  
                                 loTail.next = e;  
-  
                             loTail = e;  
-  
                         }  
   
                         // 原索引+oldCap  
-  
                         else {  
-  
                             if (hiTail == null)  
-  
                                 hiHead = e;  
-  
                             else  
-  
                                 hiTail.next = e;  
-  
                             hiTail = e;  
-  
                         }  
-  
                     } while ((e = next) != null);  
   
                     // 原索引元素放到新数组中  
-  
                     if (loTail != null) {  
-  
                         loTail.next = null;  
-  
                         newTab[j] = loHead;  
-  
                     }  
   
                     // 原索引 +oldCap 元素放到新数组中  
-  
                     if (hiTail != null) {  
-  
                         hiTail.next = null;  
-  
                         newTab[j + oldCap] = hiHead;  
-  
                     }  
-  
                 }  
-  
             }  
-  
         }  
-  
     }  
-  
     return newTab;  
-  
 }  
 ```  
   
@@ -940,17 +678,11 @@ resize 方法中的前半段，关于 newCap 和 newThr 的计算过程，简化
   
 ```java  
 if (oldCap > 0) {  
-  
     // 嵌套条件分支  
-  
     if (oldCap >= MAXIMUM_CAPACITY) {...}  
-  
     else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&  
-  
                  oldCap >= DEFAULT_INITIAL_CAPACITY) {...}  
-  
 }   
-  
 else if (oldThr > 0) {...}  
   
 else {...}  
@@ -983,71 +715,39 @@ resize 方法后续过程中可以看出，Java 8 转移数据操作是按旧链
   
 ```java  
 public V get(Object key) {  
-  
     if (key == null)  
-  
         return getForNullKey();  
-  
     Entry<K,V> entry = getEntry(key);  
-  
-  
-  
     return null == entry ? null : entry.getValue();  
-  
 }  
   
-  
-  
 private V getForNullKey() {  
-  
     if (size == 0) {  
-  
         return null;  
-  
     }  
   
     // 下标为 0 处获取 key 为 null 的元素  
-  
     for (Entry<K,V> e = table[0]; e != null; e = e.next) {  
-  
         if (e.key == null)  
-  
             return e.value;  
-  
     }  
-  
     return null;  
-  
 }  
-  
-  
-  
+
 final Entry<K,V> getEntry(Object key) {  
-  
     if (size == 0) {  
-  
         return null;  
-  
     }  
   
     int hash = (key == null) ? 0 : hash(key);  
-  
     for (Entry<K,V> e = table[indexFor(hash, table.length)];  
-  
              e != null; e = e.next) {  
-  
         Object k;  
-  
         if (e.hash == hash &&  
-  
             ((k = e.key) == key || (key != null && key.equals(k))))  
-  
             return e;  
-  
     }  
-  
     return null;  
-  
 }  
 ```  
   
@@ -1055,55 +755,30 @@ final Entry<K,V> getEntry(Object key) {
   
 ```java  
 public V get(Object key) {  
-  
     Node<K,V> e;  
-  
     return (e = getNode(hash(key), key)) == null ? null : e.value;  
-  
 }  
-  
-  
-  
+
 final Node<K,V> getNode(int hash, Object key) {  
-  
     Node<K,V>[] tab; Node<K,V> first, e; int n; K k;  
-  
     if ((tab = table) != null && (n = tab.length) > 0 &&  
-  
         (first = tab[(n - 1) & hash]) != null) {  
-  
         // 先判断 tab[index] 中的第一个元素  
-  
         if (first.hash == hash && // always check first node  
-  
             ((k = first.key) == key || (key != null && key.equals(k))))  
-  
             return first;  
-  
         if ((e = first.next) != null) {  
-  
             // 结点为红黑树则使用 TreeNode 的方法获取  
-  
             if (first instanceof TreeNode)  
-  
                 return ((TreeNode<K,V>)first).getTreeNode(hash, key);  
-  
             do { //否则遍历链表  
-  
                 if (e.hash == hash &&  
-  
                     ((k = e.key) == key || (key != null && key.equals(k))))  
-  
                     return e;  
-  
             } while ((e = e.next) != null);  
-  
         }  
-  
     }  
-  
     return null;  
-  
 }  
 ```  
   
@@ -1111,67 +786,40 @@ final Node<K,V> getNode(int hash, Object key) {
   
 ```java  
 Map<String, Integer> map = new HashMap<String, Integer>() {{  
-  
     put("a", 10);  
-  
     put("b", 20);  
-  
 }};  
-  
-  
   
 // 方式一：迭代 entrySet  
   
 for (Map.Entry<String, Integer> entry : map.entrySet()) {  
-  
     String key = entry.getKey();  
-  
     int value = entry.getValue();  
-  
 }  
-  
-  
-  
+
 // 方式二：单独迭代 keySet 或 values  
-  
 // 迭代键  
-  
 for (String key : map.keySet()) {  
-  
     System.out.println("Key = " + key);  
-  
 }  
   
 // 迭代值  
-  
 for (Integer value : map.values()) {  
-  
     System.out.println("Value = " + value);  
-  
 }  
-  
-  
-  
+
 // 方式三：使用 iterator  
   
 Iterator<Map.Entry<String, Integer>> entries =         
-  
           map.entrySet().iterator();  
   
 while (entries.hasNext()) {  
-  
     Map.Entry<String, Integer> entry = entries.next();  
-  
     String key = entry.getKey();  
-  
     int value = entry.getValue();  
-  
 }  
-  
-  
-  
+
 // 方式四：Lambda 表达式  
-  
 map.forEach((k, v) -> System.out.println("key: " + k + " value:" + v));  
 ```  
   
@@ -1228,7 +876,7 @@ map.forEach((k, v) -> System.out.println("key: " + k + " value:" + v));
 7. 如果该域是一个数组，则把每一个元素当做单独的域来处理。也就是说，递归地应用上述规则，对每个重要的元素计算一个散列码，然后根据步骤下面的做法把这些散列值组合起来。  
 ```  
   
-2. 按照下面的公式，把步骤 1 中计算得到的散列码 c 组合到 result 中：result = 31*result+c。  
+2. 按照下面的公式，把步骤 1 中计算得到的散列码 c 组合到 result 中：result = 31 x result+c。  
 3. 返回 result。  
 4. 写完 hashCode 方法之后，确认是否相等的实例具有相等的散列码。如果不是的话，找出原因，并修改。  
   
@@ -1244,30 +892,20 @@ public class Student {
     private Grades grades;  
   
     public Student(String name, int age, Grades grades) {  
-  
         this.name = name;  
-  
         this.age = age;  
-  
         this.grades = grades;  
-  
     }  
 
     @Override  
     public int hashCode() {  
-  
         final int prime = 31;  
-  
         int result = 1;  
-  
+        
         result = prime * result + age;  
-  
         result = prime * result +  
-  
                 ((name == null) ? 0 : name.hashCode());  
-  
         result = prime * result +  
-  
                 (grades == null ? 0 : grades.hashCode());  
   
         return result;  
@@ -1276,7 +914,6 @@ public class Student {
   
     @Override  
     public boolean equals(Object obj) {  
-  
         if (this == obj) return true;  
   
         if (obj == null || getClass() != obj.getClass()) return false;  
@@ -1286,16 +923,12 @@ public class Student {
         if (age != other.age) return false;  
   
         if (name != null ? !name.equals(other.name) :   
-  
               other.name != null) return false;  
   
         if (grades != null ? !grades.equals(other.grades) :           
-  
               other.grades != null) return false;  
   
         return true;  
-  
     }  
-  
 }  
 ```
