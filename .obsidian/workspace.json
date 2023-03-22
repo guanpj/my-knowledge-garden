@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "知识体系/Java/基础/泛型.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "知识体系/Java/基础/泛型.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "知识体系/Java/基础/泛型.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AboutTheGarden.md"
+                "file": "知识体系/Java/基础/泛型.md"
               }
             }
           }
@@ -152,6 +152,9 @@
   },
   "active": "204d5af8f539a11e",
   "lastOpenFiles": [
+    "知识体系/Java/基础/泛型.md",
+    "知识体系/Java/基础/泛型.md",
+    "AboutTheGarden.md",
     "日记/2023-03-22.md",
     "(/content/notes/images/example.png).md",
     "(/content/notes/images",
@@ -162,7 +165,6 @@
     "日记/2023-03-18.md",
     "日记/2023-03-19.md",
     "日记/2023-03-20.md",
-    "AboutTheGarden.md",
     "Extras/Draws/∑ excalidraw 白板创建入口.md",
     "Extras/Draws/数字时代如何更好地工作与生活 - 图.md",
     "Atlas/Dataviews/EXTERNAL.md",
@@ -191,10 +193,8 @@
     "Extras/Templates/Sources模板/播客笔记模板.md",
     "Extras/Templates/微信读书同步模板.md",
     "Extras/Templates/其他/更新日志模板.md",
-    "Extras/Templates/其他/工作流模板.md",
     "Extras/Zotero/我的文库.json",
     "Extras/Zotero",
-    "Extras/Templates/其他/思维思考模板/康奈尔笔记法模板.md",
     "Extras/Templates/其他/思维思考模板",
     "Extras/Templates/其他/mermaid模板",
     "Extras/Templates/其他/dict",
