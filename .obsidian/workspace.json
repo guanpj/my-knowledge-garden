@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "日记/2023-03-22.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "日记/2023-03-22.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AboutTheGarden.md",
+                "file": "日记/2023-03-22.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AboutTheGarden.md"
+                "file": "日记/2023-03-22.md"
               }
             }
           }
@@ -152,6 +152,10 @@
   },
   "active": "204d5af8f539a11e",
   "lastOpenFiles": [
+    "日记/2023-03-16.md",
+    "日记/2023-03-18.md",
+    "日记/2023-03-19.md",
+    "日记/2023-03-20.md",
     "日记/2023-03-22.md",
     "AboutTheGarden.md",
     "Extras/Draws/∑ excalidraw 白板创建入口.md",
@@ -179,7 +183,6 @@
     "Atlas/ACCESS 笔记组织法.md",
     "Atlas/About Atlas.md",
     "Atlas/Index for Atlases.md",
-    "日记/2023-03-19.md",
     "Extras/Templates/Sources模板/播客笔记模板.md",
     "Extras/Templates/微信读书同步模板.md",
     "Extras/Templates/其他/更新日志模板.md",
@@ -189,9 +192,6 @@
     "Extras/Templates/其他/思维思考模板/康奈尔笔记法模板.md",
     "Extras/Templates/其他/思维思考模板/六顶思考帽模板.md",
     "Extras/Templates/其他/思维思考模板",
-    "Extras/Templates/其他/mermaid模板/mermaid模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid stateDiagram 模板.md",
-    "Extras/Templates/其他/mermaid模板/mermaid sequenceDiagram 模板.md",
     "Extras/Templates/其他/mermaid模板",
     "Extras/Templates/其他/dict",
     "Extras/Templates/其他",
