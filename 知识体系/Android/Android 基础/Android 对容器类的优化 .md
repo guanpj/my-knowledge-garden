@@ -239,7 +239,7 @@ public final class ArrayMap<K, V> implements Map<K, V> {
 
 ArrayMap 数据结构：
 
-![](static/boxcnUuG48u1rZrceiySKQLn2th.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Android-Container/clipboard_20230323_042030.png)
 
 如上图所示，在 ArrayMap 内部有两个比较重要的数组，一个是 mHashes，另一个是 mArray。
 

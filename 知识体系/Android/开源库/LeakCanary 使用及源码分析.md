@@ -762,6 +762,6 @@ private fun showNotification(
 7. 计算对象到 GC roots 的最短路径，并合并所有最短路径为一棵树
 8. 输出分析结果，并根据分析结果通过通知的方式展示出来
 
-![](static/boxcnwmpx7Q5W1o675lAd1Pu2mb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/LeakCanary/clipboard_20230323_035231.png)
 
-![](static/boxcnjBHdRGELT4dbRJad4bBFwg.jpeg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/LeakCanary/clipboard_20230323_035234.png)

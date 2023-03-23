@@ -727,15 +727,15 @@ public @Nullable CallAdapter<?, ?> get(
 
 对于例子中 GithubService 中的请求方法：
 
-1. fun listRepos(@Path("user") user: String?): Call<List<Repo>>
+1. `fun listRepos(@Path("user") user: String?): Call<List<Repo>>`
 
 返回匿名的 CallAdapter 实现类
 
-2. fun listReposRx(@Path("user") user: String?): Observable<List<Repo>>
+2. `fun listReposRx(@Path("user") user: String?): Observable<List<Repo>>`
 
 返回 RxJava3CallAdapter 实例
 
-3. fun listReposCompletable(@Path("user") user: String?): CompletableFuture<List<Repo>>
+3. `fun listReposCompletable(@Path("user") user: String?): CompletableFuture<List<Repo>>`
 
 返回 CompletableFutureCallAdapterFactory.ResponseCallAdapter 实例
 
@@ -743,7 +743,7 @@ Retrofit.callAdapter() 方法的逻辑如下：
 
 - 首先会遍历 callAdapterFactories 集合，并调用每个 CallAdapter.Factory.get() 方法并传入请求方法的注解信息和返回值信息，根据这些信息每个 CallAdapterFactory 去判断此请求方法适不适合自己。
 - 一旦找到合适的 CallAdapter 则会立即打破循环并返回。
-- DefaultCallAdapterFactory 只能处理返回值为 Call<Foo> 或者 Call<? extends Foo> 的请求方法，并且为它们返回一个匿名的 CallAdapter 实现。
+- DefaultCallAdapterFactory 只能处理返回值为 `Call<Foo>` 或者 `Call<? extends Foo>` 的请求方法，并且为它们返回一个匿名的 CallAdapter 实现。
 - 其它情况，如果要支持 Rxjava，则需要额外增加 CallAdapterFactory 支持。
 - 如果 Android API >= 24，如果请求方法返回的是 CompletableFuture，Retrofit 默认会进行支持并返回 CompletableFutureCallAdapterFactory 进行处理。
 - 如果需要支持其它的返回值类型，则需要手动通过 addCallAdapterFactory() 方法增加对 CallAdapterFactory 的支持。
@@ -868,7 +868,7 @@ public @Nullable Converter<ResponseBody, ?> responseBodyConverter(
 }
 ```
 
-它只处理返回值为 Call<Option<Foo>> 类型的请求，并且脱去外衣获取 Option 内层的泛型类型 innerType，并且使用这个 innerType 查找到另外一个符合要求 Converter，最后的 Convert 操作都使用这个 delegate 进行转换操作。
+它只处理返回值为 `Call<Option<Foo>>` 类型的请求，并且脱去外衣获取 Option 内层的泛型类型 innerType，并且使用这个 innerType 查找到另外一个符合要求 Converter，最后的 Convert 操作都使用这个 delegate 进行转换操作。
 
 #### 小结
 
@@ -876,7 +876,7 @@ public @Nullable Converter<ResponseBody, ?> responseBodyConverter(
 
 对于 GsonConverterFactory，它将来者不拒，返回 GsonResponseBodyConverter。
 
-对于 OptionalConverterFactory，它只处理返回值为 Call<Option<Foo>> 类型的请求，并且委托另外一个符合要求 Converter 进行转换操作。
+对于 OptionalConverterFactory，它只处理返回值为 `Call<Option<Foo>>` 类型的请求，并且委托另外一个符合要求 Converter 进行转换操作。
 
 Retrofit.responseBodyConverter() 方法一旦找到合适的 CallAdapterFactory 则会立即打破循环并返回。
 
@@ -1135,15 +1135,15 @@ public CompletableFuture<R> adapt(final Call<R> call) {
 
 对于例子中 GithubService 中的请求方法：
 
-1. fun listRepos(@Path("user") user: String?): Call<List<Repo>>
+1. `fun listRepos(@Path("user") user: String?): Call<List<Repo>>`
 
 返回 DefaultCallAdapterFactory.ExecutorCallbackCall 实例
 
-2. fun listReposRx(@Path("user") user: String?): Observable<List<Repo>>
+2. `fun listReposRx(@Path("user") user: String?): Observable<List<Repo>>`
 
 异步方式返回 CallEnqueueObservable 实例，同步方式返回 CallExecuteObservable 实例
 
-3. fun listReposCompletable(@Path("user") user: String?): CompletableFuture<List<Repo>>
+3. `fun listReposCompletable(@Path("user") user: String?): CompletableFuture<List<Repo>>`
 
 返回 CompletableFutureCallAdapterFactory.CallCancelCompletableFuture 实例
 
@@ -1355,7 +1355,7 @@ Response<T> parseResponse(okhttp3.Response rawResponse) throws IOException {
 
 这一整个过程可以一下时序图直观展示：
 
-![](static/boxcnlC52K78hhcdjgIvDFKgIqf.jpg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Retrofit/clipboard_20230323_035658.png)
 
 ## Observable.subscribe()
 
@@ -1447,8 +1447,8 @@ final class CallEnqueueObservable<T> extends Observable<Response<T>> {
 
 这个过程的时序图如下：
 
-![](static/boxcnXnc1jXmNfhC82nxBf4g6Uh.jpg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Retrofit/clipboard_20230323_035702.png)
 
 # 总结
 
-![](static/boxcnZ7bTB8qXXruYooqR9u9tCc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Retrofit/clipboard_20230323_035708.png)

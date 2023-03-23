@@ -413,21 +413,21 @@ class RealInterceptorChain(
 
 下图为 OkHttp 工作的大致流程，参考自[拆轮子系列：拆 OkHttp](https://blog.piasy.com/2016/07/11/Understand-OkHttp/index.html)
 
-![](static/boxcn0SH2QEB0eAGan6XmuMTxHc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/OkHttp/clipboard_20230323_035335.png)
 
 同步请求和异步请求流程时序图如下：
 
-![](static/boxcnIOEPZWxCTAj0khJidj7hFd.jpeg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/OkHttp/clipboard_20230323_035341.png)
 
 # OkHttpClient
 
 OkHttpClient 相当于配置中心，所有的请求都会共享这些配置（例如出错是否重试、共享的连接池）。 OkHttpClient 中的配置主要有:
 
-- Dispatcher dispatcher : 调度器，用于调度后台发起的网络请求， 有后台总请求数和单主机总请求数的控制。
-- List<Protocol> protocols : 支持的应用层协议，即 HTTP/1.1、 HTTP/2 等。
-- List<ConnectionSpec> connectionSpecs : 应用层支持的 Socket 设置，即使用明文传输（用于 HTTP）还是某个版本的 TLS（用于 HTTPS）。
-- List<Interceptor> interceptors : 大多数时候使用的 Interceptor 都应该配置到这里。
-- List<Interceptor> networkInterceptors : 直接和网络请求交互的 Interceptor 配置到这里，例如如果要查看返回的 301 报文或者未解压的 Response Body，需要在这里看。
+- `Dispatcher dispatcher` : 调度器，用于调度后台发起的网络请求， 有后台总请求数和单主机总请求数的控制。
+- `List<Protocol> protocols` : 支持的应用层协议，即 HTTP/1.1、 HTTP/2 等。
+- `List<ConnectionSpec> connectionSpecs` : 应用层支持的 Socket 设置，即使用明文传输（用于 HTTP）还是某个版本的 TLS（用于 HTTPS）。
+- `List<Interceptor> interceptors` : 大多数时候使用的 Interceptor 都应该配置到这里。
+- `List<Interceptor> networkInterceptors` : 直接和网络请求交互的 Interceptor 配置到这里，例如如果要查看返回的 301 报文或者未解压的 Response Body，需要在这里看。
 - CookieJar cookieJar : 管理 Cookie 的控制器。OkHttp 提供了 Cookie 存取的判断支持（即什么时候需要存 Cookie，什么时候需要读取 Cookie，但没有给出具体的存取实现。如果需要存取 Cookie，需要自己写实现，例如用 Map 存在内存里，或者用别的方式存在本地存储或者数据库。
 - Cache cache : Cache 存储的配置。默认是没有，如果需要用，得自己配置出 Cache 存储的文件位置以及存储空间上限。
 - HostnameVerifier hostnameVerifier : 用于验证 HTTPS 握手过程中下载到的证书所属者是否和自己要访问的主机名一致。
@@ -600,7 +600,7 @@ internal fun getResponseWithInterceptorChain(): Response {
 
 上面提到过，OkHttp 的所有拦截器会组成链式结构：各个拦截器完成前置工作后调用下一个拦截器的 proceed 方法，再执行后置工作。通过递归调用，每个拦截器完成各自的任务。
 
-![](static/boxcnpPmDODJLw8rTL76VRhupDh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/OkHttp/clipboard_20230323_035349.png)
 
 ## client.interceptors
 
@@ -808,7 +808,7 @@ private fun followUpRequest(userResponse: Response, exchange: Exchange?): Reques
 
 这个过程的大致流程如下：
 
-![](static/boxcnpZuaNAbmrxt896j6CmjgXd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/OkHttp/clipboard_20230323_035354.png)
 
 从上图中可以看出，RetryAndFollowUpInterceptor 开启了一个 while(true) 的循环，并在循环内部完成两个重要的判定，如图中的蓝色方框：
 
@@ -1068,7 +1068,7 @@ object ConnectInterceptor : Interceptor {
 
 这个类本身很简单，从源码来看，关键的代码只有注释 1 处的那一句。它的作用是：从 RealCall 中获得了一个新的 ExChange 的对象。跟踪它的执行，可以发现它有如下调用逻辑：
 
-![](static/boxcnRWA6EHR9AKsS00hQlj1XNb.jpeg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/OkHttp/clipboard_20230323_035402.png)
 
 在这个步骤中，ConnectInterceptor 最终会通过 Socket 创建出网络请求所需要的 TCP 连接（如果是 HTTP），或者是建立在 TCP 连接之上的 TLS 连接（如果是 HTTPS）。并且会创建出对应的 HttpCodec 对象 （用于编码解码 HTTP 请求），并且最终封装成 Exchange 对象并返回。
 
@@ -1196,4 +1196,4 @@ CallServerInterceptor 由以下步骤组成：
 
 # 总结
 
-![](static/boxcn2UboqwunYGXF1Ss63oqiie.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/OkHttp/clipboard_20230323_035408.png)

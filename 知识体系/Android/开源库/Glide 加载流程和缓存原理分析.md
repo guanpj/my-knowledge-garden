@@ -16,7 +16,7 @@ with 流程的主要职责：
 - 初始化各式各样的配置信息（缓存、请求线程池、图片大小和格式等等）以及 Glide 单例对象。
 - 将 Glide 请求和 application/Activity/SupportFragment/Fragment 的生命周期绑定在一起<strong>，从而实现自动执行请求，暂停操作</strong>。
 
-![](static/boxcn4S4D9ZLEXpMCD8ZIFhKoeh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034132.png)
 
 ```java
 public class Glide implements ComponentCallbacks2 {
@@ -523,7 +523,7 @@ RequestManager(glide,
 
 with() 方法是为得到一个 RequestManager 对象，从而将 Glide 加载图片周期与 Activity 和 Fragment 进行绑定，进而管理 Glide 加载图片周期。
 
-![](static/boxcn6EV2BP2CFhvhKo1KHBvUQh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034143.png)
 
 ## <strong>load</strong>
 
@@ -531,7 +531,7 @@ with() 方法是为得到一个 RequestManager 对象，从而将 Glide 加载�
 
 类的 load() 方法。而 load() 方法返回的是 RequestBuilder 对象。RequestBuilder 和 RequestOptions 都派生自抽象类 BaseRequestOptions，它们的继承关系如下：
 
-![](static/boxcnM7G1ZrhGSKWR06FVOfkRdh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034149.png)
 
 看一下 RequestManager 的一些方法，首先看 load 的一些重载方法：
 
@@ -606,7 +606,7 @@ public RequestBuilder<Drawable> load(@Nullable Object model) {
 
 ### RequestManager.asXx
 
-asDrawable 方法同其他 as 方法（asGif、asBitmap、asFile）一样，都会先调用 RequestManager.as 方法生成一个 RequestBuilder<ResourceType> 对象，然后各个 as 方法会附加一些不同的 options：
+asDrawable 方法同其他 as 方法（asGif、asBitmap、asFile）一样，都会先调用 RequestManager.as 方法生成一个 `RequestBuilder<ResourceType>` 对象，然后各个 as 方法会附加一些不同的 options：
 
 ```java
 @NonNull
@@ -812,7 +812,7 @@ private RequestBuilder<TranscodeType> loadGeneric(@Nullable Object model) {
 
 load 流程主要给 GlideRequest（RequestManager）设置了要请求的 mode（url），并将 isModelSet  变量设置为 true，表示已设置的状态，最后返回 RequestBuilder。
 
-![](static/boxcndrfqsWMeEhqAbZnxXOcZof.jpeg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034156.png)
 
 ## into
 
@@ -916,11 +916,11 @@ public ViewTarget<ImageView, TranscodeType> into(@NonNull ImageView view) {
 }
 ```
 
-![](static/boxcnVw67DkGt6o7KNbSelWMQNe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034202.png)
 
 ## <strong>整体流程</strong>
 
-![](static/boxcnnLRfVKZzWuq2gtX1cmIa6g.jpeg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034206.png)
 
 # <strong>缓存</strong>
 
@@ -944,7 +944,7 @@ Glide 之所以被广泛使用的一个重要原因就是它强大的缓存机�
 
 Glide 缓存机制的流程图如下：
 
-![](static/boxcnITzrGvryK1RbGSBGlzJnpf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034424.png)
 
 Glide 的 memory cache 和 disk cache 在 Glide 创建的时候就确定了。代码在 GlideBuilder.build(Context) 方法里面：
 
@@ -1196,7 +1196,7 @@ final class ActiveResources {
 }
 ```
 
-先来看 ResourceWeakReference，“extends WeakReference<EngineResource<?>>” 表示它继承自 WeakReference 并且用于保存 EngineResource 类型的引用，此外添加了一个 reset 方法用来清理资源。
+先来看 ResourceWeakReference，`extends WeakReference<EngineResource<?>>` 表示它继承自 WeakReference 并且用于保存 EngineResource 类型的引用，此外添加了一个 reset 方法用来清理资源。
 
 构造方法中调用了 super(referent, queue)，这样如果 referent 指向的对象将要被 GC 的时候，referent 就会被放入 queue 中。
 
@@ -2894,7 +2894,7 @@ private <Data, ResourceType> Resource<R> runLoadPath(Data data, DataSource dataS
 }
 ```
 
-path.load(..., new DecodeCallback<ResourceType>(dataSource)) 这行代码中，最后传入了一个 DecodeCallback 回调，该类的回调方法会回调给 DecodeJob 对应的方法：
+`path.load(..., new DecodeCallback<ResourceType>(dataSource))` 这行代码中，最后传入了一个 DecodeCallback 回调，该类的回调方法会回调给 DecodeJob 对应的方法：
 
 ```java
 private final class DecodeCallback<Z> implements DecodePath.DecodeCallback<Z> {
@@ -3039,7 +3039,7 @@ public Resource<Bitmap> decode(@NonNull ByteBuffer source, int width, int height
 Resource<ResourceType> transformed = callback.onResourceDecoded(decoded);
 ```
 
-这里的 callback 在前面提到过，这会调用 DecodeJob.onResourceDecoded(DataSource, Resource<Z>) 方法：
+这里的 callback 在前面提到过，这会调用 `DecodeJob.onResourceDecoded(DataSource, Resource<Z>)` 方法：
 
 ```java
 @Synthetic
@@ -3509,7 +3509,7 @@ engineResource 的引用计数会在 RequestManager.onDestory() 方法中经过 
 
 本章 Glide 缓存机制的源码内容到此为止了，现在看看文章最开始的流程图，是不是有一点点熟悉的味道。
 
-![](static/boxcnySpBlE46U1vXzKL2XhKFuh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034514.png)
 
 DecodeJob.onDataFetcherReady 该方法完成两个事情：
 
@@ -3518,8 +3518,7 @@ DecodeJob.onDataFetcherReady 该方法完成两个事情：
 
 在过程 1 中，将原始 data encode 成 resource 数据后，会调用 DecodeJob.onResourceDecoded 对 resource 数据进行进一步的处理。DecodeJob.onResourceDecoded 首先会对 resource 进行 transform，然后可能会进行磁盘缓存。
 
-![](static/boxcnJwwMQmfXB005APYgtHiAnb.png)
-
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034509.png)
 # 面试题
 
 内存缓存分两个原因：

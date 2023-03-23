@@ -23,7 +23,7 @@ kapt {
 
 以下是来自官方对 EventBus 各个版本性能的对比图，可以看到，EventBus 3.x 如果没有使用索引的话性能相较于之前的版本是倒退的。使用索引能让 EventBus 的性能大大增加。
 
-![](static/boxcnQfG1SfSUN8z8YmYskYWNIg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/EventBus/clipboard_20230323_031615.png)
 
 2. 添加混淆规则：
 
@@ -1395,7 +1395,7 @@ private void unsubscribeByEventType(Object subscriber, Class<?> eventType) {
 
 也就是说，如果子进程内部调用了跨进程 EventBus 进行事件分发的话，会在两次 IPC 之后再由改子进程内部的 EventBus 进行触发。这两次 IPC 是：子进程向主进程 Service 发出消息，主进程 Service 接收到消息后向所有进程进行分发。
 
-![](static/boxcnf876wtFrEJCggHvQC1AO9L.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/EventBus/clipboard_20230323_031638.png)
 
 ### 简单实现
 

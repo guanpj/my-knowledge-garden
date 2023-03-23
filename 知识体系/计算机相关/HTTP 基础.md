@@ -10,11 +10,11 @@ Hypertext Transfer Protocol，超文本传输协议，和 HTML (Hypertext Markup
 
 请求报文格式：
 
-![](static/boxcnhCQOtx8tCtZVCmqltPQpzd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Http/clipboard_20230323_031410.png)
 
 响应报文格式：
 
-![](static/boxcnNNY6Pc5Mtifxn65Oh01Upf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Http/clipboard_20230323_031414.png)
 
 ## Request Method <strong>请求方法 </strong>
 
@@ -147,7 +147,7 @@ Content-Length: 853
 
 Web ⻚面纯文本表单的提交方式。
 
-![](static/boxcnHTT8gOnYxHCeM2KguexuAe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Http/clipboard_20230323_031421.png)
 
 格式如下:
 
@@ -172,7 +172,7 @@ Call<User> addUser(@Field("name") String name,
 
 Web ⻚面含有二进制文件时的提交方式。
 
-![](static/boxcn5Ta4MGVYzSxYX9mrYDK6nb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Http/clipboard_20230323_031424.png)
 
 格式如下:
 

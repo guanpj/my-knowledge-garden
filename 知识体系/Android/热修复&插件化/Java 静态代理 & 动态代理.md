@@ -119,11 +119,11 @@ result: 666
 
 要从根本上理解动态代理的实现原理，得先从 Java 代码的执行流程说起：
 
-![](static/boxcn1LY7C377URHAgHLYh8Xa8d.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JavaProxy/clipboard_20230323_041701.png)
 
 JVM 在运行 .class 文件之前，首先通过 ClassLoader 将 .class 文件以二进制的形式解析并生成实例以供调用，我们的代码执行逻辑是在 JVM 的运行期系统中进行工作的。那么，我们可不可以在自己的代码里面按照 .class 的格式生成自己的 .class 文件，进而调用自定义的 ClassLoader 将其加载出来呢？答案是肯定的，这样我们就可以动态地创建一个类了。
 
-![](static/boxcnGu99Hk9YTMBOhwEa6QQUcf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JavaProxy/clipboard_20230323_041705.png)
 
 ### 生成自己的 .class 文件
 
@@ -171,7 +171,7 @@ public static void main(String[] args) throws Exception {
 
 生成的 .class 文件如下：
 
-![](static/boxcnoC9qRQhXa7ldPyOsxfd0PL.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JavaProxy/clipboard_20230323_041710.png)
 
 反编译后查看内容：
 
@@ -291,7 +291,7 @@ public static void main(String[] args) throws Exception {
 
 后台输出如下：
 
-![](static/boxcnYQ818L5ZfNJGfBhk2N347c.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JavaProxy/clipboard_20230323_041716.png)
 
 成功执行了 show 方法！
 

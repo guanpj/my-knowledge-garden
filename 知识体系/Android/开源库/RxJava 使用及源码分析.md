@@ -91,7 +91,7 @@ RxJava 响应式编程中的基本流程：
 2. Observable 内部创建一个 Observer
 3. 通过定制 Observable 的 subscribeActual() 方法和 Observer 的 onXxx() 方法，来实现自己的中介角色（例如数据转换、线程切换等）。
 
-![](static/boxcnjEPgvx22LTtoxvhKXnEu1z.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/RxJava/clipboard_20230323_040144.png)
 
 ## 背压（Backpressure）
 

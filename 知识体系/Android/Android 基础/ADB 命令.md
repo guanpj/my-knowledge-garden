@@ -26,7 +26,7 @@ adb shell ps --help
 
 查看帮助
 
-![](static/boxcnCub4KKpp1oYuUs0c3cZQQd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/ADB/clipboard_20230323_041900.png)
 
 ## 常用参数
 

@@ -84,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
 Glide.with() 方法有很多重载：
 
-- with(@NonNull Context context)
-- with(@NonNull View view)
-- with(@NonNull Activity activity)
-- with(@NonNull FragmentActivity activity)
-- with(@NonNull Fragment fragment)
+- `with(@NonNull Context context)`
+- `with(@NonNull View view)`
+- `with(@NonNull Activity activity)`
+- `with(@NonNull FragmentActivity activity)`
+- `with(@NonNull Fragment fragment)`
 
 在上面的重载方法中，除了前两个重载方法外，其他三个都有很直观的生命周期；至于前两个，会尝试绑定到 Activity 或 Fragment 上面，如果失败了就会绑定到 Application 级别的生命周期上。
 
@@ -98,43 +98,43 @@ Glide.with() 方法返回的是 RequestManager 实例。
 
 load 方法也有很多重载：
 
-- load(@Nullable Bitmap bitmap)
-- load(@Nullable Drawable drawable)
-- load(@Nullable String string)
-- load(@Nullable Uri uri)
-- load(@Nullable File file)
-- load(@RawRes @DrawableRes @Nullable Integer resourceId)
-- load(@Nullable byte[] model)
-- load(@Nullable Object model)
+- `load(@Nullable Bitmap bitmap)`
+- `load(@Nullable Drawable drawable)`
+- `load(@Nullable String string)`
+- `load(@Nullable Uri uri)`
+- `load(@Nullable File file)`
+- `load(@RawRes @DrawableRes @Nullable Integer resourceId)`
+- `load(@Nullable byte[] model)`
+- `load(@Nullable Object model)`
 
 RequestManager 除了上面的方法外，还有其他一些有用的方法：
 
 控制方法：
 
-- isPaused()
-- pauseRequests()
-- pauseAllRequests()
-- pauseRequestsRecursive()
-- resumeRequests()
-- resumeRequestsRecursive()
-- clear(@NonNull View view)
-- clear(@Nullable final Target<?> target)
+- `isPaused()`
+- `pauseRequests()`
+- `pauseAllRequests()`
+- `pauseRequestsRecursive()`
+- `resumeRequests()`
+- `resumeRequestsRecursive()`
+- `clear(@NonNull View view)`
+- `clear(@Nullable final Target<?> target)`
 
 生命周期方法：
 
-- onStart()
-- onStop()
-- onDestroy()
+- `onStart()`
+- `onStop()`
+- `onDestroy()`
 
 其他方法：
 
-- downloadOnly()
-- download(@Nullable Object model)
-- asBitmap()
-- asGif()
-- asDrawable()
-- asFile()
-- as(@NonNull Class<ResourceType> resourceClass)
+- `downloadOnly()`
+- `download(@Nullable Object model)`
+- `asBitmap()`
+- `asGif()`
+- `asDrawable()`
+- `asFile()`
+- `as(@NonNull Class<ResourceType> resourceClass)`
 
 RequestManager.load() 方法返回了一个 RequestBuilder 对象，调用该对象的 into(@NonNull ImageView view) 方法就完成了 Glide 加载的三步。当然此方法还有一些高级的重载方法，我们后面在说。
 
@@ -156,7 +156,7 @@ error 在请求永久性失败时展示。error 同样也在请求的 url/model 
 
 fallback 在请求的 url/model 为 null 时展示。设计 fallback 的主要目的是允许用户指示 null 是否为可接受的正常情况。例如，一个 null 的个人资料 url 可能暗示这个用户没有设置头像，因此应该使用默认头像。然而，null 也可能表明这个元数据根本就是不合法的，或者取不到。<strong>默认情况下 Glide 将 null 作为错误处理</strong>，所以可以接受 null 的应用应当显式地设置一个 fallback。
 
-![](static/boxcnRES3ahJ0Wx6TlAx8Qmejzd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/clipboard_20230323_032742.png)
 
 占位图显示逻辑的代码如下：
 
@@ -217,11 +217,11 @@ Glide.with(this)
 
 下面展示了正确加载时、加载字符空串时的图：
 
-![](static/boxcnMrKqk4nTjKgguxte93h9dg.gif)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-placeholder-success-example.gif)
 
 <div style="text-align: center"><em>Glide正确加载</em></div>
 
-![](static/boxcnn0gPa3x8AwrJxzAKdxgktd.gif)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-error-example.gif)
 
 <div style="text-align: center"><em>Glide加载空串</em></div>
 
@@ -261,7 +261,7 @@ Glide.with(this)
 
 运行结果如下图所示：
 
-![](static/boxcn8qgN22iCiRJPp9IsPcdZNb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-load-gif.gif)
 
 <div style="text-align: center"><em>Glide加载GIF</em></div>
 
@@ -277,7 +277,7 @@ Glide.with(this)
 
 由于调用了 asBitmap() 方法，现在 GIF 图就无法正常播放了，而是会在界面上显示第一帧的图片。
 
-![](static/boxcnnqpjXbkXCbthJUK4O8lAEc.gif)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-load-gif-with-asbitmap.gif)
 
 <div style="text-align: center"><em>Glide asBitmap加载GIF</em></div>
 
@@ -293,7 +293,7 @@ Glide.with(this)
 
 很不幸，显示加载错误图片：
 
-![](static/boxcn2wzqbOjlqckDlHbv42Wfse.gif)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-load-url-with-asgif.gif)
 
 <div style="text-align: center"><em>Glide asGif加载普通图片</em></div>
 
@@ -321,6 +321,6 @@ Glide.with(this)
 
 对比图如下所示：
 
-![](static/boxcn4apdn0HNeRPfHKjCrrIZoc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/clipboard_20230323_033342.png)
 
 <div style="text-align: center"><em>override加载前后对比</em></div>

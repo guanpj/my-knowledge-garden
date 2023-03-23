@@ -117,7 +117,7 @@ This will <strong>not</strong> work unless your Target extends ViewTarget or imp
 
 在了解了 DrawableImageViewTarget 以及相关的类之后，我们看一下其他的 Target。下面是 Glide v4 中出现的所有的 Target：
 
-![](static/boxcnsKdrAgrXep2svVLdb4oTx6.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-3/clipboard_20230323_031827.png)
 
 虽然 Target 很多，但是自定义只需要继承 CustomViewTarget 或者 CustomTarget 就行了。
 
@@ -565,7 +565,7 @@ class GlideFragment : Fragment() {
 3. 只使用 override
 4. dontTransform 和 override 同时
 
-![](static/boxcnKXCJhKyaG1qQo98ft68Enb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-3/clipboard_20230323_031837.png)
 
 可以很明显的看到，显示的图片也有所差异，ImageView 的宽高有所差异。
 
@@ -996,7 +996,7 @@ public static Bitmap fitCenter(@NonNull BitmapPool pool, @NonNull Bitmap inBitma
 
 下面对四个例子做一个小结：
 
-![](static/boxcnZg56y6sWmuNeCA8vNHsceh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-3/clipboard_20230323_031849.png)
 
 各例子之所以表现各不一样，其原因就在于 decode 出来的图片的尺寸不一致，而使用 wrap_content 宽高的 ImageView 加载这些图片，就会造成这些效果。
 
@@ -1101,7 +1101,7 @@ Glide.with(this)
 
 Rotate、RoundedCorners、CircleCrop 效果图如下：
 
-![](static/boxcnWOQCVJvYFb2fYGIiFNTjpd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-3/clipboard_20230323_031855.png)
 
 看完图后，这三个 Transformation 的特点一目了然了。注意上面第 2、3 个加载时，因为 ImageView 高度为 wrap_content，所以需要加上 FitCenter，使 Bitmap 的宽高达到我们的预期（图片宽高为 1920*1080，ImageView 宽度为 540，因此高度为 (540/1920*1080=303.75，转为 int 后为 303)），然后在此基础上进行圆角或圆形处理。
 

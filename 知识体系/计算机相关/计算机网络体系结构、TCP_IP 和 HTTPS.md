@@ -1,4 +1,3 @@
-# 计算机网络体系结构、TCP_IP 和 HTTPS
 
 ## 为什么需要计算机网络体系结构？
 
@@ -17,7 +16,7 @@
 
 在快递系统中，用户和用户之间的通信依赖于下层的服务，但是他们并不需要关心快递、运输等细节，也就是说，寄信者只需将写好的信交给快递员而收信者只需从快递员手中查收信件即可。类似地，快递员也只需要从寄信人手中拿到信件并交给分检员或将信件从分检员手中拿走并交给收信人即可，至于分检员为何要把这份信交给他进行投递(事实上，每个快递员会负责某个片区，分检员根据收信人地址将信件分发给不同的快递员)，他不需要关心也没必要关心。显然，在这个快递系统中，各个角色（用户、快递员…）在功能上相互独立却又能协调合作达成一种 “高度默契”，这在很大程度上得益于分层思想的理念和应用。
 
-![](static/boxcn5hRyLmlHc1k3eLhivImwkb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031033.png)
 
 ### 分层思想的优点
 
@@ -35,7 +34,7 @@
 
 目前，由国际化标准组织 ISO 制定的网络体系结构国际标准是 OSI 七层模型，但实际中应用最广泛的是 TCP/IP 体系结构。换句话说，OSI 七层模型只是理论上的、官方制定的国际标准，而<strong>TCP/IP 体系结构才是事实上的国际标准</strong>。这看起来是不可理喻的，但这却是实际存在的，这是由一些历史原因造成的。OSI 标准的制定者以专家、学者为主，他们缺乏实际经验和商业驱动力，并且 OSI 标准自身运行效率也不怎么好。与此同时，由于 Inernet 在全世界覆盖了相当大的范围，并且占领市场的标准是 TCP/IP 体系结构，因此导致 OSI 标准没有市场背景，也就只是理论上的成果，并没有过多地应用于实践。
 
-![](static/boxcnf9cJUSqKUiDS3k5SyJakzb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031041.png)
 
 ## TCP/IP 四层体系结构
 
@@ -43,25 +42,25 @@ TCP/IP 是 Internet 上的标准通信协议集，该协议集由数十个具有
 
 <div style="text-align: center"></div>
 
-![](static/boxcnsKz1SjjfGfzSbSyfumZIYd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031045.png)
 
 计算机网络体系结构中，对等层之间交换的信息报文统称为<strong>协议数据单元（Protocol Data Unit）</strong>。PDU 由<strong>协议控制信息（协议头）</strong>和<strong>数据（SDU） </strong>组成。
 
 数据封装过程：
 
-![](static/boxcnSdycqRI6Eb0F4FxqrBkTuh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031049.png)
 
 ### 应用层
 
 应用层决定了向用户提供应用服务时通信的活动。TCP/IP 协议族内预存了各类通用的应用服务，比如 FTP（文件传输协议）和 DNS（域名系统）服务就是其中两类，HTTP 协议也处于该层。
 
-![](static/boxcncmGYxZ7BfVY2iFgAQdG3xe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031057.png)
 
 ### 传输层
 
 传输层对上层应用层提供处于网络连接中的两台计算机之间的数据传输。在传输层有两个性质不同的协议：TCP（传输控制协议）和 UDP（用户数据报协议）。其中，TCP 是<strong>面向连接</strong>的传输协议，也就是说，其在数据传输之前会建立连接，并把报文分解为多个段进行传输，在目的站再重新装配这些段，必要时重新传输没有收到或错误的，因此它是“可靠”的。而 UDP 是<strong>无连接</strong>的传输协议，其在数据传输之前不建立连接，并且对发送的段不进行校验和确认，因此它是“不可靠”的。
 
-![](static/boxcnR6de4IwwMzgdIuLbYp7YYd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031101.png)
 
 ### 网络层（网际层）
 
@@ -75,7 +74,7 @@ TCP/IP 是 Internet 上的标准通信协议集，该协议集由数十个具有
 
 #### 三次握手
 
-![](static/boxcn6JEHW2rmJf5CRVLq2HUeyc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031105.png)
 
 1. 客户端发送的 TCP 报文中标志位 SYN 置 1，初始序号 seq=x（随机选择）。Client 进入 SYN_SENT 状态，等待 Server 确认。
 2. 服务器收到数据包后，根据标志位 SYN=1 知道 Client 请求建立连接，Server 将标志位 SYN 和 ACK 都置为 1，ack=x+1，随机产生一个初始序号 seq=y，并将该数据包发送给 Client 以确认连接请求，Server 进入 SYN_RCVD 状态。
@@ -83,7 +82,7 @@ TCP/IP 是 Internet 上的标准通信协议集，该协议集由数十个具有
 
 #### 四次挥手
 
-![](static/boxcn8ALUI7qjC6bAXQ1X2mfPRg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031108.png)
 
 1. Client 发送一个 FIN，用来关闭 Client 到 Server 的数据传送，Client 进入 FIN_WAIT_1 状态。
 2. Server 收到 FIN 后，发送一个 ACK 给 Client，确认序号为 u + 1（与 SYN 相同，一个 FIN 占用一个序号），Server 进入 CLOSE_WAIT 状态。
@@ -124,7 +123,7 @@ HTTP 使用明文传输，面临的风险有：
 
 SSL/TLS 通讯同样需要先要进行“握手”，即客户端向服务器端索要并验证公钥，然后通过非对称加密双方协商生成“对话密钥“。“握手”阶段涉及四次通信，需要注意的是，”握手”阶段的所有通信都是明文的。
 
-![](static/boxcn0uEwdw2XeiSKpOMXTWSwPg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/TCP%26IP/clipboard_20230323_031114.png)
 
 #### <strong>第一步：客户端发出请求</strong>
 

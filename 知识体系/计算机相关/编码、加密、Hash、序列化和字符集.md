@@ -1,5 +1,17 @@
-# 编码、加密、Hash、序列化和字符集
-
+---
+title: 编码、加密、Hash、序列化和字符集
+comments: true
+date created: 2023-03-23
+date modified: 2023-03-23
+id: home
+layout: page
+tags:
+  - 编码
+  - 加密
+  - Hash
+  - 序列化
+  - 字符集
+---
 ## 加密
 
 在密码学中，加密是将明文信息改变为难以读取的密文内容，使之不可读的过程。只有拥有解密方法的对象，经由解密过程，才能将密文还原为正常可读的内容。理想情况下，只有经授权的人员能够读取密文所要传达的信息。<strong>加密本身并不能防止信息传输被截取，但加密能防止截取者理解其内容。</strong>
@@ -12,7 +24,7 @@
 
 的完全逆过程配合密钥来进行解密。
 
-![](static/boxcnkWXFV5ulhc6Z3RHkVeYvbd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Code%26Hash/clipboard_20230323_030810.png)
 
 #### 经典算法
 
@@ -45,15 +57,15 @@
 
 使用公钥对数据进行加密得到密文;使用私钥对数据进行解密得到原数据。
 
-![](static/boxcnw2mcba5vVrQAGB82HsBpbg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Code%26Hash/clipboard_20230323_030814.png)
 
 使用非对称加密通信，可以在不可信网络上将双方的公钥传给对方，然后在发消息前分别对消息使用对方的公钥来加密和使用自己的私钥来签名，做到不可信网络上的可靠密钥传播及加密通信。
 
-![](static/boxcnqufbAIZXxy2r76kbV8npyb.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Code%26Hash/clipboard_20230323_030819.png)
 
 由于私钥和公钥互相可解，因此非对称加密还可以应用于数字签名技术。通常会对原数据 hash 以后对 hash 签名，然后附加在原数据的后面作为签名。这是 为了让数据更小。
 
-![](static/boxcnRU0TZ2s6L1Gdn8dOk95HZc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Code%26Hash/clipboard_20230323_030822.png)
 
 #### <strong>经典算法</strong>
 
