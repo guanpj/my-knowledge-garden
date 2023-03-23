@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "9dff8c385ac181c1",
+        "id": "117a21339621bc68",
         "type": "tabs",
         "children": [
           {
-            "id": "b784bee3ab98ff2f",
+            "id": "0054b7bd871ac9eb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "知识体系/Java/并发/并发容器.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "知识体系/Java/并发/并发容器.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "知识体系/Java/并发/并发容器.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "知识体系/Java/并发/并发容器.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -150,8 +142,30 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "b784bee3ab98ff2f",
+  "active": "0054b7bd871ac9eb",
   "lastOpenFiles": [
+    "知识体系/算法&数据结构/指针.md",
+    "知识体系/算法&数据结构/引用.md",
+    "知识体系/算法&数据结构/二叉树遍历.md",
+    "知识体系/Python/文件读取、文本替换.md",
+    "知识体系/Python/类的定义、使用.md",
+    "知识体系/Python/遍历文件、重命名.md",
+    "知识体系/Kotlin/协程使用和原理分析.md",
+    "知识体系/Kotlin/委托.md",
+    "知识体系/Kotlin/扩展函数.md",
+    "知识体系/Android/Android 基础",
+    "知识体系/Android/热修复&插件化",
+    "知识体系/Android/性能优化",
+    "知识体系/Android/开源库",
+    "知识体系/Android/Jetpack",
+    "知识体系/Android/Android 基础.md",
+    "知识体系/Android/Gradle",
+    "知识体系/Android/未命名.md",
+    "知识体系/Android/Framework",
+    "知识体系/Java/并发/并发容器.md",
+    "知识体系/Kotlin",
+    "知识体系/Python",
+    "知识体系/计算机相关",
     "知识体系/Java/并发/等待-通知机制.md",
     "知识体系/Java/并发/锁.md",
     "知识体系/Java/并发/线程池和 BlockingQueue.md",
@@ -159,7 +173,6 @@
     "知识体系/Java/并发/线程协作.md",
     "知识体系/Java/并发/CAS 和 AQS 原理.md",
     "知识体系/Java/并发/Java 内存模型.md",
-    "知识体系/Java/并发/并发容器.md",
     "Extras/About Extras.md",
     "Pasted image 20230323005121.png",
     "AboutTheGarden.md",
@@ -167,26 +180,7 @@
     "static/boxcnKB98VZHgFIxeQRre50P10g.png.md",
     "知识体系/Java/虚拟机/JVM 字节码指令简介.md",
     "知识体系/Java/虚拟机/JVM 字节码结构分析.md",
-    "知识体系/Java/虚拟机/JVM 中的对象和垃圾回收.md",
-    "知识体系/Java/虚拟机/JVM 内存区域.md",
-    "知识体系/Java/虚拟机/JVM 类加载机制.md",
-    "知识体系/Java/基础/HashMap 源码解析.md",
-    "知识体系/Java/虚拟机",
-    "知识体系/Java/基础/注解和反射.md",
-    "知识体系/Java/基础/容器类.md",
-    "知识体系/Java/并发",
-    "知识体系/Java/基础/IO.md",
-    "知识体系/Java/基础/泛型.md",
     "Pasted image 20230322160516.png",
-    "static/boxcn3NQp0EINfW7ahs2Ffr4cYe.png.md",
-    "static",
-    "日记/2023-03-22.md",
-    "(/content/notes/images/example.png).md",
-    "(/content/notes/images",
-    "(/content/notes",
-    "(/content",
-    "(",
-    "日记/2023-03-16.md",
     "Extras/Draws/README 2022-08-21.svg",
     "Extras/Draws/excalibrain.svg",
     "Extras/Draws/数字时代如何更好地工作与生活 - 图.svg",
@@ -195,9 +189,6 @@
     "Extras/Media/Pasted Image 20220320203031_118.png",
     "Extras/Media/Pasted Image 20220320203200_352.png",
     "Extras/Media/Pasted Image 20220821140912_644.png",
-    "模板",
-    "Extras/Zotero/我的文库.json",
-    "Extras/Zotero",
     "一张图.canvas"
   ]
 }
