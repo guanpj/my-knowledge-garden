@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "模版",
+  "templates_folder": "模板",
   "templates_pairs": [
     [
       "",
@@ -17,6 +17,10 @@
     {
       "folder": "代码",
       "template": "模版/其他模版.md"
+    },
+    {
+      "folder": "日记",
+      "template": "模板/TP.md"
     }
   ],
   "syntax_highlighting": true,

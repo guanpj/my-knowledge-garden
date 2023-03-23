@@ -5,8 +5,6 @@ tags: dataview
 title: Index for Extras
 ---
 
-up:: [[ACCESS 笔记组织法]]
-
 ```dataviewjs
 // 获取当前文件所在的文件夹
 const currentFolder = dv.current().file.folder

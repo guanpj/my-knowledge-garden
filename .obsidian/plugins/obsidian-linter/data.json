@@ -9,7 +9,7 @@
       "Force YAML Escape on Keys": ""
     },
     "Format Tags in YAML": {
-      "Remove Hashtags from tags in the YAML frontmatter, as they make the tags there invalid.": false
+      "Remove Hashtags from tags in the YAML frontmatter, as they make the tags there invalid.": true
     },
     "Format Yaml Array": {
       "Allows for the formatting of regular yaml arrays as either multi-line or single-line and `tags` and `aliases` are allowed to have some Obsidian specific yaml formats. Note that single string to single-line goes from a single string entry to a single-line array if more than 1 entry is present. The same is true for single string to multi-line except it becomes a multi-line array.": false,
@@ -17,12 +17,12 @@
       "Format yaml tags section": true,
       "Default yaml array section style": "single-line",
       "Format yaml array sections": true,
-      "Force key values to be single-line arrays": "",
+      "Force key values to be single-line arrays": "data created\ndata modified·",
       "Force key values to be multi-line arrays": ""
     },
     "Insert YAML attributes": {
       "Inserts the given YAML attributes into the YAML frontmatter. Put each attribute on a single line.": false,
-      "Text to insert": "aliases: \ntags: "
+      "Text to insert": "aliases: 啊\ntags: 啊"
     },
     "Move Tags to Yaml": {
       "Move all tags to Yaml frontmatter of the document.": false,
@@ -40,12 +40,12 @@
       "YAML Sort Order for Other Keys": "None"
     },
     "YAML Timestamp": {
-      "Keep track of the date the file was last edited in the YAML front matter. Gets dates from file metadata.": false,
+      "Keep track of the date the file was last edited in the YAML front matter. Gets dates from file metadata.": true,
       "Date Created": true,
       "Date Created Key": "date created",
       "Date Modified": true,
       "Date Modified Key": "date modified",
-      "Format": "dddd, MMMM Do YYYY, h:mm:ss a"
+      "Format": "YYYY-MM-DD"
     },
     "YAML Title": {
       "Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.": false,
@@ -226,8 +226,8 @@
   "lintCommands": [],
   "customRegexes": [],
   "commonStyles": {
-    "aliasArrayStyle": "single-line",
-    "tagArrayStyle": "single-line",
+    "aliasArrayStyle": "multi-line",
+    "tagArrayStyle": "multi-line",
     "minimumNumberOfDollarSignsToBeAMathBlock": 2,
     "escapeCharacter": "\"",
     "removeUnnecessaryEscapeCharsForMultiLineArrays": false
