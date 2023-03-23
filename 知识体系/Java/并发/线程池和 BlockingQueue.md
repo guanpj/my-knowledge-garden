@@ -17,7 +17,7 @@
 
 阻塞队列常用于生产者和消费者的场景，生产者是向队列里添加元素的线程，消费者是从队列里取元素的线程。阻塞队列就是生产者用来存放元素、消费者用来获取元素的容器。
 
-![](static/boxcnMStt5mwzQz4wixv5bCca8e.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095000.png)
 
 - <strong>抛出异常：</strong>当队列满时，如果再往队列里插入元素，会抛出 IllegalStateException（"Queuefull"）异常。当队列空时，从队列里获取元素会抛出 NoSuchElementException 异常。
 - <strong>返回特殊值：</strong>当往队列插入元素时，会返回元素是否插入成功，成功返回 true。如果是移除方法，则是从队列里取出一个元素，如果没有则返回 null。
@@ -70,7 +70,7 @@
 <strong>Array 实现和 Linked 实现的区别</strong>
 
 1. 队列中锁的实现不同。ArrayBlockingQueue 实现的队列中的锁是没有分离的，即生产和消费用的是同一个锁；LinkedBlockingQueue 实现的队列中的锁是分离的，即生产用的是 putLock，消费是 takeLock。
-2. 生产或消费时操作不同。ArrayBlockingQueue 实现的队列中在生产和消费的时候，是直接将枚举对象插入或移除的；LinkedBlockingQueue 实现的队列中在生产和消费的时候，需要把枚举对象转换为 Node<E>进行插入或移除，会影响性能。
+2. 生产或消费时操作不同。ArrayBlockingQueue 实现的队列中在生产和消费的时候，是直接将枚举对象插入或移除的；LinkedBlockingQueue 实现的队列中在生产和消费的时候，需要把枚举对象转换为 `Node<E>`进行插入或移除，会影响性能。
 3. 队列大小初始化方式不同。ArrayBlockingQueue 实现的队列中必须指定队列的大小；LinkedBlockingQueue 实现的队列中可以不指定队列的大小，但是默认是 Integer.MAX_VALUE。
 
 # 线程池
@@ -153,11 +153,11 @@ workQueue 必须是 BlockingQueue 阻塞队列。当线程池中的线程数超�
 4）如果创建新线程将使当前运行的线程超出 maximumPoolSize，任务将被拒绝，并调用 RejectedExecutionHandler.rejectedExecution() 方法。
 ```
 
-![](static/boxcnh5nglSAJxuSSNH6wRFNHSh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095008.png)
 
 ## Executor 框架
 
-![](static/boxcnyGTpyu2gcolDZzhiQzvBwg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095011.png)
 
 #### <strong>Executor </strong>
 
@@ -310,7 +310,7 @@ public static ScheduledExecutorService
 
 它只是 ScheduledThreadPool 的一个特例，内部只有一个线程。它只是将核心线程数设置为了 1。
 
-#### <em>五种线程池参数对比</em>
+#### 五种线程池参数对比
 
 总结上述的五种线程池，我们以核心线程数、最大线程数，以及线程存活时间三个维度进行对比：
 
@@ -322,7 +322,7 @@ public static ScheduledExecutorService
 
 <strong>ScheduledThreadPool</strong>  和 <strong>SingleThreadScheduledExecutor  </strong>的原理是一样的，它采用的任务队列是 DelayedWorkQueue，这是一个延迟队列，同时也是一个无界队列，所以和 LinkedBlockingQueue 一样，如果队列中存放过多的任务，就可能导致 OOM。
 
-![](static/boxcnLBRB50kr3YD2yhqXHhZuhf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095020.png)
 
 #### <em>newWorkStealingPool (since 1.8)</em>
 
@@ -358,7 +358,7 @@ public ForkJoinPool(int parallelism,
 
 如图所示，我们有一个 Task，这个 Task 可以产生三个子任务，三个子任务并行执行完毕后将结果汇总给 Result，比如说主任务需要执行非常繁重的计算任务，我们就可以把计算拆分成三个部分，这三个部分是互不影响相互独立的，这样就可以利用 CPU 的多核优势，并行计算，然后将结果进行汇总。这里面主要涉及两个步骤，第一步是拆分也就是 Fork，第二步是汇总也就是 Join，到这里你应该已经了解到 ForkJoinPool 线程池名字的由来了。
 
-![](static/boxcnpiw5AEl9RCEfmdAlIgtR4d.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095024.png)
 
 比如，处理斐波那契数列问题：
 
@@ -413,15 +413,15 @@ ForkJoinPool 线程池内部除了有一个共用的任务队列之外，每个�
 
 双端队列 deque 中，线程 t1 获取任务的逻辑是后进先出，也就是 LIFO（Last In Frist Out），而线程 t0 在“steal”偷线程 t1 的 deque 中的任务的逻辑是先进先出，也就是 FIFO（Fast In Frist Out），如下图所示，图中很好的描述了两个线程使用双端队列分别获取任务的情景。你可以看到，使用“work-stealing”算法和双端队列很好地平衡了各线程的负载。
 
-![](static/boxcnS9SQP5EsVZgVhohG04mrNc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095028.png)
 
 用一张全景图来描述 ForkJoinPool 线程池的内部结构，可以看到 ForkJoinPool 线程池和其他线程池很多地方都是一样的，但重点区别在于它每个线程都有一个自己的双端队列来存储分裂出来的子任务。ForkJoinPool 非常适合用于递归的场景，例如树的遍历、最优路径搜索等场景。
 
-![](static/boxcnTfTOiBziyPYdN5Apo2X4Ma.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095032.png)
 
 综合以上，Excutors 创建各种线程池对应的适用场景如下：
 
-![](static/boxcnl5kHO19iRoBTWtIsVWLQjh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095035.png)
 
 ## 提交任务
 

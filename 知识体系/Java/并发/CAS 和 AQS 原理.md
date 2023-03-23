@@ -1,4 +1,3 @@
-# CAS 和 AQS 原理
 
 # CAS
 
@@ -207,7 +206,7 @@ public final int getAndAddInt(Object var1, long var2, int var4) {
 
 实现者需要继承同步器并重写指定的方法，随后将同步器组合在自定义同步组件的实现中，并调用同步器提供的模板方法，而这些模板方法将会调用使用者重写的方法。
 
-![](static/boxcnmeRhhessohbSd5hiHI5IRe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/CAS-AQS/clipboard_20230323_101329.png)
 
 ### 使用及原理
 
@@ -215,12 +214,10 @@ public final int getAndAddInt(Object var1, long var2, int var4) {
 
 1. 新建一个自己的线程协作工具类，在内部写一个 Sync 类，该 Sync 类继承 AbstractQueuedSynchronizer，即 AQS；
 2. 想好设计的线程协作工具类的协作逻辑，在 Sync 类里，根据是否是独占，来重写对应的方法。如果是独占，则重写 tryAcquire 和 tryRelease 等方法；如果是非独占，则重写 tryAcquireShared 和 tryReleaseShared 等方法；
-
-![](static/boxcnKB98VZHgFIxeQRre50P10g.png)
-
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/CAS-AQS/clipboard_20230323_101333.png)
 3. 在自己的线程协作工具类中，实现获取/释放的相关方法，并在里面调用 AQS 对应的方法，如果是独占则调用 acquire 或 release 等方法，非独占则调用 acquireShared 或 releaseShared 或 acquireSharedInterruptibly 等方法。
 
-![](static/boxcn4qeALFoyibK5vKabxIZFwc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/CAS-AQS/clipboard_20230323_101337.png)
 
 AQS 最核心的三大部分就是状态（state）、FIFO 等待队列和期望协作工具类去实现的获取）/释放等重要方法。
 

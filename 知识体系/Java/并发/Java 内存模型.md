@@ -1,4 +1,3 @@
-# Java 内存模型
 
 ## JMM 是什么？
 
@@ -18,13 +17,13 @@ Java 作为高级语言，他向开发者屏蔽了多层缓存等底层细节，
 
 本地内存是 JMM 的一个抽象概念，并不真实存在。它涵盖了缓存、写缓冲区、寄存器以及其他的硬件和编译器优化。
 
-![](static/boxcnFUmTa6xzgFHY7tcvMPIFig.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Java-Memory-Model/clipboard_20230323_103037.png)
 
 ## 内存间交互操作
 
 Java 内存模型定义了 8 个操作来完成主内存和工作内存的交互操作。
 
-![](static/boxcnU7JyteRGRZN4c1Prg8zUab.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Java-Memory-Model/clipboard_20230323_103049.png)
 
 - read：把一个变量的值从主内存传输到工作内存中
 - load：在 read 之后执行，把 read 得到的值放入工作内存的变量副本中
