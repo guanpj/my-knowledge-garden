@@ -17,7 +17,7 @@ tags:
 ---
 # CAS
 
-### 介绍
+## 介绍
 
 CAS 英文全称是 Compare-And-Swap，中文叫做“比较并交换”，它是一种思想、一种算法。
 
@@ -25,9 +25,9 @@ CAS 英文全称是 Compare-And-Swap，中文叫做“比较并交换”，它�
 
 CAS 有三个操作数：内存值 V、预期值 A、要修改的值 B。CAS 最核心的思路就是，<strong>仅当预期值 A 和当前的内存值 V 相同时，才将内存值修改为 B。</strong>
 
-### <strong>使用及原理</strong>
+## <strong>使用及原理</strong>
 
-#### ConcurrentHashMap
+### ConcurrentHashMap
 
 截取 ConcurrentHashMap 部分 putVal 方法的代码，如下所示：
 
@@ -57,7 +57,7 @@ static final <K,V> boolean casTabAt(Node<K,V>[] tab, int i,
 
 该方法里面只有一行代码，即调用变量 U 的 compareAndSwapObject 的方法，U 是 Unsafe 类型的实例。
 
-#### ConcurrentLinkedQueue
+### ConcurrentLinkedQueue
 
 接下来看并发容器的第二个案例。非阻塞并发队列 ConcurrentLinkedQueue 的 offer 方法里也有 CAS 的身影，offer 方法的代码如下所示：
 
@@ -89,7 +89,7 @@ boolean casNext(Node<E> cmp, Node<E> val) {
 
 可以看出，在 offer 方法中，有一个 for 循环，这是一个死循环，在第 8 行有一个与 CAS 相关的方法，是 casNext 方法，用于更新节点。那么如果执行 p 的 casNext 方法失败的话，casNext 会返回 false，那么显然代码会继续在 for 循环中进行下一次的尝试。而 casNext 方法中也用到了 UnSafe 类。
 
-#### 原子类
+### 原子类
 
 在编程领域里，原子性意味着“一组操作要么全都操作成功，要么全都失败，不能只操作成功其中的一部分”。而 java.util.concurrent.atomic 下的类，就是具有原子性的类，可以原子性地执行添加、递增、递减等操作。
 
@@ -121,7 +121,7 @@ public final int getAndAdd(int delta) {    
 
 可以看出，里面再次用到了 Unsafe 这个类，并且调用了 unsafe.getAndAddInt 方法。
 
-#### 实现原理
+### 实现原理
 
 从以上示例可以看出，Unsafe 其实是 CAS 的核心类，并且其核心方法都是由 native 层面来实现的。由于 Java 无法直接访问底层操作系统，而是需要通过 native 方法来实现。不过尽管如此，JVM 还是留了一个后门，Unsafe 类提供了硬件级别的原子操作，可以利用它直接操作内存数据。
 
@@ -184,9 +184,9 @@ public final int getAndAddInt(Object var1, long var2, int var4) {
 
 总结一下，Unsafe 的 getAndAddInt 方法是通过循环 + CAS 的方式来实现的，在此过程中，它会通过 compareAndSwapInt 方法来尝试更新 value 的值，如果更新失败就重新获取，然后再次尝试更新，直到更新成功。
 
-### CAS 造成的三个问题
+## CAS 造成的三个问题
 
-#### ABA 问题
+### ABA 问题
 
 决定 CAS 是否进行 swap 的判断标准是“当前的值和预期的值是否一致”，如果一致，就认为在此期间这个数值没有发生过变动，这在大多数情况下是没有问题的。
 
@@ -194,13 +194,13 @@ public final int getAndAddInt(Object var1, long var2, int var4) {
 
 解决 ABA 问题，可以在在变量值自身之外，再添加一个版本号，通过对比版本号来判断值是否变化过。
 
-#### 自旋时间过长
+### 自旋时间过长
 
 由于单次 CAS 不一定能执行成功，所以 CAS 往往是配合着循环来实现的。在高并发场景下有的时候甚至是死循环，不停地进行重试，直到线程竞争不激烈的时候，才能修改成功。
 
 因此要根据实际情况来选择是否使用 CAS，在高并发的场景下，通常 CAS 的效率是不高的。
 
-#### 范围不能灵活控制
+### 范围不能灵活控制
 
 通常执行 CAS 的时候，是针对某一个而不是多个共享变量的，这个变量可能是 Integer 类型，也有可能是 Long 类型、对象类型等，但是不能针对多个共享变量同时进行 CAS 操作，因为这多个变量之间是独立的，简单的把原子操作组合到一起，并不具备原子性。因此如果想对多个对象同时进行 CAS 操作并想保证线程安全的话，是比较困难的。
 
@@ -210,7 +210,7 @@ public final int getAndAddInt(Object var1, long var2, int var4) {
 
 # AQS
 
-### 介绍
+## 介绍
 
 队列同步器 AbstractQueuedSynchronizer，是用来构建锁或者其他同步组件的基础框架，它使用了一个 int 类型的 state 变量表示同步状态，通过内置的 FIFO 队列来完成资源获取线程的排队工作。AQS 定义了一套多线程访问共享资源的同步器框架，许多同步类实现都依赖于它，如常用的 ReentrantLock、Semaphore、CountDownLatch 和 CyclicBarrior 等。
 
@@ -224,7 +224,7 @@ public final int getAndAddInt(Object var1, long var2, int var4) {
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/CAS-AQS/clipboard_20230323_101329.png)
 
-### 使用及原理
+## 使用及原理
 
 如果想使用 AQS 来写一个自己的线程协作工具类，通常而言是分为以下三步，这也是 JDK 里利用 AQS 类的主要步骤：
 
@@ -237,7 +237,7 @@ public final int getAndAddInt(Object var1, long var2, int var4) {
 
 AQS 最核心的三大部分就是状态（state）、FIFO 等待队列和期望协作工具类去实现的获取）/释放等重要方法。
 
-#### state
+### state
 
 state 的含义并不是一成不变的，它会根据具体实现类的作用不同而表示不同的含义。比如说在 Semaphore 中，state 表示的是剩余许可证的数量；在 CountDownLatch 工具类里面，state 表示的是需要“倒数”的数量。他的定义如下：
 
@@ -254,7 +254,7 @@ state 的访问方式有三种：
 - setState(int newState)：设置当前同步状态，volatile 保证了它的多线程状态下的可见性。
 - compareAndSetState(int expect, int update)：使用 CAS 设置当前状态，保证状态设置的原子性。
 
-#### FIFO 队列
+### FIFO 队列
 
 即先进先出队列，这个队列最主要的作用是存储等待的线程。假设很多线程都想要同时抢锁，那么大部分的线程是抢不到的，那怎么去处理这些抢不到锁的线程呢？就得需要有一个队列来存放、管理它们。所以 AQS 的一大功能就是充当线程的“排队管理器”。
 
@@ -262,9 +262,9 @@ state 的访问方式有三种：
 
 在队列中，分别用 head 和 tail 来表示头节点和尾节点，两者在初始化的时候都指向了一个空节点。头节点可以理解为“当前持有锁的线程”，而在头节点之后的线程就被阻塞了，它们会等待唤醒，唤醒也是由 AQS 负责操作的。
 
-#### 获取/释放方法
+### 获取/释放方法
 
-##### <strong>获取</strong>
+#### <strong>获取</strong>
 
 获取操作通常会依赖 state 变量的值，根据 state 值不同，协作工具类也会有不同的逻辑，并且在获取的时候也经常会阻塞。
 
@@ -274,13 +274,13 @@ state 的访问方式有三种：
 
 再举个例子，CountDownLatch 获取方法就是 await 方法（包含重载方法），作用是“等待，直到倒数结束”。执行 await 的时候会判断 state 的值，如果 state 不等于 0，线程就陷入阻塞状态，直到其他线程执行倒数方法把 state 减为 0，此时就代表现在这个门闩放开了，所以之前阻塞的线程就会被唤醒。
 
-##### <strong>释放</strong>
+#### <strong>释放</strong>
 
 释放方法是站在获取方法的对立面的，通常和刚才的获取方法配合使用。我们刚才讲的获取方法可能会让线程阻塞，比如说获取不到锁就会让线程进入阻塞状态，但是释放方法通常是不会阻塞线程的。
 
 比如在 Semaphore 信号量里面，释放就是 release 方法（包含重载方法），release() 方法的作用是去释放一个许可证，会让 state 加 1；而在 CountDownLatch 里面，释放就是 countDown 方法，作用是倒数一个数，让 state 减 1。所以也可以看出，在不同的实现类里面，他们对于 state 的操作是截然不同的，需要由每一个协作类根据自己的逻辑去具体实现。
 
-#### CountDownLatch 的实现
+### CountDownLatch 的实现
 
 ```java
 public class CountDownLatch {

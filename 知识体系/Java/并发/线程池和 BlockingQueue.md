@@ -38,36 +38,36 @@ tags:
 
 ## 常用阻塞队列
 
-#### <strong>ArrayBlockingQueue</strong>
+### <strong>ArrayBlockingQueue</strong>
 
 用数组实现的有界阻塞队列。此队列按照先进先出（FIFO）的原则对元素进行排序。默认情况下不保证线程公平的访问队列。可在初始化时通过参数设置，默认是非公平的。
 
 所谓公平访问队列是指阻塞的线程可以按照阻塞的先后顺序访问队列，即先阻塞线程先访问队列。非公平性是对先等待的线程是非公平的，当队列可用时，阻塞的线程都可以争夺访问队列的资格，有可能先阻塞的线程最后才访问队列。
 
-#### <strong>LinkedBlockingQueue</strong>
+### <strong>LinkedBlockingQueue</strong>
 
 用链表实现的有界阻塞队列。此队列的默认和最大长度为 Integer.MAX_VALUE。此队列按照先进先出的原则对元素进行排序。
 
-#### <strong>PriorityBlockingQueue</strong>
+### <strong>PriorityBlockingQueue</strong>
 
 支持优先级的无界阻塞队列。默认情况下元素采取自然顺序升序排列。也可以自定义类实现 compareTo() 方法来指定元素排序规则，或者初始化 PriorityBlockingQueue 时，指定构造参数 Comparator 来对元素进行排序。需要注意的是不能保证同优先级元素的顺序。
 
-#### <strong>DelayQueue</strong>
+### <strong>DelayQueue</strong>
 
 支持延时获取元素的无界阻塞队列。队列使用 PriorityQueue 来实现。队列中的元素必须实现 Delayed 接口，在创建元素时可以指定多久才能从队列中获取当前元素。只有在延迟期满时才能从队列中提取元素。DelayQueue 非常有用，可以将 DelayQueue 运用在<strong>缓存系统的设计：</strong>用 DelayQueue 保存缓存元素的有效期，使用一个线程循环查询 DelayQueue，一旦能从 DelayQueue 中获取元素时，表示缓存有效期到了。
 
-#### <strong>SynchronousQueue</strong>
+### <strong>SynchronousQueue</strong>
 
 不存储元素的阻塞队列。每一个 put 操作必须等待一个 take 操作，否则不能继续添加元素。SynchronousQueue 可以看成是一个传球手，负责把生产者线程处理的数据直接传递给消费者线程。队列本身并不存储任何元素，非常适合传递性场景。
 
-#### <strong>LinkedTransferQueue</strong>
+### <strong>LinkedTransferQueue</strong>
 
 多了 tryTransfer 和 transfer 方法。
 
 1. <strong>transfer</strong><strong> 方法。</strong>如果当前有消费者正在等待接收元素（消费者使用 take 方法或带时间限制的 poll 方法时），transfer 方法可以把生产者传入的元素立刻 transfer（传输）给消费者。如果没有消费者在等待接收元素，transfer 方法会将元素存放在队列的 tail 节点，并等到该元素被消费者消费了才返回。
 2. <strong>tryTransfer</strong><em> 方法。</em> tryTransfer 方法是用来试探生产者传入的元素是否能直接传给消费者。如果没有消费者等待接收元素，则返回 false。和 transfer 方法的区别是 tryTransfer 方法无论消费者是否接收，方法立即返回，而 transfer 方法是必须等到消费者消费了才返回。
 
-#### <strong>LinkedBlockingDeque</strong>
+### <strong>LinkedBlockingDeque</strong>
 
 由链表结构组成的双向阻塞队列。所谓双向队列指的是可以从队列的两端插入和移出元素。双向队列因为多了一个操作队列的入口，在多线程同时入队时，也就减少了一半的竞争。
 
@@ -107,7 +107,7 @@ public ThreadPoolExecutor(int corePoolSize,
                           RejectedExecutionHandler handler)
 ```
 
-#### <strong>corePoolSize</strong>
+### <strong>corePoolSize</strong>
 
 线程池中的核心线程数，当提交一个任务时，线程池创建一个新线程执行任务，直到当前线程数等于 corePoolSize；
 
@@ -115,19 +115,19 @@ public ThreadPoolExecutor(int corePoolSize,
 
 如果执行了线程池的 prestartAllCoreThreads() 方法，线程池会提前创建并启动所有核心线程。
 
-#### <strong>maximumPoolSize</strong>
+### <strong>maximumPoolSize</strong>
 
 线程池中允许的最大线程数。如果当前阻塞队列满了，且继续提交任务，则创建新的线程执行任务，前提是当前线程数小于 maximumPoolSize
 
-#### <strong>keepAliveTime</strong>
+### <strong>keepAliveTime</strong>
 
 线程空闲时的存活时间，即当线程没有任务执行时，继续存活的时间。默认情况下，该参数只在线程数大于 corePoolSize 时才有用
 
-#### <strong>TimeUnit</strong>
+### <strong>TimeUnit</strong>
 
 keepAliveTime 的时间单位
 
-#### <strong>workQueue</strong>
+### <strong>workQueue</strong>
 
 workQueue 必须是 BlockingQueue 阻塞队列。当线程池中的线程数超过它的 corePoolSize 的时候，线程会进入阻塞队列进行阻塞等待。通过 workQueue，线程池实现了阻塞功能。
 
@@ -138,11 +138,11 @@ workQueue 必须是 BlockingQueue 阻塞队列。当线程池中的线程数超�
 3. 由于 1 和 2，使用无界队列时 keepAliveTime 将是一个无效参数。
 4. 更重要的，使用无界 queue 可能会耗尽系统资源，有界队列则有助于防止资源耗尽，同时即使使用有界队列，也要尽量控制队列的大小在一个合适的范围。
 
-#### <strong>threadFactory</strong>
+### <strong>threadFactory</strong>
 
 创建线程的工厂，通过自定义的线程工厂可以给每个新建的线程设置一个具有识别度的线程名，当然还可以更加自由的对线程做更多的设置，比如设置所有的线程为守护线程。Executors 静态工厂里默认的 threadFactory，线程的命名规则是“pool-数字-thread-数字”。
 
-#### <strong>RejectedExecutionHandler</strong>
+### <strong>RejectedExecutionHandler</strong>
 
 线程池的饱和策略，当阻塞队列满了，且没有空闲的工作线程，如果继续提交任务，必须采取一种策略处理该任务，线程池提供了 4 种策略：
 
@@ -171,31 +171,31 @@ workQueue 必须是 BlockingQueue 阻塞队列。当线程池中的线程数超�
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095011.png)
 
-#### <strong>Executor </strong>
+### <strong>Executor </strong>
 
 <strong>Executor</strong><strong> </strong>是一个接口，它是 Executor 框架的基础，它将任务的提交与任务的执行分离开来。
 
-#### <strong>ExecutorService </strong>
+### <strong>ExecutorService </strong>
 
 ExecutorService 接口继承了 Executor，在其上做了一些 shutdown()、submit() 的扩展，可以说是真正的线程池接口；
 
-#### <strong>AbstractExecutorService </strong>
+### <strong>AbstractExecutorService </strong>
 
 AbstractExecutorService 抽象类实现了 ExecutorService 接口中的大部分方法；
 
-#### <strong>ThreadPoolExecutor</strong><em> </em>
+### <strong>ThreadPoolExecutor</strong><em> </em>
 
 ThreadPoolExecutor 是线程池的核心实现类，用来执行被提交的任务。
 
-#### <strong>ScheduledExecutorService </strong>
+### <strong>ScheduledExecutorService </strong>
 
 ScheduledExecutorService 接口继承了 ExecutorService 接口，提供了带"周期执行"功能 ExecutorService；
 
-#### <strong>ScheduledThreadPoolExecutor </strong>
+### <strong>ScheduledThreadPoolExecutor </strong>
 
 ScheduledThreadPoolExecutor 是一个实现类，可以在给定的延迟后运行命令，或者定期执行命令。ScheduledThreadPoolExecutor 比 Timer 更灵活，功能更强大。
 
-#### <em>ForkJoinPool（since 1.7）</em>
+### <em>ForkJoinPool（since 1.7）</em>
 
 ForkJoinPool 是自 JDK 7 起引入的线程池，核心思想是将大的任务拆分成多个小任务（fork），然后在将多个小任务处理汇总到一个结果上（join），非常像 MapReduce 处理原理。同时，它提供基本的线程池功能，支持设置最大并发线程数，支持任务队，支持线程池停止，支持线程池使用情况监控，也是 AbstractExecutorService 的子类，主要引入了“工作窃取”机制，在多 CPU 计算机上处理性能更佳。
 
@@ -205,7 +205,7 @@ ForkJoinPool 提供了一个更有效的利用线程的机制，当 ThreadPoolEx
 
 Excutors 类相当于一个线程池工厂，可以创建不同类型的线程池：
 
-#### <em>newFixedThreadPool</em>
+### <em>newFixedThreadPool</em>
 
 ```java
 public static ExecutorService newFixedThreadPool(int nThreads){
@@ -223,7 +223,7 @@ public static ExecutorService newFixedThreadPool(int nThreads,
 
 它的核心线程数和最大线程数是一样的，所以可以把它看作是固定线程数的线程池，它的特点是线程池中的线程数除了初始阶段需要从 0 开始增加外，之后的线程数量就是固定的，就算任务数超过线程数，线程池也不会再创建更多的线程来处理任务，而是会把超出线程处理能力的任务放到任务队列中进行等待。而且就算任务队列满了，到了本该继续增加线程数的时候，由于它的最大线程数和核心线程数是一样的，所以也无法再增加新的线程了。
 
-#### <em>newSingleThreadExecutor</em>
+### <em>newSingleThreadExecutor</em>
 
 ```java
 public static ExecutorService newSingleThreadExecutor() {
@@ -242,7 +242,7 @@ public static ExecutorService newSingleThreadExecutor(ThreadFactory
 
 它会使用唯一的线程去执行任务，原理和 FixedThreadPool 是一样的，只不过这里线程只有一个，如果线程在执行任务的过程中发生异常，线程池也会重新创建一个线程来执行后续的任务。这种线程池由于只有一个线程，所以非常适合用于<strong>所有任务都需要按被提交的顺序依次执行</strong>的场景，而前几种线程池不一定能够保障任务的执行顺序等于被提交的顺序，因为它们是多线程并行执行的。
 
-#### <em>nnewCachedThreadPoo</em>
+### <em>newCachedThreadPoo</em>
 
 ```java
 public static ExecutorService newCachedThreadPool() {
@@ -262,7 +262,7 @@ public static ExecutorService newCachedThreadPool(ThreadFactory
 
 当提交一个任务后，线程池会判断已创建的线程中是否有空闲线程，如果有空闲线程则将任务直接指派给空闲线程，如果没有空闲线程，则新建线程去执行任务，这样就做到了动态地新增线程。
 
-#### <em>newScheduledThreadPool</em>
+### <em>newScheduledThreadPool</em>
 
 ```java
 public static ScheduledExecutorService 
@@ -306,7 +306,7 @@ service.scheduleWithFixedDelay(new Task(), 10, 10, TimeUnit.SECONDS);
 
 <strong>scheduleWithFixedDelay </strong>与第二种方法类似，也是周期执行任务，区别在于对周期的定义，之前的 scheduleAtFixedRate 是以任务开始的时间为时间起点开始计时，时间到就开始执行第二次任务，而不管任务需要花多久执行；而 scheduleWithFixedDelay 方法以任务结束的时间为下一次循环的时间起点开始计时。
 
-#### <em>newSingleThreadScheduledExecutor</em>
+### <em>newSingleThreadScheduledExecutor</em>
 
 ```java
 public static ScheduledExecutorService 
@@ -322,7 +322,7 @@ public static ScheduledExecutorService
 
 它只是 ScheduledThreadPool 的一个特例，内部只有一个线程。它只是将核心线程数设置为了 1。
 
-#### 五种线程池参数对比
+### 五种线程池参数对比
 
 总结上述的五种线程池，我们以核心线程数、最大线程数，以及线程存活时间三个维度进行对比：
 
@@ -336,7 +336,7 @@ public static ScheduledExecutorService
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Threadpool/clipboard_20230323_095020.png)
 
-#### <em>newWorkStealingPool (since 1.8)</em>
+### <em>newWorkStealingPool (since 1.8)</em>
 
 ```java
 public static ExecutorService newWorkStealingPool() {
@@ -442,19 +442,19 @@ ForkJoinPool 线程池内部除了有一个共用的任务队列之外，每个�
 
 ## 关闭线程池
 
-#### shutdown()
+### shutdown()
 
 它可以安全地关闭一个线程池，调用 shutdown 方法之后线程池并不是立刻就被关闭，因为这时线程池中可能还有很多任务正在被执行，或是任务队列中有大量正在等待被执行的任务，调用 shutdown 方法后线程池会<strong>在执行完正在执行的任务和队列中等待的任务后才彻底关闭</strong>。但这并不代表 shutdown 操作是没有任何效果的，调用 shutdown 方法后如果还有新的任务被提交，线程池则会根据拒绝策略直接拒绝后续新提交的任务。
 
-#### isShutdown()
+### isShutdown()
 
 它可以返回 true 或者 false 来判断线程池是否已经开始了关闭工作，也就是是否执行了 shutdown 或者 shutdownNow 方法。这里需要注意，如果调用 isShutdown 方法的返回的<strong>结果为 true 并不代表线程池此时已经彻底关闭了，这仅仅代表线程池开始了关闭的流程</strong>，也就是说，此时可能线程池中依然有线程在执行任务，队列里也可能有等待被执行的任务。
 
-#### isTerminated()
+### isTerminated()
 
 这个方法可以检测线程池是否真正“终结”了，这不仅代表线程池已关闭，同时代表线程池中的所有任务都已经都执行完毕了。因为刚才说过，调用 shutdown 方法之后，线程池会继续执行里面未完成的任务，不仅包括线程正在执行的任务，还包括正在任务队列中等待的任务。比如此时已经调用了 shutdown 方法，但是有一个线程依然在执行任务，那么此时调用 isShutdown 方法返回的是 true ，而调用 isTerminated 方法返回的便是 false ，因为线程池中还有任务正在在被执行，线程池并没有真正“终结”。<strong>直到所有任务都执行完毕了，调用 isTerminated 方法才会返回 true</strong>，这表示线程池已关闭并且线程池内部是空的，所有剩余的任务都执行完毕了。
 
-#### awaitTermination()
+### awaitTermination()
 
 此方法本身并不是用来关闭线程池的，而是主要用来判断线程池状态的。比如我们给 awaitTermination 方法传入的参数是 10 秒，那么它就会陷入 10 秒钟的等待，直到发生以下三种情况之一：
 
@@ -468,7 +468,7 @@ ForkJoinPool 线程池内部除了有一个共用的任务队列之外，每个�
 
 我们可以根据 awaitTermination 返回的布尔值来判断下一步应该执行的操作。
 
-#### shutdownNow()
+### shutdownNow()
 
 最后一个方法是 shutdownNow()，也是 5 种方法里功能最强大的，它与第一种 shutdown 方法不同之处在于名字中多了一个单词 Now，也就是表示立刻关闭的意思。在执行 shutdownNow 方法之后，首先会给所有线程池中的线程发送 interrupt 中断信号，尝试中断这些任务的执行，然后会将任务队列中正在等待的所有任务转移到一个 List 中并返回，我们可以根据返回的任务 List 来进行一些补救的操作，例如记录在案并在后期重试。
 
