@@ -4,47 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "e4bc0d773043683d",
+        "id": "05e98d2439ef0199",
         "type": "tabs",
         "children": [
           {
-            "id": "d4a1da782d43d501",
+            "id": "5303630c67f3e115",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AboutTheGarden.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e4161a79f322487f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "999e55111fe6222e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "其他/Linter.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "其他/Linter.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "其他/Linter.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "其他/Linter.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -169,60 +136,60 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
+      "remotely-save:Remotely Save": false,
       "obsidian-textgenerator-plugin:Generate Text!": false,
       "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
-      "templater-obsidian:Templater": false,
-      "remotely-save:Remotely Save": false
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "999e55111fe6222e",
+  "active": "5303630c67f3e115",
   "lastOpenFiles": [
-    "知识体系/Java/并发/并发容器.md",
     "其他/Linter.md",
-    "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
-    "其他",
-    "知识体系/Android/开源库/EventBus 使用及源码分析.md",
-    "AboutTheGarden.md",
     "日记/未命名.md",
-    "模板/其他模版.md",
-    "日记/2023-03-24.md",
-    "知识体系/计算机相关/编码、加密、Hash、序列化和字符集.md",
-    "知识体系/计算机相关/未命名.md",
-    "模板/TP.md",
-    "Atlas/About Atlas.md",
-    "Extras/Index for Extras.md",
-    "Extras/About Extras.md",
-    "Extras/ACCESS 笔记组织法.md",
-    "Atlas/Index for Atlases.md",
-    "static/boxcnRU0TZ2s6L1Gdn8dOk95HZc.png.md",
-    "static/boxcn8eZqN1LvM9KIKY3R4mfwde..md",
     "日记/2023-03-22.md",
     "日记/2023-03-20.md",
-    "知识体系/Android/热修复&插件化/Java 静态代理 & 动态代理.md",
-    "知识体系/Android/Framework/三、Handler 原理分析.md",
+    "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
+    "模板/TP.md",
+    "模板/其他模版.md",
+    "知识体系/计算机相关/未命名.md",
+    "日记/2023-03-24.md",
+    "其他",
+    "知识体系/算法&数据结构/未命名.md",
+    "知识体系/算法&数据结构/引用.md",
+    "知识体系/算法&数据结构/二叉树遍历.md",
+    "知识体系/算法&数据结构/指针.md",
+    "模板/我的日记.md",
     "知识体系/Android/Framework/七、View 事件机制分析.md",
     "知识体系/Android/Framework/六、View 绘制流程分析.md",
-    "知识体系/Android/开源库/Glide 高级用法.md",
-    "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
-    "知识体系/算法&数据结构",
-    "知识体系/Python",
-    "知识体系/Kotlin",
-    "知识体系/Java/并发",
-    "知识体系/Java/bf",
-    "Pasted image 20230323005121.png",
-    "知识体系/Android/开源库",
-    "知识体系/Android/性能优化",
-    "知识体系/Android/Gradle",
+    "static/boxcn8eZqN1LvM9KIKY3R4mfwde..md",
+    "知识体系/Android/Framework/五、App 启动流程分析.md",
+    "知识体系/Android/Framework/四、系统启动流程分析.md",
+    "知识体系/Android/Framework/三、Handler 原理分析.md",
+    "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
+    "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
+    "知识体系/Android/开源库/EventBus 使用及源码分析.md",
+    "知识体系/计算机相关/HTTP 基础.md",
+    "知识体系/计算机相关/编码、加密、Hash、序列化和字符集.md",
+    "知识体系/Android/Android 基础/ADB 命令.md",
+    "知识体系/Android/Android 基础",
     "知识体系/Android/热修复&插件化",
-    "Pasted image 20230323000639.png",
-    "Pasted image 20230323000648.png",
-    "Pasted image 20230323000549.png",
-    "Pasted image 20230322215620.png",
-    "Extras/Media/Pasted Image 20220821142616_556.png",
-    "Extras/Media/Pasted Image 20220821142613_148.png",
+    "知识体系/Android/性能优化",
+    "知识体系/Android/开源库",
+    "知识体系/Android/Jetpack",
+    "知识体系/Android/Gradle",
+    "知识体系/Android/Framework",
+    "知识体系/Kotlin",
+    "知识体系/Python",
+    "Pasted image 20230323005121.png",
+    "Pasted image 20230322160516.png",
+    "Extras/Draws/README 2022-08-21.svg",
+    "Extras/Draws/excalibrain.svg",
+    "Extras/Draws/数字时代如何更好地工作与生活 - 图.svg",
+    "Extras/Media/Pasted Image 20220320191818_566.png",
+    "Extras/Media/Pasted Image 20220320202815_760.png",
+    "Extras/Media/Pasted Image 20220320203031_118.png",
+    "Extras/Media/Pasted Image 20220320203200_352.png",
     "Extras/Media/Pasted Image 20220821140912_644.png",
-    "Extras/Media/Pasted Image 20220821140907_040.png",
-    "Extras/Media/Pasted Image 20220821140630_196.png",
     "一张图.canvas"
   ]
 }
