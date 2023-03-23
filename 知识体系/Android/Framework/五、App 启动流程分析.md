@@ -1,4 +1,3 @@
-# 五、App 启动流程分析
 
 在我的上一篇文章 [Android 系统启动流程分析](https://guanpj.cn/2017/09/17/Android-System-Startup-Flow-Analyze/)中，我们分析了系统在开机以后的一系列行为，其中最后一阶段 AMS(ActivityManagerService) 会启动 Launcher 来展示我们手机中所有已安装的应用图标，点击图标后相应的应用程序将会被系统启动运行并展示在我们面前，那么，点击了图标之后系统道理做了哪些工作呢？应用进程是怎么被启动的呢？Activity 的生命周期是什么时候被谁调用的呢？本文将继续基于 Android Nougat 的 frameworks 层源码的解答这些问题。
 
@@ -333,7 +332,7 @@ public final class ActivityManagerService extends ActivityManagerNative
 
 从 Launcher App 到 AMS 的时序图如下：
 
-![](static/boxcnOKrlQRv8WHxG3DQ7HAnd2c.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045438.png)
 
 ## 2. AMS —— zygote
 
@@ -726,7 +725,7 @@ private static ZygoteState openZygoteSocketIfNeeded(String abi) throws ZygoteSta
 
 如果是从桌面新启动一个 App 中的 Activity，此时是没有进程去承载这个 App 的，因此需要通过 AMS 向 zygote 继承发起请求去完成这个任务，AMS 运行在 system_server 进程中，它通过 Socket 向 zygote 发起 fock 进程的请求，从 AMS 开始的调用时序图如下：
 
-![](static/boxcnatRgWY8PdeWqQYP6y8Q7Eb.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045449.png)
 
 ## 3. zygote —— ActivityThread
 
@@ -1024,7 +1023,7 @@ public static void main(String[] args) {
 
 zygote 进程作为 Socket 服务端在接收到作为客户端的 AMS 发送过来的请求和参数之后，fock 出新的进程并根据各种参数进程了初始化的工作，这个过程和 zygote 启动 system_server 进程的过程如出一辙，时序图如下所示：
 
-![](static/boxcn1ioFlWIHldFoUUDxT6H6ic.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045452.png)
 
 ## 4. ActivityThread —— Activity
 
@@ -1490,13 +1489,13 @@ final void performCreate(Bundle icicle, PersistableBundle persistentState) {
 
 从 ActivityThread 到最终 Activity 被创建及生命周期被调用，核心过程涉及到了三次 Binder IPC 过程，分别是：ActivityThread 调用 AMS 的 attachApplication 方法、AMS 调用 ApplicationThread 的 bindApplication 方法、ASS 调用 Application 的 attachApplicationLocked 方法，整个过程的时序图如下：
 
-![](static/boxcnmF5fkQ5SksPwF8DNU3efJ7.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045420.png)
 
 ## 5. 总结
 
 纵观整个过程，从 Launcher 到 AMS、从 AMS 再到 Zygote、再从 Zygote 到 ActivityThread，最后在 ActivitThread 中层层调用到 Activity 的生命周期方法，中间涉及到了无数的细节，但总体上脉络还是非常清晰的，各个 Android 版本的 Framework 层代码可以某些过程的实现不太一样，但是整个调用流程大体上也是相同的，借用 [Gityuan](http://gityuan.com/android/) 大神的一张图作为结尾：
 
-![](static/boxcnD8GDDGNQNirLLxiOnPJPuh.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045430.png)
 
 <strong>系列文章</strong>
 

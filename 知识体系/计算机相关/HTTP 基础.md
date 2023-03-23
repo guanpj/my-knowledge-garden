@@ -1,12 +1,22 @@
-# HTTP 基础
-
-## 什么是 HTTP ？
+---
+title: HTTP 基础PS
+comments: true
+date created: 2023-03-23
+date modified: 2023-03-23
+id: home
+layout: page
+tags:
+  - 计算机网络
+  - 报文
+  - HTTPS
+---
+# 什么是 HTTP ？
 
 Hypertext Transfer Protocol，超文本传输协议，和 HTML (Hypertext Markup Language 超文本标记语言) 一起诞生，用于在网络上请求和传输 HTML 内容。
 
 超文本，即「扩展型文本」，指的是 HTML 中可以有链向别的文本的链接 (hyperlink)。
 
-## HTTP 报文格式
+# HTTP 报文格式
 
 请求报文格式：
 
@@ -16,9 +26,9 @@ Hypertext Transfer Protocol，超文本传输协议，和 HTML (Hypertext Markup
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Http/clipboard_20230323_031414.png)
 
-## Request Method <strong>请求方法 </strong>
+# Request Method <strong>请求方法 </strong>
 
-#### GET
+## GET
 
 - 用于获取资源
 - 对服务器数据不进行修改
@@ -37,7 +47,7 @@ Call<User> getUser(@Path("id") String id,
                   @Query("gender") String gender);
 ```
 
-#### POST
+## POST
 
 - 用于增加或修改资源
 - 发送给服务器的内容写在 Body 里面
@@ -59,7 +69,7 @@ Call<User> addUser(@Field("name") String name,
                   @Field("gender") String gender);
 ```
 
-#### PUT
+## PUT
 
 - 用于修改资源
 - 发送给服务器的内容写在 Body 里面
@@ -81,7 +91,7 @@ Call<User> updateGender(@Path("id") String id,
                         @Field("gender") String gender);
 ```
 
-#### DELETE
+## DELETE
 
 - 用于删除资源
 - 不发送 Body
@@ -99,12 +109,12 @@ Call<User> getUser(@Path("id") String id,
                   @Query("gender") String gender);
 ```
 
-#### HEAD
+## HEAD
 
 - 和 GET 使用方法完全相同
 - 和 GET 唯一区别在于，返回的响应中没有 Body
 
-## Status Code <strong>状态码</strong>
+# Status Code <strong>状态码</strong>
 
 三位数字，用于对响应结果做出类型化描述(如「获取成功」「内容未找到」)。
 
@@ -114,21 +124,21 @@ Call<User> getUser(@Path("id") String id,
 - 4xx:客户端错误。如 400(客户端请求错误)、401(认证失败)、403(被禁 止)、404(找不到内容)。
 - 5xx:服务器错误。如 500(服务器内部错误)。
 
-## Header <strong>首部</strong>
+# Header <strong>首部</strong>
 
 作用：HTTP 消息的 metadata（即原数据）。
 
-### Host
+## Host
 
 目标主机。注意:不是在网络上用于寻址的，而是在目标服务器上用于定位子服务
 
 器的。
 
-### Content-Type
+## Content-Type
 
 指定 Body 的类型。主要有四类:
 
-#### text/html
+### text/html
 
 请求 Web ⻚面是返回响应的类型，Body 中返回 html 文本。格式如下:
 
@@ -143,7 +153,7 @@ Content-Length: 853
 ......
 ```
 
-#### x-www-form-urlencoded
+### x-www-form-urlencoded
 
 Web ⻚面纯文本表单的提交方式。
 
@@ -168,7 +178,7 @@ Call<User> addUser(@Field("name") String name,
 @Field("gender") String gender);
 ```
 
-#### multipart/form-data
+### multipart/form-data
 
 Web ⻚面含有二进制文件时的提交方式。
 
@@ -208,7 +218,7 @@ RequestBody.create(MediaType.parse("image/jpeg"), avatarFile);
 api.addUser(namePart, avatarPart);
 ```
 
-#### application/json , image/jpeg , application/zip ...
+### application/json , image/jpeg , application/zip ...
 
 单项内容(文本或非文本都可以)，用于 Web Api 的响应或者 POST / PUT 的请求
 
@@ -278,7 +288,7 @@ Content-Length
 
 指定 Body 的⻓度(字节)。
 
-### Transfer: chunked (<strong>分块传输编码</strong>)
+## Transfer: chunked (<strong>分块传输编码</strong>)
 
 用于当响应发起时，内容⻓度还没能确定的情况下。和 Content-Length 不同时使 用。用途是尽早给出响应，减少用户等待。
 
@@ -300,21 +310,21 @@ Location
 
 指定重定向的目标 URL。
 
-### User-Agent
+## User-Agent
 
 用户代理，即是谁实际发送请求、接受响应的，例如手机浏览器、某款手机 App。
 
-### Range / Accept-Range
+## Range / Accept-Range
 
 按范围取数据。
 
-- Accept-Range: bytes： 响应报文中出现，表示服务器支持按字节来取范围数据；
-- Range: bytes=<start>-<end>： 请求报文中出现，表示要取哪段数据；
-- Content-Range:<start>-<end>/total： 响应报文中出现，表示发送的是哪段 数据。
+- `Accept-Range: bytes`： 响应报文中出现，表示服务器支持按字节来取范围数据；
+- `Range: bytes=<start>-<end>`： 请求报文中出现，表示要取哪段数据；
+- `Content-Range:<start>-<end>/total`： 响应报文中出现，表示发送的是哪段 数据。
 
 作用：断点续传、多线程下载。
 
-### <strong>其他 </strong>Headers
+## <strong>其他 </strong>Headers
 
 - Accept：客户端能接受的数据类型。如 text/html
 - Accept-Charset：客户端接受的字符集。如 utf-8。

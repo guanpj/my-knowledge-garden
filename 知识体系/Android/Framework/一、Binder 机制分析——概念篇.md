@@ -1,4 +1,3 @@
-# 一、Binder 机制分析——概念篇
 
 [上次没砍我的,这次我又来了。看完这篇还不明白 Binder 你砍我(一) - 掘金](https://juejin.cn/post/6867139592739356686)
 
@@ -46,7 +45,7 @@
 
 简单的说就是，内核空间（Kernel）是系统内核运行的空间，用户空间（User Space）是用户程序运行的空间。为了保证安全性，它们之间是隔离的。
 
-![](static/boxcnUb0rQH6AHBIVURtkZmkiPh.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044233.png)
 
 ## 系统调用：用户态与内核态
 
@@ -58,7 +57,7 @@ Linux 使用两级保护机制：0 级供系统内核使用，3 级供用户程�
 
 而当进程在执行用户自己的代码的时候，我们称其处于<strong>用户运行态（用户态）</strong>。此时处理器在特权级最低的（3 级）用户代码中运行。
 
-![](static/boxcnbQBvHwBKtjGwB7mz2teuJf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044239.png)
 
 ## Linux IPC 原理
 
@@ -69,7 +68,7 @@ Linux 使用两级保护机制：0 级供系统内核使用，3 级供用户程�
 3. 数据接收方进程在自己的用户空间开辟一块内存缓存区
 4. 内核程序将内核缓存区中通过系统调用 copy_to_user 函数将数据拷贝到数据接收方进程的内存缓存区
 
-![](static/boxcn09KOB5z6rVQkZBtBViD4Gg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044242.png)
 
 通过以上过程，一次 IPC 就完成了，但是这种传统的 IPC 机制有两个问题：
 
@@ -118,7 +117,7 @@ Android 为每个安装好的 APP 分配了自己的 UID，故而进程的 UID �
 
 Binder 相对于其它通讯方式的特点：
 
-![](static/boxcnc7Mp1wdOrrQF8FdTVTTzjd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044250.png)
 
 # Binder 原理解析
 
@@ -142,11 +141,11 @@ Binder IPC 通信过程大致如下：
 
 Binder 通讯过程示意：
 
-![](static/boxcnSAATP1UfcoWkaMGViod5Lc.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044253.png)
 
 在进行 Binder IPC 的时候，实际情况比上面介绍的要复杂，Binder 通讯模型是基于 C/S 架构的，通信调用方进程称为 Client 进程，被调用方称为 Server 进程，除此之外还需要 ServiceManager 和 Binder 驱动的参与，它们都是通过 open/mmap/iotl 等系统调用来访问设备文件 dev/binder 来实现 IPC 过程的。
 
-![](static/boxcnjk3EVDtPvZh4FqnrOroNlb.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044256.png)
 
 其中，Client、Server 和 ServiceManager 运行在用户空间，Binder Driver 运行在内核空间，Client 和 Server 需由用户自己实现，ServiceManager 和 Binder Driver 则由系统提供。
 
@@ -178,7 +177,7 @@ Binder 通讯过程示意：
 
 好多文章称 ServiceManager 是 Binder 驱动的守护进程、大管家，其实 ServiceManager 的作用很简单就是提供了查询服务和注册服务的功能。下面我们来看一下 ServiceManager 启动的过程：
 
-![](static/boxcnOPVGPuVpWNHa7IsQSypVTg.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044300.png)
 
 1. ServiceManager 分为 framework 层和 native 层，framework 层只是对 native 层进行了封装方便调用，图上展示的是 native 层的 ServiceManager 启动过程。
 2. ServiceManager 的启动是系统在开机时，init 进程解析 init.rc 文件调用 service_manager.c 中的 main() 方法入口启动的。 native 层有一个 binder.c 封装了一些与 Binder 驱动交互的方法。
@@ -186,7 +185,7 @@ Binder 通讯过程示意：
 
 ## Binder 通讯过程
 
-![](static/boxcnT1Gqe8yLymNxXcgcD79g2d.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044304.png)
 
 1. 首先，一个进程使用 <strong>BINDER_SET_CONTEXT_MGR</strong> 命令通过 Binder 驱动将自己注册成为 ServiceManager；
 2. 各个 Server 通过 Binder 驱动向 ServiceManager 注册 Binder 实体，表明自己可以对外提供服务，这时 Binder 驱动会为这个 Binder 创建位于内核中的实体节点以及 ServiceManager 对该节点的引用，并将名字和该引用打包给 ServiceManager，ServiceManager 接收到数据包后将数据包中的名字和引用填入查找表中（svcinfo）。
@@ -202,7 +201,7 @@ WindowManager wm = (WindowManager)getSystemService(getApplication()
 
 还是 [universus 老师](https://blog.csdn.net/universus)的图：
 
-![](static/boxcnghmNkEY8ssskCvy2Lq3pXf.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044308.png)
 
 ## <strong>Binder 机制跨进程原理</strong>
 
@@ -210,7 +209,7 @@ WindowManager wm = (WindowManager)getSystemService(getApplication()
 
 假设 Client 进程想要调用 Server 进程的 object 对象的一个方法 add，对于这个跨进程通讯过程，我们来看看 Binder 是如何做的。 （通讯是一个广泛的概念，只要一个进程能调用另外一个进程里面某对象的方法，那么具体要完成什么通讯内容就很容易了。）
 
-![](static/boxcn9EbUwt0SXSafdfx33QTXib.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044311.png)
 
 1. 首先，Server 进程要向 SM 注册，告诉自己是谁，自己有什么能力；在这个场景就是 Server 告诉 SM，它叫 zhangsan，它有一个 object 对象，可以执行 add 操作；于是 SM 在表上新增一条记录：zhangsan 这个名字对应进程 Server。
 2. 然后 Client 通过 SM 向上述表中查询：我需要联系一个名字叫做 zhangsan 的进程里面的 object 对象；这时候关键来了：进程之间通信的数据都会经过运行在内核空间里面的驱动，驱动在数据流过的时候做了一点手脚，它并不会给 Client 进程返回一个真正的 object 对象，而是返回一个看起来跟 object 一模一样的代理对象 objectProxy，这个 objectProxy 也有一个 add 方法，但是这个 add 方法没有 Server 进程里面 object 对象的 add 方法那个能力；objectProxy 的 add 只是一个傀儡，它唯一做的事情就是把参数包装然后交给驱动。(这里我们简化了 SM 的流程，见下文)

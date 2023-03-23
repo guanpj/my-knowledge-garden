@@ -1,4 +1,3 @@
-# 二、Binder 机制分析——应用篇
 
 AIDL 是 Android Interface Definition Language（Android 接口定义语言）的缩写，它是 Android 进程间通信的接口语言。由于 Android 系统的 Linux 内核采用了进程隔离机制，使得不同的应用程序运行在不同的进程当中，有时候两个应用之间需要传递或者共享某些数据，就需要进行进程间的通信讯。
 
@@ -484,7 +483,7 @@ public void onClick(View v) {
 
 运行结果如下：
 
-![](static/boxcnkiVJQGBwdLsVBnyZb3SYqc.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-2/clipboard_20230323_044626.png)
 
 首先点击 BindService 按钮，此时会绑定远程 Service 并且获取到服务端的代理对象 myService：
 
@@ -520,9 +519,9 @@ E/gpj: 进程：com.me.guanpj.binder，线程：main————UserList Size：
 
 以上代码已经上传到了 [Github](https://github.com/guanpj/BinderDemo)，关键的类以及它们之间的关系如下：
 
-![](static/boxcnbuYYEGkUZeW3bXKnp2ggrf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-2/clipboard_20230323_044631.png)
 
-![](static/boxcnVKBvwrkirW87pDTeKhL4De.jpg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-2/clipboard_20230323_044634.png)
 
 - <strong>IInterface:</strong> 声明（自动生成或者手动创建）AIDL 性质的接口必须继承这个接口，这个接口只有一个 IBinder asBinder() 方法，实现它的类代表它能够进程跨进程传输（ Server 端的 Binder 本地对象）或者持有能够进程跨进程传输的对象的引用（Binder 代理对象）。
 - <strong>I</strong><strong>MyServcie</strong><strong>:</strong> 如 1 中所述，它需要继承 IInterface 接口，并且定义方法（声明 Server 端具有的能力： addUser 和 getUserList）。
@@ -582,11 +581,11 @@ public class UserServer extends Service {
 
 当 Service 与 ClientActivity 位于同一个进程当中的时候，onServiceConnected 返回 Binder 本地对象——即 MyServcieNative 实例给客户端：
 
-![](static/boxcnPQhf2EDylNGag7ov4rgzNd.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-2/clipboard_20230323_044640.png)
 
 当 Service 运行在不同进程中的时候（Manifest 中声明 Service 的时候设置 proces 属性），返回的是 BinderProxy 实例：
 
-![](static/boxcnfmJPSasi6FQEiYiBuKZahf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-2/clipboard_20230323_044643.png)
 
 接着会将这个 IBinder 实例传给 Stub 的 asInterface 方法：
 
@@ -759,13 +758,13 @@ public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel re
 
 整个过程的流程如下：
 
-![](static/boxcnUJ30E0v1L9QyFRaanIswof.jpg)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-2/clipboard_20230323_044649.png)
 
 # Binder 在 Framework 层的应用
 
 在 Activity 启动的初始阶段的流程如下：
 
-![](static/boxcn7aqududIx5hkXs1gYR1Tee.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-2/clipboard_20230323_044652.png)
 
 其中，最后一段中的 ActivityManagerProxy 与 ActivityManagerServer 分别处于不同的进程中，它们之间的通讯也依赖 Binder 机制。
 
@@ -934,7 +933,7 @@ public final class ActivityManagerService extends ActivityManagerNative
 
 # 总结
 
-![](static/boxcn4ZyBgLUWxwVX5SmNT5VSq6.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-2/clipboard_20230323_044658.png)
 
 <strong>参考文章</strong>
 

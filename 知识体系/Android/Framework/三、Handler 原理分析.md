@@ -1,4 +1,3 @@
-# 三、Handler 原理分析
 
 [看完这篇还不明白 Handler 你砍我 - 掘金](https://juejin.cn/post/6866015512192876557)
 
@@ -1175,7 +1174,7 @@ public final boolean sendEmptyMessageAtTime(int what, long uptimeMillis) {
 
 可以看到，无论是发送普通消息还是延时消息，最终都会调用到 enqueueMessage() 方法。它们之间的关系如下：
 
-![](static/boxcnlWO0sk2OHdIuDwFGKevW01.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Handler/clipboard_20230323_044956.png)
 
 enqueueMessage() 方法源码如下：
 
@@ -1327,4 +1326,4 @@ public void handleMessage(@NonNull Message msg) {
 
 <strong>Looper:</strong> 轮询调用 MessageQueue 的 next() 方法获取 Message，并调用目标 Handler 进行处理。
 
-![](static/boxcnJ4AvWmx6ybN9CN73XuodWe.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Handler/clipboard_20230323_045002.png)

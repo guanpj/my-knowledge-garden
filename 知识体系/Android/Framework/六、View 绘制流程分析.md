@@ -1,10 +1,9 @@
-# 六、View 绘制流程分析
 
 在我的系列文章上一篇：[App 竟然是这样跑起来的 —— Android App/Activity 启动流程分析](https://guanpj.cn/2017/10/23/Android-App-Startup-Flow-Analyze/)中已经分析了一个 App 从点击它的图标到 Activity 的 onCreate()、onStart() 和 onResume() 等生命周期被调用的整个流程。我们都知道，普通 App 屏幕上显示的内容都是由一个个自己设计的界面被系统加载而来的，而这些界面中的元素又是怎么被渲染出来的呢？本文将继续基于 Android Nougat 从源码的角度来进一步分析整个过程。
 
 在开始之前，回顾一下上一篇文章中分析的从 ActivityThread 到 Activity 过程的时序图：
 
-![](static/boxcn8eZqN1LvM9KIKY3R4mfwde.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045616.png)
 
 ## 步骤一：初始化 PhoneWindow 和 WindowManager
 
@@ -278,11 +277,11 @@ public void setContentView(int layoutResID) {
 
 这个过程的时序图如下：
 
-![](static/boxcn9HmhHqsLD6wQwcboR4VGsf.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045625.png)
 
 Activity、PhoneWindow、DecorView 和 ContentView 的关系如下图所示：
 
-![](static/boxcn7rIKlhR936mPuakAn6LGrc.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045628.png)
 
 但是，此时我们的布局还没有显示出来，接着往下看。
 
@@ -504,13 +503,13 @@ public int addToDisplay(IWindow window, int seq, WindowManager.LayoutParams attr
 
 这个是一个典型的 Binder 双向通讯模型，Binder 机制的文章可参考 [借助 AIDL 理解 Android Binder 机制](https://www.jianshu.com/p/73e351d25773)。这个过程如下图所示：
 
-![](static/boxcnArtDBCR0JvJLPZehxmirSY.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045637.png)
 
 ### 小结
 
 用一张图总结 Activity、Window 和 WMS 之间的关系：
 
-![](static/boxcn4h7pNRYuGoHKXKfOrRDVkf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045640.png)
 
 ## 步骤五：建立与 SurfaceFlinger 的连接
 
@@ -608,7 +607,7 @@ initClicent 方法做了一些错误检查，然后返回 Client 本身。
 
 这个过程如下图：
 
-![](static/boxcnyz8oHMf8mfrLJYCs1e9hlf.png)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045645.png)
 
 ## 步骤六：申请 Surface
 
@@ -795,7 +794,7 @@ private void performTraversals() {
 
 首先，根据 getRootMeasureSpec() 方法获取到 childWidthMeasureSpec 和 childHeightMeasureSpec 的值，用于 DecorView 的绘制。因为 DecorView 是所有子元素的根元素，子元素的布局层层嵌套，因此会接着从 DecorView 开始进行一层层地对所有子元素进行测量、布局和绘制，分别对应 performMeasure()、performLayout() 和 performLayout() 方法，整个过程的示意图如下：
 
-![](static/boxcnTwYkJnUXwTHzXoDsDXqmhc.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045652.png)
 
 ### 理解 MeasureSpec
 
@@ -972,7 +971,7 @@ public static int getChildMeasureSpec(int spec, int padding, int childDimesion) 
 
 整个过程稍微有点复杂，可以参考以下表格：
 
-![](static/boxcn1rakNHuBCAijUF5Upqyylf.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045658.png)
 
 ### Measure 流程分析
 
@@ -1656,7 +1655,7 @@ protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
 
 纵观整个 Measure、Layout 和 Draw 过程，使用流程图表示如下：
 
-![](static/boxcnMzknL6Ff4vHQZfdDuz9P4b.)
+![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045712.png)
 
 ## 步骤五：显示 View
 
