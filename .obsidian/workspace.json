@@ -11,12 +11,8 @@
             "id": "b784bee3ab98ff2f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "知识体系/Java/并发/Java 内存模型.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "知识体系/Java/并发/Java 内存模型.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "知识体系/Java/并发/Java 内存模型.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "知识体系/Java/并发/Java 内存模型.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -150,27 +142,27 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "b784bee3ab98ff2f",
+  "active": "815115909afc80af",
   "lastOpenFiles": [
-    "知识体系/Java/并发/CAS 和 AQS 原理.md",
     "static/boxcnKB98VZHgFIxeQRre50P10g.png.md",
-    "知识体系/Java/并发/线程协作 .md",
-    "知识体系/Java/并发/线程基础 .md",
-    "static/boxcnPibptsxhOwYAQw5Mft93wg.png.md",
-    "知识体系/Java/并发/线程池和 BlockingQueue.md",
-    "知识体系/Java/并发/并发容器 .md",
+    "知识体系/Java/并发/Java 内存模型.md",
     "知识体系/Java/并发/锁.md",
-    "知识体系/Java/并发/等待_通知机制.md",
-    "知识体系/Java/基础/HashMap 源码解析.md",
+    "知识体系/Java/并发/线程基础.md",
+    "知识体系/Java/并发/线程池和 BlockingQueue.md",
+    "知识体系/Java/并发/线程协作.md",
+    "知识体系/Java/并发/CAS 和 AQS 原理.md",
+    "知识体系/Java/并发/并发容器.md",
+    "知识体系/Java/并发/等待-通知机制.md",
     "知识体系/Java/虚拟机/JVM 字节码指令简介.md",
     "知识体系/Java/虚拟机/JVM 字节码结构分析.md",
-    "知识体系/Java/虚拟机/JVM 类加载机制.md",
-    "知识体系/Java/虚拟机/JVM 内存区域.md",
     "知识体系/Java/虚拟机/JVM 中的对象和垃圾回收.md",
+    "知识体系/Java/虚拟机/JVM 内存区域.md",
+    "知识体系/Java/虚拟机/JVM 类加载机制.md",
+    "static/boxcnPibptsxhOwYAQw5Mft93wg.png.md",
+    "知识体系/Java/基础/HashMap 源码解析.md",
     "知识体系/Java/虚拟机",
     "知识体系/Java/基础/注解和反射.md",
     "知识体系/Java/基础/容器类.md",
-    "知识体系/Java/并发/Java 内存模型.md",
     "知识体系/Java/并发",
     "Pasted image 20230323005121.png",
     "AboutTheGarden.md",

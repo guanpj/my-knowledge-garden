@@ -1,4 +1,21 @@
-
+---
+title: Java 内存模型
+comments: true
+date created: 2023-03-23
+date modified: 2023-03-23
+id: home
+layout: page
+tags:
+  - 内存模型
+  - JMM
+  - 原子类
+  - happens-before
+  - volitale
+  - synchrionized
+  - final
+  - 面试
+  - Java
+---
 ## JMM 是什么？
 
 JMM 是和多线程相关的一组规范，它 定义了 JVM 在计算机内存中的工作方式，需要各个 JVM 的实现来遵守 JMM 规范，以便于开发者可以利用这些规范，更方便地开发多线程程序。这样，即便同一个程序在不同的虚拟机上运行，得到的程序结果也是一致的，从而保证了“一次编译，处处运行”。

@@ -1,5 +1,17 @@
-# 线程池和 BlockingQueue
-
+---
+title: 线程池和 BlockingQueue
+comments: true
+date created: 2023-03-23
+date modified: 2023-03-23
+id: home
+layout: page
+tags:
+  - ThreadPool
+  - BlockingQueue
+  - Executor
+  - ExecutorService
+  - Java
+---
 # BlockingQueue 阻塞队列
 
 ## 队列 
