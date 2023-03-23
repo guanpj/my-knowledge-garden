@@ -217,7 +217,7 @@
       "Condenses multiple blank lines down into one blank line for the text to paste": false
     }
   },
-  "lintOnSave": true,
+  "lintOnSave": false,
   "recordLintOnSaveLogs": false,
   "displayChanged": true,
   "foldersToIgnore": [],
