@@ -1,82 +1,64 @@
-# Java 静态代理 & 动态代理
-
+---
+title: Java 静态代理 & 动态代理
+tags:
+ - Java
+ - 静态代理
+ - 动态代理
+ - 代理模式
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 代理模式是软件开发中常见的设计模式，它的目的是让调用者不用持有具体操作者的引用，而是通过代理者去对具体操作者执行具体的操作。本文通过使用静态代理和动态代理分别实现代理模式，来对比和分析两者的实现原理。
 
 ### 静态代理的实现
 
 <strong>代理接口：</strong>
 
+```java
 public interface Person {
-
-```
-String doSomething(int i);
-```
-
+	String doSomething(int i);
 }
+```
 
 <strong>目标对象：</strong>
 
+```java
 public class Worker implements Person {
-
-```
-@Override
-
-public String doSomething(int i) {
-
-    System.out.println("I'm doing something by param: " + i);
-
+	@Override
+	public String doSomething(int i) {
+	    System.out.println("I'm doing something by param: " + i);
+	}
 }
 ```
 
-}
 
 <strong>代理对象：</strong>
 
+```java
 public class PersonProxy implements Person {
+	private Worker worker = null;
 
-```
-private Worker worker = null;
+	@Override
+	public String doSomething(int i) {
+	    beforeDoSomething();
+	    if(worker == null) {
+	        worker = new Worker();
+	    }
+	    Stirng result = worker.doSomething();
 
+	    afterDoSomething();
+	    return result;
+	}
 
+	private void beforeDoSomething() {
+	    System.out.println("before doing something");
+	}
 
-@Override
-
-public String doSomething(int i) {
-
-    beforeDoSomething();
-
-    if(worker == null) {
-
-        worker = new Worker();
-
-    }
-
-    Stirng result = worker.doSomething();
-
-    afterDoSomething();
-
-    return result;
-
-}
-
-
-
-private void beforeDoSomething() {
-
-    System.out.println("before doing something");
-
-}
-
-
-
-private void afterDoSomething() {
-
-    System.out.println("after doing something");
-
+	private void afterDoSomething() {
+	    System.out.println("after doing something");
+	}
 }
 ```
-
-}
 
 <strong>调用者：</strong>
 

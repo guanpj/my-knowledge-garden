@@ -1,4 +1,11 @@
-# ADB 命令
+---
+title: ADB 命令
+tags:
+ - ADB
+ - shell
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 
 # shell
 

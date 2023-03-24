@@ -1,4 +1,13 @@
-
+---
+title: 一、Binder 机制分析——概念篇
+tags:
+ - Binder
+ - IPC
+ - ServiceManager
+ - Framework
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 [上次没砍我的,这次我又来了。看完这篇还不明白 Binder 你砍我(一) - 掘金](https://juejin.cn/post/6867139592739356686)
 
 [不懂砍我之看完这篇还不明白 Binder 你砍我(二) - 掘金](https://juejin.cn/post/6868901776368926734)
@@ -35,11 +44,11 @@
 
 ## 进程隔离
 
-以下内容来自[维基百科](https://link.juejin.cn/?target=https://zh.wikipedia.org/wiki/%E8%BF%9B%E7%A8%8B%E9%9A%94%E7%A6%BB)：
+以下内容来自 [维基百科](https://link.juejin.cn/?target=https://zh.wikipedia.org/wiki/%E8%BF%9B%E7%A8%8B%E9%9A%94%E7%A6%BB)：
 
 	进程隔离是为保护操作系统中进程互不干扰而设计的一组不同硬件和软件的技术。这个技术是为了避免进程 A 写入进程 B 的情况发生。 进程的隔离实现，使用了<strong>虚拟地址空间</strong>。进程 A 的虚拟地址和进程 B 的虚拟地址不同，这样就防止进程 A 将数据信息写入进程 B。
 
-## 进程空间划分：用户空间(User Space)/内核空间(Kernel Space)
+## 进程空间划分：用户空间 (User Space)/内核空间 (Kernel Space)
 
 现在操作系统都是采用的虚拟存储器，对于 32 位系统而言，它的寻址空间（虚拟存储空间）就是 2 的 32 次方，也就是 4GB。操作系统的核心是内核，独立于普通的应用程序，可以访问受保护的内存空间，也可以访问底层硬件设备的权限。为了保护用户进程不能直接操作内核，保证内核的安全，操作系统从逻辑上将虚拟空间划分为用户空间（User Space）和内核空间（Kernel Space）。针对 Linux 操作系统而言，将最高的 1GB 字节供内核使用，称为内核空间；较低的 3GB 字节供各进程使用，称为用户空间。
 
@@ -94,7 +103,7 @@ Android 系统是基于 Linux 内核的，Linux 已经提供了管道、消息�
 从性能的角度来说，传统的 IPC 方式有如下特点：
 
 - socket：传输效率低，开销大，它主要用在跨网络的进程间通信和本机上进程间的低速通信
-- 消息队列和管道：采用存储-转发方式，即数据先从发送方缓存区拷贝到内核开辟的缓存区中，然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程
+- 消息队列和管道：采用存储 - 转发方式，即数据先从发送方缓存区拷贝到内核开辟的缓存区中，然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程
 - 共享内存：虽然无需拷贝，但控制复杂，难以使用
 
 Socket、管道和消息队列通讯过程：
@@ -189,7 +198,7 @@ Binder 通讯过程示意：
 
 1. 首先，一个进程使用 <strong>BINDER_SET_CONTEXT_MGR</strong> 命令通过 Binder 驱动将自己注册成为 ServiceManager；
 2. 各个 Server 通过 Binder 驱动向 ServiceManager 注册 Binder 实体，表明自己可以对外提供服务，这时 Binder 驱动会为这个 Binder 创建位于内核中的实体节点以及 ServiceManager 对该节点的引用，并将名字和该引用打包给 ServiceManager，ServiceManager 接收到数据包后将数据包中的名字和引用填入查找表中（svcinfo）。
-3. Client 通过上面 Server 的名字在 Binder 驱动的帮助下从 ServiceManager 中获取到该 Server 对应的 Binder <strong>引用对象 </strong>BinderProxy，由于 BinderProxy  同样具有 Server 的能力，因此 Client 可以通过这个引用与真实的 Server 进行交互。
+3. Client 通过上面 Server 的名字在 Binder 驱动的帮助下从 ServiceManager 中获取到该 Server 对应的 Binder <strong>引用对象 </strong>BinderProxy，由于 BinderProxy 同样具有 Server 的能力，因此 Client 可以通过这个引用与真实的 Server 进行交互。
 
 ```java
 //获取WindowManager服务引用
@@ -199,7 +208,7 @@ WindowManager wm = (WindowManager)getSystemService(getApplication()
 
 4. 当 Client 端发送数据到 Server 时，首先通过 BinderProxy 可将请求参数发送给内核，再通过共享内存的方式使用内核方法 copy_from_user() 将参数先拷贝到内核空间，这时的 Client 进入等待状态。而 Server 端（作为数据接收端）与内核共享数据，不再需要拷贝数据，而是通过内存地址空间的偏移量，即可获悉内存地址，从而获取到 Client 发送过来的数据，整个过程只发生一次内存拷贝。
 
-还是 [universus 老师](https://blog.csdn.net/universus)的图：
+还是 [universus 老师](https://blog.csdn.net/universus) 的图：
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Binder-1/clipboard_20230323_044308.png)
 

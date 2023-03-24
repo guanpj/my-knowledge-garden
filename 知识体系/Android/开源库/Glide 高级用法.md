@@ -1,5 +1,8 @@
 ---
-title: 回调与监听
+title: Glide 高级用法
+tags:
+ - Glide
+ - 源码解析
 date created: 2023-03-23
 date modified: 2023-03-24
 ---
@@ -1476,7 +1479,7 @@ override fun isManifestParsingEnabled() = false
 应用程序和库都可以注册很多组件来扩展 Glide 的功能。可用的组件包括：
 
 1. ModelLoader, 用于加载自定义的 Model(Url, Uri,任意的 POJO ) 和 Data(InputStreams, FileDescriptors)。
-2. ResourceDecoder, 用于对新的 Resources(Drawables, Bitmaps) 或新的 Data 类型 (InputStreams, FileDescriptors)进行解码。
+2. ResourceDecoder, 用于对新的 Resources(Drawables, Bitmaps) 或新的 Data 类型 (InputStreams, FileDescriptors) 进行解码。
 3. Encoder, 用于向 Glide 的磁盘缓存写 Data (InputStreams, FileDesciptors)。
 4. ResourceTranscoder，用于在不同的资源类型之间做转换，例如，从 BitmapResource 转换为 DrawableResource 。
 5. ResourceEncoder，用于向 Glide 的磁盘缓存写 Resources(BitmapResource, DrawableResource)。
@@ -1697,7 +1700,7 @@ class MyAppGlideModule : AppGlideModule() {
 
 ### Glide 初始化流程分析
 
-之前在分析 [Glide 加载流程](https://ywue4d2ujm.feishu.cn/docs/doccnY69t6P4JXuanj2oz8GBp5g)的文章中已经知道，with 方法调用过程中会调用到 Glide.get(context) 方法生成并返回全局 Glide 单例：
+之前在分析 [Glide 加载流程](https://ywue4d2ujm.feishu.cn/docs/doccnY69t6P4JXuanj2oz8GBp5g) 的文章中已经知道，with 方法调用过程中会调用到 Glide.get(context) 方法生成并返回全局 Glide 单例：
 
 ```java
 public static Glide get(@NonNull Context context) {

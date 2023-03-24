@@ -15,12 +15,12 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "代码",
-      "template": "模版/其他模版.md"
+      "folder": "知识体系",
+      "template": "模板/技术文章.md"
     },
     {
       "folder": "日记",
-      "template": "模板/TP.md"
+      "template": "模板/我的日记.md"
     }
   ],
   "syntax_highlighting": true,

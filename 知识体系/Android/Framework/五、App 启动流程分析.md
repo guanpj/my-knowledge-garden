@@ -1,4 +1,13 @@
-
+---
+title: 五、App 启动流程分析
+tags:
+ - zygote
+ - AMS
+ - ActivityThread
+ - Framework
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 在我的上一篇文章 [Android 系统启动流程分析](https://guanpj.cn/2017/09/17/Android-System-Startup-Flow-Analyze/)中，我们分析了系统在开机以后的一系列行为，其中最后一阶段 AMS(ActivityManagerService) 会启动 Launcher 来展示我们手机中所有已安装的应用图标，点击图标后相应的应用程序将会被系统启动运行并展示在我们面前，那么，点击了图标之后系统道理做了哪些工作呢？应用进程是怎么被启动的呢？Activity 的生命周期是什么时候被谁调用的呢？本文将继续基于 Android Nougat 的 frameworks 层源码的解答这些问题。
 
 <strong>阅读建议：</strong>

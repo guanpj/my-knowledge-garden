@@ -1,4 +1,13 @@
-
+---
+title: 六、View 绘制流程分析
+tags:
+ - DecorView
+ - ViewRootImpl
+ - WMS
+ - Framework
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 在我的系列文章上一篇：[App 竟然是这样跑起来的 —— Android App/Activity 启动流程分析](https://guanpj.cn/2017/10/23/Android-App-Startup-Flow-Analyze/)中已经分析了一个 App 从点击它的图标到 Activity 的 onCreate()、onStart() 和 onResume() 等生命周期被调用的整个流程。我们都知道，普通 App 屏幕上显示的内容都是由一个个自己设计的界面被系统加载而来的，而这些界面中的元素又是怎么被渲染出来的呢？本文将继续基于 Android Nougat 从源码的角度来进一步分析整个过程。
 
 在开始之前，回顾一下上一篇文章中分析的从 ActivityThread 到 Activity 过程的时序图：

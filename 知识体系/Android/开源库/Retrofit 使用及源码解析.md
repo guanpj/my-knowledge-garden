@@ -1,4 +1,11 @@
-# Retrofit 使用及源码分析
+---
+title: Retrofit 使用及源码分析
+tags:
+ - Retrofit
+ - 源码解析
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 
 # 使用
 
@@ -117,17 +124,13 @@ thread {
 在正式开始前，先简单介绍一下几个关键词，供备忘：
 
 - `CallAdapter<R, T>`：将一个 Call 从响应类型 R 适配成 T 类型的适配器。
-
   - `Type responseType()` 适配器将 HTTP 响应体转换为 Java 对象时，该对象的类型。比如 `Call<Repo>` 的返回值是 Repo
   - `T adapt(Call<R> call)`：返回一个代理了 call 的 T
 - `CallAdapter.Factory`：用于创建 CallAdapter 实例的工厂
-
   - `CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit)`：返回一个可以返回 returnType 的接口方法的 CallAdapter，如果不能处理，则返回 null
 - `Converter<F, T>`：将 F 转换为 T 类型的值的转换器。
-
   - `T convert(F value) throws IOException`
 - `Converter.Factory`：基于一个类型和目标类型创建一个 Converter 实例的工厂
-
   - `Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit)`：返回一个可以转换 HTTP 响应体到 type 的转换器
   - `Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit)`：返回一个可以转换 type 到 HTTP 请求体的转换器
   - `Converter<?, String> stringConverter(Type type, Annotation[] annotations, Retrofit retrofit)`：返回一个可以转换 type 到 String 的转换器

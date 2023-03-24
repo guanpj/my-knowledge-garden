@@ -1,4 +1,11 @@
 ---
+title: 二、Binder 机制分析——应用篇
+tags:
+ - Binder
+ - IPC
+ - ServiceManager
+ - AIDL
+ - Framework
 date created: 2023-03-23
 date modified: 2023-03-24
 ---

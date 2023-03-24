@@ -1,5 +1,9 @@
 ---
-date created: 2023-03-23
+title: EventBus 使用及源码解析
+tags:
+ - EventBus
+ - 源码解析
+date created: 2023-03-24
 date modified: 2023-03-24
 ---
 

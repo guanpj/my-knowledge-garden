@@ -1,10 +1,7 @@
 ---
 title: JVM 中的对象和垃圾回收
-comments: true
 date created: 2023-03-22
 date modified: 2023-03-22
-id: home
-layout: page
 tags:
   - JVM
   - 垃圾回收

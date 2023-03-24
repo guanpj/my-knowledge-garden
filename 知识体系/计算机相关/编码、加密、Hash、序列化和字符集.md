@@ -1,10 +1,7 @@
 ---
 title: 编码、加密、Hash、序列化和字符集
-comments: true
 date created: 2023-03-23
 date modified: 2023-03-23
-id: home
-layout: page
 tags:
   - 编码
   - 加密

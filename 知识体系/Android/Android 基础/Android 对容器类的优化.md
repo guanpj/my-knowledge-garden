@@ -1,6 +1,13 @@
-# Android 对容器类的优化
-
-在之前 [HashMap 的源码解析的文章](https://ywue4d2ujm.feishu.cn/docs/doccnWxrCbptIcob6fIMUWVeWfc?app_id=11#S0X9Es)中可知，HashMap 的一级存储结构是一个初始容量为 16 的数组， 所以当我们创建出一个 HashMap 对象时，即使里面没有任何元素，也要分别一块内存空间给它。而且，在不断的向 HashMap 里 put 数据的过程中，当数据量达到阈值（容量*加载因子，加载因子默认为 0.75）时，将会触发 HashMap 扩容流程，扩大后新的容量一定是原来的 2 倍。
+---
+title: Android 对容器类的优化
+tags:
+ - Android
+ - SparseArray
+ - ArrayMap
+date created: 2023-03-23
+date modified: 2023-03-24
+---
+在之前 [HashMap 的源码解析的文章](https://ywue4d2ujm.feishu.cn/docs/doccnWxrCbptIcob6fIMUWVeWfc?app_id=11#S0X9Es) 中可知，HashMap 的一级存储结构是一个初始容量为 16 的数组， 所以当我们创建出一个 HashMap 对象时，即使里面没有任何元素，也要分别一块内存空间给它。而且，在不断的向 HashMap 里 put 数据的过程中，当数据量达到阈值（容量 * 加载因子，加载因子默认为 0.75）时，将会触发 HashMap 扩容流程，扩大后新的容量一定是原来的 2 倍。
 
 假如我们有几十万、几百万条数据，那么 HashMap 要存储完这些数据将要不断的扩容，而且在此过程中也需要不断的做 hash 运算，这将对我们的内存空间造成很大消耗和浪费，再加上 HashMap 获取数据是通过遍历 Entry[] 数组来得到对应的元素，在数据量很大时候会比较慢。
 
@@ -535,7 +542,7 @@ ArrayMap 的容量发生变化，正如前面介绍的，有这两种情况：
 - put 方法增加数据，扩大容量
 - remove 方法删除数据，减小容量
 
-在这个过程中，会频繁出现多个容量为 BASE_SIZE 和 2 * BASE_SIZE 的 int 数组和 Object 数组。ArrayMap 设计者为了避免创建不必要的对象，减少 GC 的压力。采用了类似[对象池](https://droidyue.com/blog/2016/12/12/dive-into-object-pool/)的优化设计。
+在这个过程中，会频繁出现多个容量为 BASE_SIZE 和 2 * BASE_SIZE 的 int 数组和 Object 数组。ArrayMap 设计者为了避免创建不必要的对象，减少 GC 的压力。采用了类似 [对象池](https://droidyue.com/blog/2016/12/12/dive-into-object-pool/) 的优化设计。
 
 这其中涉及到几个元素：
 
