@@ -17,12 +17,12 @@
       "Format yaml tags section": true,
       "Default yaml array section style": "single-line",
       "Format yaml array sections": true,
-      "Force key values to be single-line arrays": "data created\ndata modified·",
+      "Force key values to be single-line arrays": "data created\ndata modified",
       "Force key values to be multi-line arrays": ""
     },
     "Insert YAML attributes": {
       "Inserts the given YAML attributes into the YAML frontmatter. Put each attribute on a single line.": false,
-      "Text to insert": "aliases: 啊\ntags: 啊"
+      "Text to insert": ""
     },
     "Move Tags to Yaml": {
       "Move all tags to Yaml frontmatter of the document.": false,
@@ -48,7 +48,7 @@
       "Format": "YYYY-MM-DD"
     },
     "YAML Title": {
-      "Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.": false,
+      "Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.": true,
       "Title Key": "title"
     },
     "YAML Title Alias": {

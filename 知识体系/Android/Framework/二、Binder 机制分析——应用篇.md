@@ -5,7 +5,7 @@ date modified: 2023-03-24
 
 AIDL 是 Android Interface Definition Language（Android 接口定义语言）的缩写，它是 Android 进程间通信的接口语言。由于 Android 系统的 Linux 内核采用了进程隔离机制，使得不同的应用程序运行在不同的进程当中，有时候两个应用之间需要传递或者共享某些数据，就需要进行进程间的通信讯。
 
-在上一篇文章——[《Binder 机制分析——原理篇》](https://ywue4d2ujm.feishu.cn/docs/doccnnNIKMdICh9atjwTbBRYxpf) 中我们已经分析了使用 Binder 机制的原因以及分析了 Binder 机制，而 AIDL 也正是运用了 Binder 机制来实现进程间的通讯，本章我们将继续从 AIDL 的使用过程体验 Binder 在应用层的使用和原理。
+在上一篇文章——[[一、Binder 机制分析——概念篇]]中我们已经分析了使用 Binder 机制的原因以及分析了 Binder 机制，而 AIDL 也正是运用了 Binder 机制来实现进程间的通讯，本章我们将继续从 AIDL 的使用过程体验 Binder 在应用层的使用和原理。
 
 # AIDL 使用步骤
 
