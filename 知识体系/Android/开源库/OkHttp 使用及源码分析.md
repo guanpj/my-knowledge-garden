@@ -1,4 +1,8 @@
-# OkHttp 使用及源码分析
+---
+title: OkHttp 使用及源码分析
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 
 [https://juejin.cn/post/6881436122950402056](https://juejin.cn/post/6881436122950402056)
 
@@ -66,7 +70,7 @@ override fun execute(): Response {
 }
 ```
 
-可以看到，在 extcuted 方法中并没有具体执行请求的方法，仅仅是把当前对象存入 runningSyncCalls 集合中。同步请求的核心部分在接下来的  getResponseWithInterceptorChain 中，此方法直接返回了请求结果 Response，事实上这个方法调用栈非常复杂，这里先按下不表。最后在 finially 代码块中调用了 `client.dispatcher.finished(this)`，也是传入了 this 对象，我们有理由猜测这一步就是将它从 runningSyncCalls 集合中移除，这里同样等到异步请求流程一并分析。
+可以看到，在 extcuted 方法中并没有具体执行请求的方法，仅仅是把当前对象存入 runningSyncCalls 集合中。同步请求的核心部分在接下来的 getResponseWithInterceptorChain 中，此方法直接返回了请求结果 Response，事实上这个方法调用栈非常复杂，这里先按下不表。最后在 finially 代码块中调用了 `client.dispatcher.finished(this)`，也是传入了 this 对象，我们有理由猜测这一步就是将它从 runningSyncCalls 集合中移除，这里同样等到异步请求流程一并分析。
 
 ## <strong>异步请求</strong>
 
@@ -411,7 +415,7 @@ class RealInterceptorChain(
 5. 遇到最后一个拦截器 CallServerInterceptor，链不能继续下去了，CallServerInterceptor.intercept 方法中也不会再 proceed 了；
 6. CallServerInterceptor 建立连接后开始递归返回，Response 的返回与 Request 相反，会从最后一个开始依次往前经过这些 Intercetor。
 
-下图为 OkHttp 工作的大致流程，参考自[拆轮子系列：拆 OkHttp](https://blog.piasy.com/2016/07/11/Understand-OkHttp/index.html)
+下图为 OkHttp 工作的大致流程，参考自 [拆轮子系列：拆 OkHttp](https://blog.piasy.com/2016/07/11/Understand-OkHttp/index.html)
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/OkHttp/clipboard_20230323_035335.png)
 
@@ -547,9 +551,9 @@ class Response internal constructor(
 
 OkHttpClient 的 newCall(Request) 方法会返回一个 RealCall 对象，它是 Call 接口的实现。
 
-当调用 RealCall.execute() 的时候， RealCall.getResponseWithInterceptorChain()  会被调用，它会发起网络请求并拿到返回的响应，装进一个 Response 对象并作为返回值返回；
+当调用 RealCall.execute() 的时候， RealCall.getResponseWithInterceptorChain() 会被调用，它会发起网络请求并拿到返回的响应，装进一个 Response 对象并作为返回值返回；
 
-RealCall.enqueue()  被调用的时候大同小异，区别在于 enqueue() 会使用 Dispatcher 的线程池来把请求放在后台线程进行，但实质上使用的也是 getResponseWithInterceptorChain() 方法。
+RealCall.enqueue() 被调用的时候大同小异，区别在于 enqueue() 会使用 Dispatcher 的线程池来把请求放在后台线程进行，但实质上使用的也是 getResponseWithInterceptorChain() 方法。
 
 getResponseWithInterceptorChain() 方法做的事：把所有配置好的 Interceptor 放在一个 List 里，然后作为参数，创建一个 RealInterceptorChain 对象，并调 chain.proceed(request) 来发起请求和获取响应。
 
@@ -581,10 +585,10 @@ internal fun getResponseWithInterceptorChain(): Response {
 }
 ```
 
-在 RealInterceptorChain 中，多个 Interceptor 会依次调用自己的 intercept()  方法。这个方法会做三件事:
+在 RealInterceptorChain 中，多个 Interceptor 会依次调用自己的 intercept() 方法。这个方法会做三件事:
 
 1. 对请求进行预处理
-2. 预处理之后，重新调用 RealIntercepterChain.proceed()  把请求交给下一个 Interceptor
+2. 预处理之后，重新调用 RealIntercepterChain.proceed() 把请求交给下一个 Interceptor
 3. 在下一个 Interceptor 处理完成并返回之后，拿到 Response 进行后续处理
 
 结合源码和该示意图，可以得到拦截器具有如下特点：

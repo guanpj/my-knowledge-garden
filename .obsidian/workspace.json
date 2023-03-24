@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "77cbaa22e339112e",
+        "id": "f70c643ae5fb902d",
         "type": "tabs",
         "children": [
           {
-            "id": "13e992c04b8da709",
+            "id": "e3a85fe1c60ce38e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
+                "file": "Home.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
+                "file": "Home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
+                "file": "Home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md"
+                "file": "Home.md"
               }
             }
           }
@@ -150,35 +150,35 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "13e992c04b8da709",
+  "active": "e3a85fe1c60ce38e",
   "lastOpenFiles": [
-    "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
-    "模板/TP.md",
+    "知识体系/Java/并发/并发容器.md",
+    "知识体系/Android/热修复&插件化/Java 静态代理 & 动态代理.md",
     "模板/我的日记.md",
-    "日记/2023-03-24.md",
-    "日记/啊啊啊.md",
     "模板/其他模版.md",
-    "AboutTheGarden.md",
+    "Home.md",
+    "知识体系/计算机相关/编码、加密、Hash、序列化和字符集.md",
+    "日记/啊啊啊.md",
+    "模板/TP.md",
+    "知识体系/Android/Framework/七、View 事件机制分析.md",
+    "知识体系/Android/开源库/EventBus 使用及源码分析.md",
+    "知识体系/Android/开源库/OkHttp 使用及源码分析.md",
+    "知识体系/Android/开源库/LeakCanary 使用及源码分析.md",
+    "知识体系/Android/开源库/Glide 加载流程和缓存原理分析.md",
+    "知识体系/Android/开源库/Glide 基本使用.md",
+    "知识体系/Android/开源库/Glide 高级用法.md",
+    "其他/Linter.md",
+    "知识体系/Java/并发/锁.md",
+    "知识体系/Java/并发/等待-通知机制.md",
+    "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
+    "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
+    "日记/2023-03-24.md",
     "日记/2023-03-22.md",
     "未命名.md",
-    "其他/Linter.md",
     "日记/未命名.md",
     "日记/2023-03-20.md",
     "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
-    "知识体系/计算机相关/未命名.md",
     "其他",
-    "知识体系/算法&数据结构/未命名.md",
-    "知识体系/算法&数据结构/引用.md",
-    "知识体系/算法&数据结构/二叉树遍历.md",
-    "知识体系/算法&数据结构/指针.md",
-    "知识体系/Android/Framework/七、View 事件机制分析.md",
-    "知识体系/Android/Framework/六、View 绘制流程分析.md",
-    "static/boxcn8eZqN1LvM9KIKY3R4mfwde..md",
-    "知识体系/Android/Framework/五、App 启动流程分析.md",
-    "知识体系/Android/Framework/四、系统启动流程分析.md",
-    "知识体系/Android/Framework/三、Handler 原理分析.md",
-    "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
-    "知识体系/Android/开源库/EventBus 使用及源码分析.md",
     "知识体系/Android/Android 基础",
     "知识体系/Android/热修复&插件化",
     "知识体系/Android/性能优化",

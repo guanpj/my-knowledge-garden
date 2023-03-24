@@ -1,4 +1,8 @@
-# Glide 加载流程和缓存原理分析
+---
+title: Glide 加载流程和缓存原理分析
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 
 # <strong>加载流程</strong>
 
@@ -63,7 +67,7 @@ public class Glide implements ComponentCallbacks2 {
 
 getRetriever(Context) 方法会根据 @GlideModule 注解的类以及 AndroidManifest.xml 文件中 meta-data 配置的 GlideModule 来创建一个 Glide 实例，然后返回该实例的 RequestManagerRetriever。
 
-首先从 getRetriever(Context)开始：
+首先从 getRetriever(Context) 开始：
 
 ```java
 @NonNull
@@ -810,7 +814,7 @@ private RequestBuilder<TranscodeType> loadGeneric(@Nullable Object model) {
 
 ### 小结
 
-load 流程主要给 GlideRequest（RequestManager）设置了要请求的 mode（url），并将 isModelSet  变量设置为 true，表示已设置的状态，最后返回 RequestBuilder。
+load 流程主要给 GlideRequest（RequestManager）设置了要请求的 mode（url），并将 isModelSet 变量设置为 true，表示已设置的状态，最后返回 RequestBuilder。
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034156.png)
 
@@ -926,7 +930,7 @@ public ViewTarget<ImageView, TranscodeType> into(@NonNull ImageView view) {
 
 ## Glide 缓存机制
 
-Glide 之所以被广泛使用的一个重要原因就是它强大的缓存机制。在 Glide 官方文档中，在[缓存部分](https://muyangmin.github.io/glide-docs-cn/doc/caching.html)有如下描述：
+Glide 之所以被广泛使用的一个重要原因就是它强大的缓存机制。在 Glide 官方文档中，在 [缓存部分](https://muyangmin.github.io/glide-docs-cn/doc/caching.html) 有如下描述：
 
 默认情况下，Glide 会在开始一个新的图片请求之前检查以下多级的缓存：
 
@@ -1034,7 +1038,7 @@ Glide.with(fragment)
   .into(view);
 ```
 
-虽然提供了这些选项跳过缓存，但不建议这么做。因为从缓存中加载一个图片，要比拉取-解码-转换成一张新图片的完整流程快得多。
+虽然提供了这些选项跳过缓存，但不建议这么做。因为从缓存中加载一个图片，要比拉取 - 解码 - 转换成一张新图片的完整流程快得多。
 
 ## 活动资源 ActiveResource
 
@@ -1223,7 +1227,7 @@ void cleanReferenceQueue() {
   }
 ```
 
-而 resourceReferenceQueue.remove() 方法会一直尝试从 queue 中获取将要被 GC 的 EngineResource。当发生 GC 时，如果 EngineResource 只 ResourceWeakReference  对象持有，ResourceWeakReference 对象就会被插入到 queue 中，这时在 remove() 方法就能获取到一个 ResourceWeakReference  对象（这是一个典型的生产者-消费者模型）。
+而 resourceReferenceQueue.remove() 方法会一直尝试从 queue 中获取将要被 GC 的 EngineResource。当发生 GC 时，如果 EngineResource 只 ResourceWeakReference 对象持有，ResourceWeakReference 对象就会被插入到 queue 中，这时在 remove() 方法就能获取到一个 ResourceWeakReference 对象（这是一个典型的生产者 - 消费者模型）。
 
 然后调用 cleanupActiveReference 方法：
 
@@ -1246,7 +1250,7 @@ void cleanupActiveReference(@NonNull ResourceWeakReference ref) {
   }
 ```
 
-首先会将该对象从集合中移除，然后再将 ResourceWeakReference  对象中的资源取出并回调给 listener，这个 listener 的唯一实现在 Engine 类中，后面还会有地方调用这个方法，这里暂时不进行分析。
+首先会将该对象从集合中移除，然后再将 ResourceWeakReference 对象中的资源取出并回调给 listener，这个 listener 的唯一实现在 Engine 类中，后面还会有地方调用这个方法，这里暂时不进行分析。
 
 该方法除了在此时被调用外，还在 ActiveResources.get(key) 方法中也可能会因为获取到的 resource 为 null 而被调用。
 
@@ -1928,7 +1932,7 @@ private EngineResource<?> getEngineResourceFromCache(Key key) {
 
 从注释和代码中可以看出，首先会根据 key 尝试从 loadFromActiveResources() 方法中获取 ActiveResource，如果能够获取到则直接返回；否则从 loadFromCache() 方法中获取 memory cache；如果仍然没有获取到，最后就交给了 Job 从网络中获取资源。没有意外的话，磁盘缓存也是由 Job 完成的。
 
-只要是缓存，就有 get 和 put 操作，也就离不开 Key，所以先看看从 ActiveResource 和  MemoryCache 中取缓存时的 Key——EngineKey 的组成参数：
+只要是缓存，就有 get 和 put 操作，也就离不开 Key，所以先看看从 ActiveResource 和 MemoryCache 中取缓存时的 Key——EngineKey 的组成参数：
 
 | 参数             | 含义                                                                                                                                                                                |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1983,7 +1987,7 @@ class EngineKey implements Key {
 
 ### 内存缓存
 
-#### ActiveResource 和  MemoryCache
+#### ActiveResource 和 MemoryCache
 
 ActiveResource 的 Value 为 ResourceWeakReference，它是 EngineResource 的包装类； MemoryCache 则是直接保存 EngineResource 对象。看看 EngineResource 的内容：
 
@@ -3031,7 +3035,7 @@ public Resource<Bitmap> decode(@NonNull ByteBuffer source, int width, int height
 }
 ```
 
-先将 ByteBuffer 转换成 InputStream，然后调用  Downsampler.decode() 方法进行解码。
+先将 ByteBuffer 转换成 InputStream，然后调用 Downsampler.decode() 方法进行解码。
 
 这里执行完毕，会将 decode 出来的 Bitmap 包装成为一个 BitmapResource 对象。然后就一直往上返回，返回到 DecodePath.decode 方法中。接下来执行第二行：
 
@@ -3519,6 +3523,7 @@ DecodeJob.onDataFetcherReady 该方法完成两个事情：
 在过程 1 中，将原始 data encode 成 resource 数据后，会调用 DecodeJob.onResourceDecoded 对 resource 数据进行进一步的处理。DecodeJob.onResourceDecoded 首先会对 resource 进行 transform，然后可能会进行磁盘缓存。
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-2/clipboard_20230323_034509.png)
+
 # 面试题
 
 内存缓存分两个原因：

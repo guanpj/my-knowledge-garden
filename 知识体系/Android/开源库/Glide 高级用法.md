@@ -1,4 +1,8 @@
-# Glide 高级用法
+---
+title: 回调与监听
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 
 # 回调与监听
 
@@ -55,7 +59,7 @@ public ViewTarget<ImageView, TranscodeType> into(@NonNull ImageView view) {
 }
 ```
 
-可以看到，最后一行代码会调用 glideContext.buildImageViewTarget() 方法构建出一个 Target 对象，然后再把它传入到另一个接收 Target 参数的 into()方法中。Target 对象则是用来最终展示图片用的，跟进方法 glideContext.buildImageViewTarget：
+可以看到，最后一行代码会调用 glideContext.buildImageViewTarget() 方法构建出一个 Target 对象，然后再把它传入到另一个接收 Target 参数的 into() 方法中。Target 对象则是用来最终展示图片用的，跟进方法 glideContext.buildImageViewTarget：
 
 ```java
 @NonNull
@@ -122,12 +126,9 @@ This will <strong>not</strong> work unless your Target extends ViewTarget or imp
 虽然 Target 很多，但是自定义只需要继承 CustomViewTarget 或者 CustomTarget 就行了。
 
 <strong>为什么要继承 </strong>CustomViewTarget <strong>而不是 </strong>ViewTarget？
-
 ViewTarget 已经被标记为废弃了，建议我们使用 CustomViewTarget。这是因为，如果子类没有实现 ViewTarget.onLoadCleared 方法，将会导致被回收的 bitmap 仍然被 UI 所引用，从而导致崩溃。而 CustomViewTarget.onLoadCleared 方法是 final 类型的，并且提供了一个抽象方法 onResourceCleared 强制我们实现。除此之外，两个类基本没有任何区别。
 
-<strong>为什么要继承 </strong>CustomTarget <strong>而不是 </strong>SimpleTarget？
-
-原因同上
+<strong>为什么要继承 </strong>CustomTarget <strong>而不是 </strong>SimpleTarget？原因同上。
 
 下面举一个实际例子，在某些场景下，此时我们需要获取到加载成功后的 Bitma p 对象：
 
@@ -153,7 +154,7 @@ Glide.with(this)
 
 在了解了 Target 之后，我们再看看 RequestBuilder 中高级一点的 API。
 
-下面这些都是 Target 的应用，内部调用的是**修改过配置**的 into/submit 方法，但 RequestBuilder.downloadOnly 方法已经被废弃；建议采用 RequestManager 的 downloadOnly()方法和 into/submit 方法
+下面这些都是 Target 的应用，内部调用的是 **修改过配置** 的 into/submit 方法，但 RequestBuilder.downloadOnly 方法已经被废弃；建议采用 RequestManager 的 downloadOnly() 方法和 into/submit 方法
 
 此外还有还需要注意的一个 API：listener/addListener
 
@@ -484,7 +485,7 @@ private synchronized void onLoadFailed(GlideException e, int maxLogLevel) {
 }
 ```
 
-调用逻辑是这样：在 requestListeners 集合、targetListener 中依次调用对应的回调，找到第一个能够处理的(返回 true)，后面的就不再调用。
+调用逻辑是这样：在 requestListeners 集合、targetListener 中依次调用对应的回调，找到第一个能够处理的 (返回 true)，后面的就不再调用。
 
 同时，如果有一个回调返回了 true，那么资源的对应方法会被拦截：
 
@@ -866,7 +867,7 @@ Display#getRealSize 返回的是屏幕真实的尺寸；而 Display#getSize 返�
 
 对于调用过 dontTransform() 方法的例子（例 2、例 4）来说，decodeHelper.getTransformation 返回的是一个 UnitTransformation，其 transform 没有干任何有意义的事情，也就是说不进行 transform。
 
-对于普通的 Glide 加载请求（例 1、例 3）来说，一个 URL 已经经过一系列 Registry 的变换，到这里就变成 了 Bitmap.class，所以在第 11 行调用的是 FitCenter().transform(Context, Resource<Bitmap>, int, int )方法。而 FitCenter 又是 BitmapTransformation 的子类，所以先看看 BitmapTransformation：
+对于普通的 Glide 加载请求（例 1、例 3）来说，一个 URL 已经经过一系列 Registry 的变换，到这里就变成 了 Bitmap.class，所以在第 11 行调用的是 FitCenter().transform(Context, Resource<Bitmap>, int, int ) 方法。而 FitCenter 又是 BitmapTransformation 的子类，所以先看看 BitmapTransformation：
 
 ```java
 public abstract class BitmapTransformation implements Transformation<Bitmap> {
@@ -1369,7 +1370,7 @@ override fun applyOptions(context: Context, builder: GlideBuilder) {
 
 一旦创建了新的请求，这些选项将通过 GlideBuilder 中的 setDefaultRequestOptions 被应用上。因此，任何单独请求里应用的选项将覆盖 GlideBuilder 里设置的冲突选项。
 
-类似地，RequestManagers 允许你为这个特定的 RequestManager 启动的所有加载请求设置默认的  RequestOptions。 因为每个 Activity 和 Fragment 都拥有自己的 RequestManager，你可以使用 RequestManager 的 applyDefaultRequestOptions 方法来设置默认的 RequestOption，并仅作用于一个特定的 Activity 或 Fragment：
+类似地，RequestManagers 允许你为这个特定的 RequestManager 启动的所有加载请求设置默认的 RequestOptions。 因为每个 Activity 和 Fragment 都拥有自己的 RequestManager，你可以使用 RequestManager 的 applyDefaultRequestOptions 方法来设置默认的 RequestOption，并仅作用于一个特定的 Activity 或 Fragment：
 
 ```kotlin
 Glide.with(fragment)
@@ -1380,7 +1381,7 @@ Glide.with(fragment)
     )
 ```
 
-RequestManager 还有一个 setDefaultRequestOptions 方法，可以完全替换掉之前设置的任意的默认  RequestOptions，无论它是通过 AppGlideModule 的 [GlideBuilder] 还是 RequestManager。使用 [setDefaultRequestOptions] 要小心，因为很容易意外覆盖掉其他地方设置的重要默认选项。 通常 applyDefaultRequestOptions 更安全，使用起来更直观。
+RequestManager 还有一个 setDefaultRequestOptions 方法，可以完全替换掉之前设置的任意的默认 RequestOptions，无论它是通过 AppGlideModule 的 [GlideBuilder] 还是 RequestManager。使用 [setDefaultRequestOptions] 要小心，因为很容易意外覆盖掉其他地方设置的重要默认选项。 通常 applyDefaultRequestOptions 更安全，使用起来更直观。
 
 #### <strong>未捕获异常策略 (UncaughtThrowableStrategy)</strong>
 
@@ -1474,8 +1475,8 @@ override fun isManifestParsingEnabled() = false
 
 应用程序和库都可以注册很多组件来扩展 Glide 的功能。可用的组件包括：
 
-1. ModelLoader, 用于加载自定义的 Model(Url, Uri,任意的 POJO )和 Data(InputStreams, FileDescriptors)。
-2. ResourceDecoder, 用于对新的 Resources(Drawables, Bitmaps)或新的 Data 类型(InputStreams, FileDescriptors)进行解码。
+1. ModelLoader, 用于加载自定义的 Model(Url, Uri,任意的 POJO ) 和 Data(InputStreams, FileDescriptors)。
+2. ResourceDecoder, 用于对新的 Resources(Drawables, Bitmaps) 或新的 Data 类型 (InputStreams, FileDescriptors)进行解码。
 3. Encoder, 用于向 Glide 的磁盘缓存写 Data (InputStreams, FileDesciptors)。
 4. ResourceTranscoder，用于在不同的资源类型之间做转换，例如，从 BitmapResource 转换为 DrawableResource 。
 5. ResourceEncoder，用于向 Glide 的磁盘缓存写 Resources(BitmapResource, DrawableResource)。

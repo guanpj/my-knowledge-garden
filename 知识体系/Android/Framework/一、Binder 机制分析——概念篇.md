@@ -237,8 +237,7 @@ WindowManager wm = (WindowManager)getSystemService(getApplication()
 
 # 总结
 
-进程隔离虽然使操作系统的安全性和应用程序的稳定性得到了提升，但同时也给 IPC 带来了一定的难度，Android 系统巧妙地应用了 Binder 机制，使得系统得以在存储空间和硬件性能等有限的移动设备上能够流畅地运行。关于 Binder 在应用层的使用和分析，请看下一篇文章内容：[二、Binder 机制分析——应用篇](https://ywue4d2ujm.feishu.cn/docs/doccnmOm0Lqi9mmFqMhwuQYxvUd)
-
+进程隔离虽然使操作系统的安全性和应用程序的稳定性得到了提升，但同时也给 IPC 带来了一定的难度，Android 系统巧妙地应用了 Binder 机制，使得系统得以在存储空间和硬件性能等有限的移动设备上能够流畅地运行。关于 Binder 在应用层的使用和分析，请看下一篇文章内容：[[二、Binder 机制分析——应用篇]]
 <strong>参考文章</strong>
 
 [写给 Android 应用工程师的 Binder 原理剖析](https://zhuanlan.zhihu.com/p/35519585)

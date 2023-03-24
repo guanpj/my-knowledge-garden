@@ -1,5 +1,8 @@
-# LeakCanary 使用及源码分析
-
+---
+title: LeakCanary 使用及源码分析
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 # Refercence 及 ReferenceQueue
 
 ## Reference 介绍
@@ -88,7 +91,7 @@ debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 
 ## 初始化
 
-既然不用手动初始化，那必定有自动初始化的入口。在 leakcanary-object-watcher-android 模块的 [Manifest 文件](https://github.com/square/leakcanary/blob/main/leakcanary-object-watcher-android/src/main/AndroidManifest.xml)中声明了一个 Provider 组件：
+既然不用手动初始化，那必定有自动初始化的入口。在 leakcanary-object-watcher-android 模块的 [Manifest 文件](https://github.com/square/leakcanary/blob/main/leakcanary-object-watcher-android/src/main/AndroidManifest.xml) 中声明了一个 Provider 组件：
 
 ```xml
 <application>

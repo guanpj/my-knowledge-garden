@@ -1,4 +1,8 @@
-# Glide 基本使用
+---
+title: Glide 基本使用
+date created: 2023-03-23
+date modified: 2023-03-24
+---
 
 # 准备
 
@@ -219,11 +223,11 @@ Glide.with(this)
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-placeholder-success-example.gif)
 
-<div style="text-align: center"><em>Glide正确加载</em></div>
+<div style="text-align: center"><em>Glide 正确加载</em></div>
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-error-example.gif)
 
-<div style="text-align: center"><em>Glide加载空串</em></div>
+<div style="text-align: center"><em>Glide 加载空串</em></div>
 
 <strong>1. 占位符是异步加载的吗？</strong>
 
@@ -237,7 +241,7 @@ No。Transformation 仅被应用于被请求的资源，而不会对任何占位
 
 <strong>3. 在多个不同的 View 上使用相同的 Drawable 可行么？</strong>
 
-通常可以，但不是绝对的。任何无状态 (non-stateful )的 Drawable（例如 BitmapDrawable）通常都是 ok 的。但是有状态的 Drawable 不一样，在同一时间多个 View 上展示它们通常不是很安全，因为多个 View 会立刻修改 (mutate) Drawable。对于有状态的 Drawable，建议传入一个资源 ID，或者使用 newDrawable() 来给每个请求传入一个新的拷贝。
+通常可以，但不是绝对的。任何无状态 (non-stateful ) 的 Drawable（例如 BitmapDrawable）通常都是 ok 的。但是有状态的 Drawable 不一样，在同一时间多个 View 上展示它们通常不是很安全，因为多个 View 会立刻修改 (mutate) Drawable。对于有状态的 Drawable，建议传入一个资源 ID，或者使用 newDrawable() 来给每个请求传入一个新的拷贝。
 
 # 指定图片格式
 
@@ -263,7 +267,7 @@ Glide.with(this)
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-load-gif.gif)
 
-<div style="text-align: center"><em>Glide加载GIF</em></div>
+<div style="text-align: center"><em>Glide 加载 GIF</em></div>
 
 现在我们只想加载静态图片，我们可以在 Glide.with 后面追加 asBitmap() 方法实现：
 
@@ -279,7 +283,7 @@ Glide.with(this)
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-load-gif-with-asbitmap.gif)
 
-<div style="text-align: center"><em>Glide asBitmap加载GIF</em></div>
+<div style="text-align: center"><em>Glide asBitmap 加载 GIF</em></div>
 
 同理，我们在加载普通图片时追加 asGif() 会怎么样呢：
 
@@ -295,7 +299,7 @@ Glide.with(this)
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/glide-load-url-with-asgif.gif)
 
-<div style="text-align: center"><em>Glide asGif加载普通图片</em></div>
+<div style="text-align: center"><em>Glide asGif 加载普通图片</em></div>
 
 # 指定图片大小
 
@@ -323,4 +327,4 @@ Glide.with(this)
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Glide-1/clipboard_20230323_033342.png)
 
-<div style="text-align: center"><em>override加载前后对比</em></div>
+<div style="text-align: center"><em>override 加载前后对比</em></div>
