@@ -6,6 +6,7 @@
       {
         "id": "c2cb0b7e6c87dc7f",
         "type": "tabs",
+        "dimension": 71.86520376175548,
         "children": [
           {
             "id": "f35c531a14190f83",
@@ -22,12 +23,12 @@
             }
           },
           {
-            "id": "7cc5261216797594",
+            "id": "7995bd4220b66527",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Home.md",
+                "file": "Knowledge/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
                 "mode": "source",
                 "source": false
               }
@@ -35,6 +36,27 @@
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "d5c811be5d21dbac",
+        "type": "tabs",
+        "dimension": 28.134796238244515,
+        "children": [
+          {
+            "id": "fb6200da998620c7",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dashborad/ControlPanel.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -95,35 +117,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "80008195f5e15b88",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Home.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": false
-              }
-            }
-          },
-          {
-            "id": "b5ff2f1b9e6599c4",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "Home.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "e5cb19d98107a6ec",
             "type": "leaf",
             "state": {
@@ -143,7 +136,48 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
+      },
+      {
+        "id": "18d12f56995dd62f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b5ff2f1b9e6599c4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Knowledge/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "0c8ed6fdf100bd9a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "80008195f5e15b88",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Knowledge/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -151,6 +185,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:打开快速切换": false,
       "workspaces:管理工作区布局": false,
       "graph:查看关系图谱": false,
@@ -166,15 +201,26 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "7cc5261216797594",
+  "active": "7995bd4220b66527",
   "lastOpenFiles": [
+    "Home.md",
+    "Dashborad/ControlPanel.md",
+    "Dashborad/Buttons.md",
+    "Temp/MyIdeas.md",
+    "Notes/2023-03-15.md",
+    "Notes/2023-03-22.md",
+    "Notes/2023-03-24.md",
+    "Notes/2023-03-20.md",
+    "Notes/2023-03-16.md",
+    "Knowledge/Java/并发/线程协作.md",
+    "Knowledge/Java/并发/等待-通知机制.md",
+    "Knowledge/Kotlin/扩展函数.md",
+    "Knowledge/Java/并发/线程池和 BlockingQueue.md",
+    "Dashborad",
     "Templates/我的日记.md",
     "Extras/Linter.md",
     "模板/未命名",
-    "Home.md",
     "Temp",
-    "Knowledge/Java/并发/等待-通知机制.md",
-    "Knowledge/Kotlin/扩展函数.md",
     "Excalidraw/MyDraw.md",
     "Knowledge/Android/Framework/一、Binder 机制分析——概念篇.md",
     "Excalidraw/Drawing 2023-03-25 15.21.13.excalidraw.md",
@@ -188,23 +234,12 @@
     "Knowledge/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
     "Knowledge/Python/遍历文件、重命名.md",
     "Knowledge/Kotlin/协程使用和原理分析.md",
-    "Knowledge/Kotlin/委托.md",
-    "Knowledge/Android/开源库/EventBus 使用及源码解析.md",
-    "Knowledge/Android/开源库/Glide 基本使用.md",
-    "Knowledge/Android/开源库/Glide 加载流程和缓存原理分析.md",
-    "Knowledge/Android/开源库/LeakCanary 使用及源码解析.md",
-    "Knowledge/Android/开源库/OkHttp 使用及源码解析.md",
-    "Knowledge/Android/开源库/Retrofit 使用及源码解析.md",
-    "Knowledge/Android/开源库/RxJava 使用及源码解析.md",
-    "Knowledge/Android/热修复&插件化/Java 静态代理 & 动态代理.md",
-    "Knowledge/Android/Framework/七、View 事件机制分析.md",
     "其他",
     "Knowledge/Android/Android 基础",
     "Knowledge/Android/热修复&插件化",
     "Knowledge/Android/性能优化",
     "Knowledge/Android/开源库",
     "Knowledge/Android/Jetpack",
-    "Knowledge/Android/Gradle",
     "Pasted image 20230323005121.png",
     "Pasted image 20230322160516.png",
     "Extras/Draws/README 2022-08-21.svg",

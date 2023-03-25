@@ -3,7 +3,7 @@
   "defaultNote": "Home",
   "useMoment": false,
   "momentFormat": "YYYY-MM-DD",
-  "workspace": "MainWorkSpace",
+  "workspace": "MainWorkspace",
   "workspaceEnabled": true,
   "openOnStartup": true,
   "hasRibbonIcon": true,

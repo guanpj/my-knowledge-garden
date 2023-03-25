@@ -1,7 +1,21 @@
 {
-  "userAdmonitions": {},
+  "userAdmonitions": {
+    "ad-type": {
+      "type": "ad-type",
+      "color": "#7d7d7d",
+      "icon": {
+        "name": "ad",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "ad-name",
+      "injectColor": true,
+      "noTitle": true,
+      "copy": true
+    }
+  },
   "syntaxHighlight": false,
-  "copyButton": false,
+  "copyButton": true,
   "version": "9.2.1",
   "autoCollapse": false,
   "defaultCollapseType": "open",
@@ -10,15 +24,15 @@
   "dropShadow": true,
   "hideEmpty": false,
   "open": {
-    "admonitions": true,
-    "icons": true,
+    "admonitions": false,
+    "icons": false,
     "other": true,
     "advanced": false
   },
   "icons": [],
   "useFontAwesome": true,
   "rpgDownloadedOnce": false,
-  "msDocConverted": false,
+  "msDocConverted": true,
   "useSnippet": false,
   "snippetPath": "custom-admonitions.63c621"
 }

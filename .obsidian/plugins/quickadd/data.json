@@ -1,21 +1,21 @@
 {
   "choices": [
     {
-      "id": "7599a867-a612-44d5-9e67-78fe6cb72e45",
-      "name": "AddToFile",
+      "id": "e15804d1-65fa-4089-b429-618d6a1335af",
+      "name": "CMI",
       "type": "Capture",
       "command": true,
       "appendLink": false,
-      "captureTo": "",
-      "captureToActiveFile": true,
+      "captureTo": "Temp/MyIdeas.md",
+      "captureToActiveFile": false,
       "createFileIfItDoesntExist": {
-        "enabled": false,
+        "enabled": true,
         "createWithTemplate": false,
         "template": ""
       },
       "format": {
-        "enabled": true,
-        "format": "哈哈哈哈，笑什么：{{value:what}}\n哈哈哈哈，为什么：{{VALUE:why}}"
+        "enabled": false,
+        "format": ""
       },
       "insertAfter": {
         "enabled": false,
@@ -24,8 +24,8 @@
         "createIfNotFound": false,
         "createIfNotFoundLocation": "top"
       },
-      "prepend": false,
-      "task": false,
+      "prepend": true,
+      "task": true,
       "openFileInNewTab": {
         "enabled": false,
         "direction": "vertical",
@@ -38,7 +38,7 @@
   "macros": [],
   "inputPrompt": "single-line",
   "devMode": false,
-  "templateFolderPath": "模板",
+  "templateFolderPath": "Templates",
   "migrations": {
     "migrateToMacroIDFromEmbeddedMacro": true,
     "useQuickAddTemplateFolder": true,

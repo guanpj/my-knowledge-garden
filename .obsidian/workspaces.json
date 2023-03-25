@@ -1,6 +1,6 @@
 {
   "workspaces": {
-    "MainWorkSpace": {
+    "MainWorkspace": {
       "main": {
         "id": "0f7b2bbee375c8c0",
         "type": "split",
@@ -8,6 +8,7 @@
           {
             "id": "c2cb0b7e6c87dc7f",
             "type": "tabs",
+            "dimension": 71.86520376175548,
             "children": [
               {
                 "id": "f35c531a14190f83",
@@ -17,6 +18,27 @@
                   "type": "markdown",
                   "state": {
                     "file": "Home.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "pinned": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "d5c811be5d21dbac",
+            "type": "tabs",
+            "dimension": 28.134796238244515,
+            "children": [
+              {
+                "id": "fb6200da998620c7",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Dashborad/ControlPanel.md",
                     "mode": "source",
                     "source": false
                   },
@@ -84,35 +106,6 @@
             "type": "tabs",
             "children": [
               {
-                "id": "80008195f5e15b88",
-                "type": "leaf",
-                "state": {
-                  "type": "backlink",
-                  "state": {
-                    "file": "Home.md",
-                    "collapseAll": false,
-                    "extraContext": false,
-                    "sortOrder": "alphabetical",
-                    "showSearch": false,
-                    "searchQuery": "",
-                    "backlinkCollapsed": false,
-                    "unlinkedCollapsed": false
-                  }
-                }
-              },
-              {
-                "id": "b5ff2f1b9e6599c4",
-                "type": "leaf",
-                "state": {
-                  "type": "outgoing-link",
-                  "state": {
-                    "file": "Home.md",
-                    "linksCollapsed": false,
-                    "unlinkedCollapsed": true
-                  }
-                }
-              },
-              {
                 "id": "e5cb19d98107a6ec",
                 "type": "leaf",
                 "state": {
@@ -132,7 +125,48 @@
                 }
               }
             ],
-            "currentTab": 2
+            "currentTab": 1
+          },
+          {
+            "id": "18d12f56995dd62f",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "b5ff2f1b9e6599c4",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "file": "Home.md",
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "0c8ed6fdf100bd9a",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "80008195f5e15b88",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "Home.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": false
+                  }
+                }
+              }
+            ]
           }
         ],
         "direction": "horizontal",
@@ -155,8 +189,9 @@
           "homepage:Open homepage": false
         }
       },
-      "active": "f35c531a14190f83"
+      "active": "f35c531a14190f83",
+      "workspaces-plus:settings-v1": {}
     }
   },
-  "active": "MainWorkSpace"
+  "active": "MainWorkspace"
 }
