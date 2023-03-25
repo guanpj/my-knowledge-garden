@@ -15,5 +15,14 @@
       ],
       "key": "N"
     }
+  ],
+  "app:open-settings": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "S"
+    }
   ]
 }

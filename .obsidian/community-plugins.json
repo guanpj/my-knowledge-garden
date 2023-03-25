@@ -5,5 +5,8 @@
   "templater-obsidian",
   "quickadd",
   "obsidian-git",
-  "obsidian-linter"
+  "obsidian-linter",
+  "obsidian-outliner",
+  "obsidian-icon-folder",
+  "dataview"
 ]

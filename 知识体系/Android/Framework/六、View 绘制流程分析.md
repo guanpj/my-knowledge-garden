@@ -6,9 +6,9 @@ tags:
  - WMS
  - Framework
 date created: 2023-03-23
-date modified: 2023-03-24
+date modified: 2023-03-25
 ---
-在我的系列文章上一篇：[App 竟然是这样跑起来的 —— Android App/Activity 启动流程分析](https://guanpj.cn/2017/10/23/Android-App-Startup-Flow-Analyze/)中已经分析了一个 App 从点击它的图标到 Activity 的 onCreate()、onStart() 和 onResume() 等生命周期被调用的整个流程。我们都知道，普通 App 屏幕上显示的内容都是由一个个自己设计的界面被系统加载而来的，而这些界面中的元素又是怎么被渲染出来的呢？本文将继续基于 Android Nougat 从源码的角度来进一步分析整个过程。
+在我的系列文章上一篇：[App 竟然是这样跑起来的 —— Android App/Activity 启动流程分析](https://guanpj.cn/2017/10/23/Android-App-Startup-Flow-Analyze/) 中已经分析了一个 App 从点击它的图标到 Activity 的 onCreate()、onStart() 和 onResume() 等生命周期被调用的整个流程。我们都知道，普通 App 屏幕上显示的内容都是由一个个自己设计的界面被系统加载而来的，而这些界面中的元素又是怎么被渲染出来的呢？本文将继续基于 Android Nougat 从源码的角度来进一步分析整个过程。
 
 在开始之前，回顾一下上一篇文章中分析的从 ActivityThread 到 Activity 过程的时序图：
 
@@ -231,7 +231,7 @@ void onResourcesLoaded(LayoutInflater inflater, int layoutResource) {
 3. 将 layoutResource 值传给 DecorView 的 onResourcesLoaded() 方法，通过 LayoutInflater 把布局转化成 View 作为根视图并将其添加到 mDecor。
 4. 在 mDecor 中查找 id 为 com.android.internal.R.id.content 的 ViewGroup 并作为返回值返回，这个 ViewGroup 一般为 FrameLayout。
 
-关于第四点，可能有人会有疑问，为什么根据 id 为 com.android.internal.R.id.content 就一定能找到对应的 ViewGroup？答案就在前面我们分析过的 generateLayout() 方法中，这里会根据设定好的 features 值获取相应的布局文件并赋值给 layoutResource，而这所有的布局文件中都包括了一个 id 为 content 的 FrameLayout，除此之外有些布局文件中还可能有 ActiionBar 和 Title 等，这些布局文件存放于[该目录下]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/res/res/layout/)。以 R.layout.screen_simple 为例，它的内容如下：
+关于第四点，可能有人会有疑问，为什么根据 id 为 com.android.internal.R.id.content 就一定能找到对应的 ViewGroup？答案就在前面我们分析过的 generateLayout() 方法中，这里会根据设定好的 features 值获取相应的布局文件并赋值给 layoutResource，而这所有的布局文件中都包括了一个 id 为 content 的 FrameLayout，除此之外有些布局文件中还可能有 ActiionBar 和 Title 等，这些布局文件存放于 [该目录下]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/res/res/layout/)。以 R.layout.screen_simple 为例，它的内容如下：
 
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
