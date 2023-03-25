@@ -8,13 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "e3a85fe1c60ce38e",
+            "id": "04ca0f09947315d0",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
+                "file": "Home.md",
                 "mode": "source",
                 "source": false
               },
@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "257d24eba2625e1f",
+            "id": "a659a98bf749c120",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -133,19 +133,9 @@
                 "useHierarchy": true
               }
             }
-          },
-          {
-            "id": "18d6477281b637c9",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "Home.md"
-              }
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -162,15 +152,21 @@
       "remotely-save:Remotely Save": false,
       "obsidian-textgenerator-plugin:Generate Text!": false,
       "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false
     }
   },
-  "active": "257d24eba2625e1f",
+  "active": "a659a98bf749c120",
   "lastOpenFiles": [
-    "知识体系/Android/Framework/三、Handler 原理分析.md",
+    "Excalidraw/MyDraw.md",
     "Home.md",
-    "知识体系/Android/开源库/Glide 高级用法.md",
     "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
+    "Excalidraw/Drawing 2023-03-25 15.21.13.excalidraw.md",
+    "Excalidraw/Drawing 2023-03-25 15.20.15.excalidraw.md",
+    "未命名.canvas",
+    "Excalidraw",
+    "知识体系/Android/Framework/三、Handler 原理分析.md",
+    "知识体系/Android/开源库/Glide 高级用法.md",
     "知识体系/Android/Framework/六、View 绘制流程分析.md",
     "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
     "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
@@ -190,9 +186,6 @@
     "知识体系/Android/Framework/五、App 启动流程分析.md",
     "知识体系/Android/Framework/四、系统启动流程分析.md",
     "知识体系/计算机相关/HTTP 基础.md",
-    "知识体系/计算机相关/编码、加密、Hash、序列化和字符集.md",
-    "知识体系/Android/Android 基础/ADB 命令.md",
-    "Extras/Index for Extras.md",
     "其他",
     "知识体系/Android/Android 基础",
     "知识体系/Android/热修复&插件化",
@@ -202,7 +195,6 @@
     "知识体系/Android/Gradle",
     "知识体系/Android/Framework",
     "知识体系/Kotlin",
-    "知识体系/Python",
     "Pasted image 20230323005121.png",
     "Pasted image 20230322160516.png",
     "Extras/Draws/README 2022-08-21.svg",
