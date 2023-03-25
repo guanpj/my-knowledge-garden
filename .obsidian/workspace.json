@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "知识体系/Python/遍历文件、重命名.md",
+                "file": "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "知识体系/Python/遍历文件、重命名.md",
+                "file": "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "知识体系/Python/遍历文件、重命名.md",
+                "file": "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "知识体系/Python/遍历文件、重命名.md"
+                "file": "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md"
               }
             }
           }
@@ -150,34 +150,34 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "815115909afc80af",
+  "active": "e3a85fe1c60ce38e",
   "lastOpenFiles": [
-    "知识体系/算法&数据结构/引用.md",
-    "知识体系/计算机相关/编码、加密、Hash、序列化和字符集.md",
-    "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
-    "知识体系/计算机相关/HTTP 基础.md",
+    "知识体系/Python/遍历文件、重命名.md",
+    "知识体系/Kotlin/协程使用和原理分析.md",
+    "知识体系/Kotlin/委托.md",
+    "知识体系/Kotlin/扩展函数.md",
     "知识体系/Android/开源库/EventBus 使用及源码解析.md",
     "知识体系/Android/开源库/Glide 高级用法.md",
     "知识体系/Android/开源库/Glide 基本使用.md",
-    "知识体系/Android/开源库/OkHttp 使用及源码解析.md",
+    "知识体系/Android/开源库/Glide 加载流程和缓存原理分析.md",
     "知识体系/Android/开源库/LeakCanary 使用及源码解析.md",
+    "知识体系/Android/开源库/OkHttp 使用及源码解析.md",
     "知识体系/Android/开源库/Retrofit 使用及源码解析.md",
     "知识体系/Android/开源库/RxJava 使用及源码解析.md",
     "知识体系/Android/热修复&插件化/Java 静态代理 & 动态代理.md",
-    "知识体系/Android/Android 基础/ADB 命令.md",
-    "知识体系/Android/Android 基础/Android 对容器类的优化.md",
-    "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
-    "知识体系/Android/Framework/六、View 绘制流程分析.md",
-    "知识体系/Android/Framework/七、View 事件机制分析.md",
     "知识体系/Android/Framework/三、Handler 原理分析.md",
-    "知识体系/Android/Framework/四、系统启动流程分析.md",
+    "知识体系/Android/Framework/七、View 事件机制分析.md",
+    "知识体系/Android/Framework/六、View 绘制流程分析.md",
     "知识体系/Android/Framework/五、App 启动流程分析.md",
+    "知识体系/Android/Framework/四、系统启动流程分析.md",
+    "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
     "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
-    "知识体系/Java/并发/线程基础.md",
-    "知识体系/Java/并发/等待-通知机制.md",
-    "知识体系/Java/并发/并发容器.md",
-    "知识体系/Android/开源库/Glide 加载流程和缓存原理分析.md",
-    "模板/技术文章.md",
+    "知识体系/计算机相关/HTTP 基础.md",
+    "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
+    "知识体系/计算机相关/编码、加密、Hash、序列化和字符集.md",
+    "知识体系/Android/Android 基础/ADB 命令.md",
+    "Home.md",
+    "Extras/Index for Extras.md",
     "其他",
     "知识体系/Android/Android 基础",
     "知识体系/Android/热修复&插件化",

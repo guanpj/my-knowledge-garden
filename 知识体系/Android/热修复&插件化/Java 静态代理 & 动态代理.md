@@ -1,103 +1,93 @@
 ---
-title: Java 静态代理 & 动态代理
+title: ADB 命令
 tags:
- - Java
- - 静态代理
- - 动态代理
  - 代理模式
+ - 动态代理
+ - Java
 date created: 2023-03-23
-date modified: 2023-03-24
+date modified: 2023-03-25
 ---
 代理模式是软件开发中常见的设计模式，它的目的是让调用者不用持有具体操作者的引用，而是通过代理者去对具体操作者执行具体的操作。本文通过使用静态代理和动态代理分别实现代理模式，来对比和分析两者的实现原理。
 
-### 静态代理的实现
+# 静态代理的实现
 
 <strong>代理接口：</strong>
 
-```java
-public interface Person {
-	String doSomething(int i);
-}
-```
+```java  
+public interface Person {  
+    String doSomething(int i);  
+}  
+```  
 
 <strong>目标对象：</strong>
 
-```java
-public class Worker implements Person {
-	@Override
-	public String doSomething(int i) {
-	    System.out.println("I'm doing something by param: " + i);
-	}
-}
-```
-
+```java  
+public class Worker implements Person {  
+    @Override  
+    public String doSomething(int i) {  
+        System.out.println("I'm doing something by param: " + i);  
+    }  
+}  
+```  
 
 <strong>代理对象：</strong>
 
-```java
-public class PersonProxy implements Person {
-	private Worker worker = null;
+```java  
+public class PersonProxy implements Person {  
 
-	@Override
-	public String doSomething(int i) {
-	    beforeDoSomething();
-	    if(worker == null) {
-	        worker = new Worker();
-	    }
-	    Stirng result = worker.doSomething();
+    private Worker worker = null;  
+  
+    @Override  
+  
+    public String doSomething(int i) {  
+        beforeDoSomething();  
+        if(worker == null) {  
+            worker = new Worker();  
+        }  
+  
+        Stirng result = worker.doSomething();  
+        afterDoSomething();  
+        return result;  
+    }  
+  
+    private void beforeDoSomething() {  
+        System.out.println("before doing something");  
+    }  
 
-	    afterDoSomething();
-	    return result;
-	}
-
-	private void beforeDoSomething() {
-	    System.out.println("before doing something");
-	}
-
-	private void afterDoSomething() {
-	    System.out.println("after doing something");
-	}
-}
-```
+    private void afterDoSomething() {  
+        System.out.println("after doing something");  
+    }  
+}  
+```  
 
 <strong>调用者：</strong>
 
-public class StaticProxyTest {
-
-```
-public static void main(String[] args) {
-
-    Person person = new PersonProxy();//实例化代理对象
-
-    String result = person.doSomething(666);
-
-    System.out.println("result: " + result);
-
-}
-```
-
-}
+```java  
+public class StaticProxyTest {  
+    public static void main(String[] args) {  
+        Person person = new PersonProxy();//实例化代理对象  
+        String result = person.doSomething(666);  
+        System.out.println("result: " + result);  
+    }  
+}  
+```  
 
 输出结果：
-
 before doing something
-
 I'm doing something by param: 666
-
 after doing something
-
 result: 666
 
-### 静态代理的局限性
+# 静态代理的局限性
 
 可以看到，静态代理让调用者不用再直接持有操作者的引用，而是将一切操作交由代理者去完成。但是静态代理也有它的局限性：
 
-1. 如果需要增加一个需要代理的方法，代理者的代码也必须改动进而适配新的操作；
-2. 如果需要代理者代理另外一个操作者，同样需要对代理者进行扩展并且更加麻烦。
+1. 如果需要增加一个需要代理的方法，代理者的代码也必须改动进而适配新的操作；
+2. 如果需要代理者代理另外一个操作者，同样需要对代理者进行扩展并且更加麻烦。
 
 可能有人想到可以用策略模式和工厂模式分别解决上面两个问题，但是，有没有更加巧妙的方法呢？首先，我们了解一下 Java 代码的执行过程。
 
-### 理解 Java 代码执行流程
+# 理解 Java 代码执行流程
 
 要从根本上理解动态代理的实现原理，得先从 Java 代码的执行流程说起：
 
@@ -107,49 +97,33 @@ JVM 在运行 .class 文件之前，首先通过 ClassLoader 将 .class 文件�
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JavaProxy/clipboard_20230323_041705.png)
 
-### 生成自己的 .class 文件
+# 生成自己的 .class 文件
 
-当然我们不用手动去一点一点拼装 .class 文件，目前比较常用的字节码生成工具有 [ASM](https://link.juejin.cn?target=https%3A%2F%2Fasm.ow2.io%2F) 和 [Javassist](https://link.juejin.cn?target=http%3A%2F%2Fwww.javassist.org%2F)，根据这个思路，生成 .class 文件的过程如下：
+当然我们不用手动去一点一点拼装 .class 文件，目前比较常用的字节码生成工具有 [ASM](https://link.juejin.cn?target=https%3A%2F%2Fasm.ow2.io%2F) 和 [Javassist](https://link.juejin.cn?target=http%3A%2F%2Fwww.javassist.org%2F)，根据这个思路，生成 .class 文件的过程如下：
 
-import javassist.ClassPool;
-
-import javassist.CtClass;
-
-import javassist.CtMethod;
-
-import javassist.CtNewMethod;
-
-public class Test {
-
-```
-public static void main(String[] args) throws Exception {
-
-    ClassPool pool = ClassPool.getDefault();
-
-    //创建 AutoGenerateClass 类
-
-    CtClass cc= pool.makeClass("com.guanpj.AutoGenerateClass");
-
-    //定义 show 方法
-
-    CtMethod method = CtNewMethod.make("public void show(){}", cc);
-
-    //插入方法代码
-
-    method.insertBefore("System.out.println(\"I'm just test generate .class file by javassit.....\");");
-
-    cc.addMethod(method);
-
-    //保存生成的字节码
-
-    cc.writeFile("D://temp");
-
-}
-```
-
-}
-
-复制代码
+```java  
+import javassist.ClassPool;  
+import javassist.CtClass;  
+import javassist.CtMethod;  
+import javassist.CtNewMethod;  
+   
+public class Test {  
+  
+    public static void main(String[] args) throws Exception {  
+        ClassPool pool = ClassPool.getDefault();  
+        //创建 AutoGenerateClass 类  
+        CtClass cc= pool.makeClass("com.guanpj.AutoGenerateClass");  
+        //定义 show 方法  
+        CtMethod method = CtNewMethod.make("public void show(){}", cc);  
+        //插入方法代码  
+        method.insertBefore("System.out.println(\"I'm just test generate .class file by javassit.....\");");  
+        cc.addMethod(method);  
+        //保存生成的字节码  
+        cc.writeFile("D://temp");  
+    }  
+  
+}  
+```  
 
 生成的 .class 文件如下：
 
@@ -157,367 +131,251 @@ public static void main(String[] args) throws Exception {
 
 反编译后查看内容：
 
-//
+```java  
+//  
+// Source code recreated from a .class file by IntelliJ IDEA  
+// (powered by Fernflower decompiler)  
+//  
+package com.guanpj;  
 
-// Source code recreated from a .class file by IntelliJ IDEA
+public class AutoGenerateClass {  
+    public void show() {  
+        System.out.println("I'm just test generate .class file by javassit.....");  
+    }  
 
-// (powered by Fernflower decompiler)
-
-//
-
-package com.guanpj;
-
-public class AutoGenerateClass {
-
-```
-public void show() {
-
-    System.out.println("I'm just test generate .class file by javassit.....");
-
-}
-
-
-
-public AutoGenerateClass() {
-
-}
-```
-
-}
+    public AutoGenerateClass() {  
+  
+    }  
+}  
+```  
 
 可以看到，javassit 生成的类中，除了 show() 方法之外还默认生成了一个无参的构造方法。
 
-### 自定义类加载器加载
+# 自定义类加载器加载
 
 为了能够让自定的类被加载出来，我们自定义了一个类加载器来加载指定的 .class 文件：
 
-public class CustomClassLoader extends ClassLoader {
+```java  
+public class CustomClassLoader extends ClassLoader {  
 
-```
-public CustomClassLoader() {
+    public CustomClassLoader() {  
+  
+    }  
 
-}
+    protected Class<?> findClass(String className) {  
+        String path = "D://temp//" + className.replace(".","//") + ".class";  
+        byte[] classData = getClassData(path);  
+        return defineClass(className, classData, 0, classData.length);  
+    }  
 
-
-
-protected Class<?> findClass(String className) {
-
-    String path = "D://temp//" + className.replace(".","//") + ".class";
-
-    byte[] classData = getClassData(path);
-
-    return defineClass(className, classData, 0, classData.length);
-
-}
-
-
-
-private byte[] getClassData(String path) {
-
-    try {
-
-        InputStream ins = new FileInputStream(path);
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        int bufferSize = 4096;
-
-        byte[] buffer = new byte[bufferSize];
-
-        int bytesNumRead = 0;
-
-        while ((bytesNumRead = ins.read(buffer)) != -1) {
-
-            baos.write(buffer, 0, bytesNumRead);
-
-        }
-
-        return baos.toByteArray();
-
-    } catch (IOException e) {
-
-        e.printStackTrace();
-
-    }
-
-    return null;
-
-}
-```
-
-}
+    private byte[] getClassData(String path) {  
+        try {  
+            InputStream ins = new FileInputStream(path);  
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();  
+            int bufferSize = 4096;  
+            byte[] buffer = new byte[bufferSize];  
+            int bytesNumRead = 0;  
+            while ((bytesNumRead = ins.read(buffer)) != -1) {  
+                baos.write(buffer, 0, bytesNumRead);  
+            }  
+            return baos.toByteArray();  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+        return null;  
+    }  
+}  
+```  
 
 接着，用 ClassLoader 加载刚才生成的 .class 文件：
 
-public class TestLoadClass {
+```java  
+public class TestLoadClass {  
+  
+    public static void main(String[] args) throws Exception {  
+        CustomClassLoader classLoader = new CustomClassLoader();  
+        Class clazz = classLoader.findClass("com.guanpj.AutoGenerateClass");  
+ 
+        Object object = clazz.newInstance();  
+        Method showMethod = clazz.getMethod("show", null);  
+        showMethod.invoke(object, null);  
+    }  
+}  
+```  
 
-```
-public static void main(String[] args) throws Exception {
-
-    CustomClassLoader classLoader = new CustomClassLoader();
-
-    Class clazz = classLoader.findClass("com.guanpj.AutoGenerateClass");
-
-
-
-    Object object = clazz.newInstance();
-
-    Method showMethod = clazz.getMethod("show", null);
-
-    showMethod.invoke(object, null);
-
-}
-```
-
-}
-
-后台输出如下：
+控制台输出如下：
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/JavaProxy/clipboard_20230323_041716.png)
 
 成功执行了 show 方法！
 
-### 利用 JDK 中的 Proxy 类进行动态代理
+# 利用 JDK 中的 Proxy 类进行动态代理
 
 使用动态代理的初衷是简化代码，但不管是 ASM 还是 Javassist，在进行动态代理的时候操作还是不够简便，这也违背了初衷。来看一下怎么 InvocationHandler 怎么做：
 
 <strong>创建 InvocationHandler：</strong>
 
-public static class InvocationHandlerImpl implements InvocationHandler {
+```java  
+public static class InvocationHandlerImpl implements InvocationHandler {  
+  
+    Person person;  
 
-```
-Person person;
+    //注入目标对象  
+  
+    public InvocationHandlerImpl(Person person) {  
+        this.person = person;  
+    }  
 
-
-
-//注入目标对象
-
-public InvocationHandlerImpl(Person person) {
-
-    this.person = person;
-
-}
-
-
-
-@Override
-
-public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
-    System.out.println("before calling method: " + method.getName());
-
-    //反射调用目标方法并获取返回值
-
-    Object result = method.invoke(person, args);
-
-    System.out.println("after calling method: " + method.getName());
-
-    //将返回值作为 invoke 方法的返回值
-
-    return result;
-
-}
-```
-
-}
+    @Override  
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {  
+        System.out.println("before calling method: " + method.getName());  
+        //反射调用目标方法并获取返回值  
+        Object result = method.invoke(person, args);  
+        System.out.println("after calling method: " + method.getName());  
+        //将返回值作为 invoke 方法的返回值  
+        return result;  
+    }  
+}  
+```  
 
 <strong>使用动态代理创建代理对象并使用：</strong>
 
-public class DynamicProxyTest {
-
-```
-public static void main(String[] args) {
-
-    //实例化目标对象
-
-    Person person = new Worker();
-
-    //实例化 InvocationHandler，并传入目标对象
-
-    InvocationHandlerImpl handler = new InvocationHandlerImpl(person);
-
-    //生成代理对象，并传入 InvocationHandler
-
-    Person operationProxy = (Person) 
-
-            Proxy.newProxyInstance(person.getClass().getClassLoader(),
-
-            person.getClass().getInterfaces(), handler);
-
-    //调用目标方法
-
-    String result = operationProxy.doSomething(777);
-
-    System.out.println("result: " + result);
-
-}
-```
-
-}
+```java  
+public class DynamicProxyTest {  
+  
+    public static void main(String[] args) {  
+  
+        //实例化目标对象  
+        Person person = new Worker();  
+  
+        //实例化 InvocationHandler，并传入目标对象  
+        InvocationHandlerImpl handler = new InvocationHandlerImpl(person);  
+  
+        //生成代理对象，并传入 InvocationHandler  
+        Person operationProxy = (Person)   
+                Proxy.newProxyInstance(person.getClass().getClassLoader(),  
+                person.getClass().getInterfaces(), handler);  
+  
+        //调用目标方法  
+        String result = operationProxy.doSomething(777);  
+        System.out.println("result: " + result);  
+    }  
+}  
+```  
 
 输出结果：
-
 before calling method: doSomething
-
 I'm doing something by param: 777
-
 after calling method: doSomething
-
 result: 777
 
 动态代理实际上是 JVM 在运行期动态创建 .class 字节码并加载的过程。它在运行时生成了一个静态代理类，并且这个静态代理类是通过反射的方式获取到代理对象的目标方法。
 
-public static class DynamicProxy implements Person {
+```java  
+public static class DynamicProxy implements Person {  
+  
+    InvocationHandler handler;  
 
-```
-InvocationHandler handler;
+    public DynamicProxy(InvocationHandler handler) {  
+        this.handler = handler;  
+    }  
 
-
-
-public DynamicProxy(InvocationHandler handler) {
-
-    this.handler = handler;
-
-}
-
-
-
-@Override
-
-public String doSomething(int i) {
-
-    try {
-
-        return (String) handler.invoke(this,
-
-                Person.class.getMethod("doSomething", int.class),
-
-                new Object[] { i });
-
-    } catch (Throwable throwable) {
-
-        throwable.printStackTrace();
-
-    }
-
-    return null;
-
-}
-```
-
-}
+    @Override  
+    public String doSomething(int i) {  
+        try {  
+            return (String) handler.invoke(this,  
+                    Person.class.getMethod("doSomething", int.class),  
+                    new Object[] { i });  
+        } catch (Throwable throwable) {  
+            throwable.printStackTrace();  
+        }  
+  
+        return null;  
+    }  
+}  
+```  
 
 使用这个代理对象进行代理的过程：
 
-public static void main(String[] args) {
-
-```
-//实例化目标对象
-
-Person person = new Worker();
-
-//实例化 InvocationHandler，并传入目标对象
-
-InvocationHandlerImpl handler = new InvocationHandlerImpl(person);
-
-//实例化代理对象，并传入 InvocationHandler
-
-DynamicProxy dynamicProxy = new DynamicProxy(handler);
-
-//调用目标方法
-
-String result = dynamicProxy.doSomething(888);
-
-System.out.println("result: " + result);
-```
-
-}
+```java  
+public static void main(String[] args) {  
+  
+    //实例化目标对象  
+    Person person = new Worker();  
+  
+    //实例化 InvocationHandler，并传入目标对象  
+    InvocationHandlerImpl handler = new InvocationHandlerImpl(person);  
+  
+    //实例化代理对象，并传入 InvocationHandler  
+    DynamicProxy dynamicProxy = new DynamicProxy(handler);  
+  
+    //调用目标方法  
+    String result = dynamicProxy.doSomething(888);  
+  
+    System.out.println("result: " + result);  
+}  
+```  
 
 输出结果：
-
 before calling method: doSomething
-
 I'm doing something by param: 888
-
 after calling method: doSomething
-
 result: 888
 
-复制代码
+# 利用 CGLIB 进行动态代理
 
-### 利用 CGLIB 进行动态代理
-
-用 Proxy 类生成代理类的方法为 newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h) ，第二个参数是操作者的接口数组，意味着只能代理它实现的接口里的方法，对于本来在操作者类中定义的方法表示无能为力，CGLIB(Code Generation Library) 解决了这个问题。
+用 Proxy 类生成代理类的方法为 `newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)` ，第二个参数是操作者的接口数组，意味着只能代理它实现的接口里的方法，对于本来在操作者类中定义的方法表示无能为力，CGLIB(Code Generation Library) 解决了这个问题。
 
 <strong>MethodInterceptorImpl：</strong>
 
-public class MethodInterceptorImpl implements MethodInterceptor {
-
-```
-@Override
-
-public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-
-    System.out.println("before calling method:" + method.getName());
-
-    proxy.invokeSuper(obj, args);
-
-    System.out.println("after calling method:" + method.getName());
-
-    return null;
-
-}
-```
-
-}
+```java  
+public class MethodInterceptorImpl implements MethodInterceptor {  
+  
+    @Override  
+    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {  
+        System.out.println("before calling method:" + method.getName());  
+        proxy.invokeSuper(obj, args);  
+        System.out.println("after calling method:" + method.getName());  
+  
+        return null;  
+    }  
+}  
+```  
 
 <strong>调用者：</strong>
 
-public class ProxyTest {
+```java  
+public class ProxyTest {  
+  
+    public static void main(String[] args) {  
+        Operator operator = new Operator();  
+        MethodInterceptorImpl methodInterceptorImpl = new MethodInterceptorImpl();  
 
-```
-public static void main(String[] args) {
-
-    Operator operator = new Operator();
-
-    MethodInterceptorImpl methodInterceptorImpl = new MethodInterceptorImpl();
-
-
-
-    //初始化加强器对象
-
-    Enhancer enhancer = new Enhancer();
-
-    //设置代理类
-
-    enhancer.setSuperclass(operator.getClass());
-
-    //设置代理回调
-
-    enhancer.setCallback(methodInterceptorImpl);
-
-
-
-    //创建代理对象
-
-    Operator operationProxy = (Operator) enhancer.create();
-
-    //调用操作方法
-
-    operationProxy.doSomething();
-
-}
-```
-
-}
+        //初始化加强器对象  
+        Enhancer enhancer = new Enhancer();  
+  
+        //设置代理类  
+        enhancer.setSuperclass(operator.getClass());  
+  
+        //设置代理回调  
+        enhancer.setCallback(methodInterceptorImpl);  
+  
+        //创建代理对象  
+        Operator operationProxy = (Operator) enhancer.create();  
+  
+        //调用操作方法  
+        operationProxy.doSomething();  
+    }  
+}  
+```  
 
 使用 CGLIB 进行动态代理的过程分为四个步骤：
 
-- 使用 MethodInterceptorImpl 实现 MethodInterceptor 接口，并在 intercept 方法中进行额外的操作
-- 创建增强器 Enhance 并设置被代理的操作类
-- 生成代理类
-- 调用代理对象的操作方法
+- 使用 MethodInterceptorImpl 实现 MethodInterceptor 接口，并在 intercept 方法中进行额外的操作
+- 创建增强器 Enhance 并设置被代理的操作类
+- 生成代理类
+- 调用代理对象的操作方法
 
-### 总结
+# 总结
 
 无论是静态代理还是动态代理，都能一定程度地解决我们的问题，在开发过程中可以根据实际情况选择合适的方案。总之，没有好不好的方案，只有适不适合自己项目的方案，我们应该深入研究和理解方案背后的原理，以便能够应对开发过程中产生的变数。

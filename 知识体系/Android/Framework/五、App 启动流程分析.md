@@ -14,11 +14,11 @@ date modified: 2023-03-24
 
 如果你是首次阅读这个过程的源码，建议你忽略一些细枝末节的代码，先抓主干代码，从整体上理解代码的执行流程（右下角文章目录视图中可以点击跳转到相应章节），否则将会被细节的代码扰乱思路。最后可以回头多看几遍，这时候如果有需要可以追踪一些枝干代码，做到融会贯通。
 
-## 1. Launcher —— AMS
+# 1. Launcher —— AMS
 
-### 1.1 调用过程分析
+## 1.1 调用过程分析
 
-#### 1.1.1 Launcher.onClick
+### 1.1.1 Launcher.onClick
 
 在 Launcher app 的主 Activity —— Launcher.java 中，App 图标的点击事件最终会回调 Launcher.java 中的 onClick 方法，
 
@@ -51,7 +51,7 @@ public void onClick(View v) {
 }
 ```
 
-#### 1.1.2 Launcher.onClickAppShortcut
+### 1.1.2 Launcher.onClickAppShortcut
 
 如果是快捷方式图标，则调用 onClickAppShortcut 方法进而调用 startAppShortcutOrInfoActivity 方法：
 
@@ -87,7 +87,7 @@ public void onClick(View v) {
 }
 ```
 
-#### 1.1.3 Launcher.startActivity
+### 1.1.3 Launcher.startActivity
 
 获取相应 App 的 Intent 信息之后，调用 startActivity 方法：
 
@@ -119,7 +119,7 @@ private boolean startActivity(View v, Intent intent, Object tag) {
 }
 ```
 
-#### 1.1.4 Activity.startActivity
+### 1.1.4 Activity.startActivity
 
 这里最终调用了 Activity 中的 startActivity 方法，并且设置 Flag 为 FLAG_ACTIVITY_NEW_TASK。到此为止，已经跟启动普通的 Activity 流程汇合起来了，继续往下分析。
 
@@ -139,7 +139,7 @@ public void startActivity(Intent intent, @Nullable Bundle options) {
 }
 ```
 
-#### 1.1.5 Activity.startActivityForResult
+### 1.1.5 Activity.startActivityForResult
 
 调用 Activity 的 startActivityForResult 方法
 
@@ -158,7 +158,7 @@ public void startActivityForResult(@RequiresPermission Intent intent, int reques
 }
 ```
 
-#### 1.1.6 Instrumentation.execStartActivity
+### 1.1.6 Instrumentation.execStartActivity
 
 [frameworks/base/core/java/android/app/Instrumentation.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/java/android/app/Instrumentation.java)：
 
@@ -184,12 +184,11 @@ public ActivityResult execStartActivity(
 }
 ```
 
-#### 1.1.7 ActivityManagerProxy.startActivity
+### 1.1.7 ActivityManagerProxy.startActivity
 
 以上过程是在 Launcher App 所在的进程中发生的，在我的另外一篇文章[借助 AIDL 理解 Android Binder 机制——AIDL 的使用和原理分析](https://guanpj.cn/2017/08/13/Android-Binder-Apply/)中我们分析了 AIDL 的实现过程，由于远程 Service 跟使用 Service 的 Activity 不在同一个进程中，因此他们之间交互需要通过 Binder IPC 机制的支持，在这个过程中 Client 首先获取到 Server 端的代理对象，在 Client 看来 Server 代理对象同样具有 Server 本地对象承诺的能力，因此 Client 可以调用 Server 代理对象跟 Sever 本地对象进行数据交互，Binder 驱动作为桥梁在他们中间起到中间人的作用。
 
 同样，在 [Android 系统启动流程分析](https://guanpj.cn/2017/09/17/Android-System-Startup-Flow-Analyze/)中我们了解到，AMS 是运行在 system_server 线程中的，这时 AMS 就相当于 AIDL 中的远程 Service，App 进程要与 AMS 交互，需要通过 AMS 的代理对象 AMP(ActivityManagerProxy) 来完成，来看 ActivityManagerNative.getDefault() 拿到的是什么：
-
 [frameworks/base/core/java/android/app/ActivityManagerNative.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/java/android/app/ActivityManagerNative.java)：
 
 ```java
@@ -313,7 +312,7 @@ public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws
 
 AMN 是一个抽象类，它的 startActivity 为抽象方法，具体的实现在 ActivityManagerService.java 中。
 
-#### 1.1.8 ActivityManagerService.startActivity
+### 1.1.8 ActivityManagerService.startActivity
 
 [frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/services/core/java/com/android/server/am/ActivityManagerService.java)：
 
@@ -335,7 +334,7 @@ public final class ActivityManagerService extends ActivityManagerNative
 }
 ```
 
-### 1.2 小结
+## 1.2 小结
 
 从 Launcher App 到 AMS 的调用过程中使用了 Binder IPC 机制，如果你已经看了上面提到的我之前写的两篇文章——[借助 AIDL 理解 Android Binder 机制——Binder 来龙去脉](https://guanpj.cn/2017/08/10/Android-Binder-Principle-Analyze/)和[借助 AIDL 理解 Android Binder 机制——AIDL 的使用和原理分析](https://guanpj.cn/2017/08/13/Android-Binder-Apply/)，并且运行了文章中使用到的 [Demo](https://github.com/guanpj/BinderDemo)，你应该可以发现，相对于 AIDL 的调用过程，调用方 Launcher App 相当于 AIDL 过程中的 Activity 所在的 App，充当 Clinent 的角色；AMS 相当于远程 Service 的角色，充当 Server 端角色，他们的调用过程总体上都是一样的。
 
@@ -343,11 +342,11 @@ public final class ActivityManagerService extends ActivityManagerNative
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045438.png)
 
-## 2. AMS —— zygote
+# 2. AMS —— zygote
 
-### 2.1 调用过程分析
+## 2.1 调用过程分析
 
-#### 2.1.1 ActivityManagerService.startActivityAsUser
+### 2.1.1 ActivityManagerService.startActivityAsUser
 
 接着从 AMS 的 startActivityAsUser 方法开始分析：
 
@@ -367,7 +366,7 @@ public final int startActivityAsUser(IApplicationThread caller, String callingPa
 }
 ```
 
-#### 2.1.2 ActivityStarter.startActivityMayWait
+### 2.1.2 ActivityStarter.startActivityMayWait
 
 继续跟进 [frameworks/base/services/core/java/com/android/server/am/ActivityStarter.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/services/core/java/com/android/server/am/ActivityStarter.java)：
 
@@ -395,7 +394,7 @@ final int startActivityMayWait(IApplicationThread caller, int callingUid,
 }
 ```
 
-#### 2.1.3 ActivityStarter.startActivityLocked
+### 2.1.3 ActivityStarter.startActivityLocked
 
 查看 startActivityLocked 方法：
 
@@ -416,7 +415,7 @@ final int startActivityLocked(IApplicationThread caller, Intent intent, Intent e
 }
 ```
 
-#### 2.1.4 ActivityStarter.doPendingActivityLaunchesLocked
+### 2.1.4 ActivityStarter.doPendingActivityLaunchesLocked
 
 查看 doPendingActivityLaunchesLocked 方法：
 
@@ -439,7 +438,7 @@ final void doPendingActivityLaunchesLocked(boolean doResume) {
 }
 ```
 
-#### 2.1.5 ActivityStarter.startActivityUnchecked
+### 2.1.5 ActivityStarter.startActivityUnchecked
 
 查看 startActivityUnchecked 方法：
 
@@ -455,7 +454,7 @@ private int startActivityUnchecked(final ActivityRecord r, ActivityRecord source
 }
 ```
 
-#### 2.1.6 ActivityStackSupervisor.resumeFocusedStackTopActivityLocked
+### 2.1.6 ActivityStackSupervisor.resumeFocusedStackTopActivityLocked
 
 [frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/services/core/java/com/android/server/am/ActivityStackSupervisor.java)：
 
@@ -474,7 +473,7 @@ boolean resumeFocusedStackTopActivityLocked(ActivityStack targetStack, ActivityR
 }
 ```
 
-#### 2.1.7 ActivityStack.resumeTopActivityUncheckedLocked
+### 2.1.7 ActivityStack.resumeTopActivityUncheckedLocked
 
 查看 [ActivityStack]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/services/core/java/com/android/server/am/ActivityStack.java) 的 resumeTopActivityUncheckedLocked 方法：
 
@@ -492,7 +491,7 @@ boolean resumeTopActivityUncheckedLocked(ActivityRecord prev, ActivityOptions op
 }
 ```
 
-#### 2.1.8 ActivityStack.resumeTopActivityInnerLocked
+### 2.1.8 ActivityStack.resumeTopActivityInnerLocked
 
 查看 resumeTopActivityInnerLocked 方法：
 
@@ -515,7 +514,7 @@ private boolean resumeTopActivityInnerLocked(ActivityRecord prev, ActivityOption
 }
 ```
 
-#### 2.1.9 ActivityStackSupervisor.startSpecificActivityLocked
+### 2.1.9 ActivityStackSupervisor.startSpecificActivityLocked
 
 回到 ActivityStackSupervisor 的 startSpecificActivityLocked 方法：
 
@@ -548,7 +547,7 @@ void startSpecificActivityLocked(ActivityRecord r, boolean andResume, boolean ch
 
 首先，在方法中获取了当前 Activity 附属的 Application，如果已经在运行了，说明这个 App 是已经被启动过了的，这时候调用 <strong>realStartActivityLocked</strong> 方法就可以进入下一步的流程了，同一个 App 中不同 Activity 的相互启动就是走的这个流程。当 Application 没有运行的时候，就需要调用 AMS 的 startProcessLocked 方法启动一个进程去承载它然后完成后续的工作，顺便铺垫一下，当新进程被启动完成后还会调用回到这个方法，查看 AMS 的 startProcessLocked 方法：
 
-#### 2.1.10 ActivityManagerService.startProcessLocked
+### 2.1.10 ActivityManagerService.startProcessLocked
 
 ```java
 final ProcessRecord startProcessLocked(String processName,
@@ -562,7 +561,7 @@ final ProcessRecord startProcessLocked(String processName,
 }
 ```
 
-#### 2.1.11 ActivityManagerService.startProcessLocked
+### 2.1.11 ActivityManagerService.startProcessLocked
 
 调用 startProcessLocked 方法：
 
@@ -578,7 +577,7 @@ final ProcessRecord startProcessLocked(String processName, ApplicationInfo info,
 }
 ```
 
-#### 2.1.12 ActivityManagerService.startProcessLocked
+### 2.1.12 ActivityManagerService.startProcessLocked
 
 调用 startProcessLocked 的重载方法：
 
@@ -600,7 +599,7 @@ private final void startProcessLocked(ProcessRecord app, String hostingType,
 }
 ```
 
-#### 2.1.13 Process.start
+### 2.1.13 Process.start
 
 [frameworks/base/services/core/java/android/os/Process.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/java/android/os/Process.java)：
 
@@ -629,7 +628,7 @@ public static final ProcessStartResult start(final String processClass,
 }
 ```
 
-#### 2.1.14 Process.startViaZygote
+### 2.1.14 Process.startViaZygote
 
 查看 startViaZygote 方法：
 
@@ -654,7 +653,7 @@ private static ProcessStartResult startViaZygote(final String processClass,
 }
 ```
 
-#### 2.1.15 Process.zygoteSendArgsAndGetResult、Process.openZygoteSocketIfNeeded
+### 2.1.15 Process.zygoteSendArgsAndGetResult、Process.openZygoteSocketIfNeeded
 
 查看 zygoteSendArgsAndGetResult 方法：
 
@@ -730,17 +729,17 @@ private static ZygoteState openZygoteSocketIfNeeded(String abi) throws ZygoteSta
 }
 ```
 
-### 2.2 小结
+## 2.2 小结
 
 如果是从桌面新启动一个 App 中的 Activity，此时是没有进程去承载这个 App 的，因此需要通过 AMS 向 zygote 继承发起请求去完成这个任务，AMS 运行在 system_server 进程中，它通过 Socket 向 zygote 发起 fock 进程的请求，从 AMS 开始的调用时序图如下：
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045449.png)
 
-## 3. zygote —— ActivityThread
+# 3. zygote —— ActivityThread
 
-### 3.1 调用过程分析
+## 3.1 调用过程分析
 
-#### 3.1.1 ZygoteInit.main
+### 3.1.1 ZygoteInit.main
 
 在 [Android 系统启动流程分析](https://guanpj.cn/2017/09/17/Android-System-Startup-Flow-Analyze/) 文中提到过 zygote 进程的其中一项任务就是：
 
@@ -765,7 +764,7 @@ public static void main(String argv[]) {
 }
 ```
 
-#### 3.1.2 ZygoteInit.runSelectLoop
+### 3.1.2 ZygoteInit.runSelectLoop
 
 查看 runSelectLoop 方法：
 
@@ -797,7 +796,7 @@ private static void runSelectLoop(String abiList) throws MethodAndArgsCaller {
 }
 ```
 
-#### 3.1.3 ZygoteConnection.runOnce
+### 3.1.3 ZygoteConnection.runOnce
 
 查看 [frameworks/base/core/java/com/android/internal/os/ZygoteConnection.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/java/com/android/internal/os/ZygoteConnection.java) 的 runOnce 方法：
 
@@ -851,7 +850,7 @@ boolean runOnce() throws ZygoteInit.MethodAndArgsCaller {
 }
 ```
 
-#### 3.1.4 ZygoteConnection.handleChildProc
+### 3.1.4 ZygoteConnection.handleChildProc
 
 首先解析 Socket 客户端传过来的参数，[Zygote.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/java/com/android/internal/os/Zygote.java) 的 forkAndSpecialize 返回的 pid == 0 的时候表示此时在 fock 出来的子进程中执行，继续调用 handleChildProc 方法，并将参数继续层层传递：
 
@@ -879,7 +878,7 @@ private void handleChildProc(Arguments parsedArgs, FileDescriptor[]
 }
 ```
 
-#### 3.1.5 RuntimeInit.zygoteInit
+### 3.1.5 RuntimeInit.zygoteInit
 
 查看 [frameworks/base/core/java/com/android/internal/os/RuntimeInit.java]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/java/com/android/internal/os/RuntimeInit.java) 的 zygoteInit 方法：
 
@@ -902,7 +901,7 @@ public static final void zygoteInit(int targetSdkVersion, String[] argv,
 }
 ```
 
-#### 3.1.6 RuntimeInit.applicationInit
+### 3.1.6 RuntimeInit.applicationInit
 
 继续调用 applicationInit 方法：
 
@@ -915,7 +914,7 @@ private static void applicationInit(int targetSdkVersion, String[] argv, ClassLo
 }
 ```
 
-#### 3.1.7 RuntimeInit.invokeStaticMain
+### 3.1.7 RuntimeInit.invokeStaticMain
 
 主要调用了 invokeStaticMain 方法：
 
@@ -952,7 +951,7 @@ private static void invokeStaticMain(String className, String[] argv, ClassLoade
 }
 ```
 
-#### 3.1.8 MethodAndArgsCaller.run
+### 3.1.8 MethodAndArgsCaller.run
 
 回到 ZygoteInit 的 main 方法：
 
@@ -999,7 +998,7 @@ public static class MethodAndArgsCaller extends Exception
 }
 ```
 
-#### 3.1.9 ActivityThread .main
+### 3.1.9 ActivityThread .main
 
 最后通过反射调用到 ActivityThread 的 main 方法：
 
@@ -1028,17 +1027,17 @@ public static void main(String[] args) {
 }
 ```
 
-### 3.2 小结
+## 3.2 小结
 
 zygote 进程作为 Socket 服务端在接收到作为客户端的 AMS 发送过来的请求和参数之后，fock 出新的进程并根据各种参数进程了初始化的工作，这个过程和 zygote 启动 system_server 进程的过程如出一辙，时序图如下所示：
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045452.png)
 
-## 4. ActivityThread —— Activity
+# 4. ActivityThread —— Activity
 
-### 4.1 调用过程分析
+## 4.1 调用过程分析
 
-#### 4.1.1 ActivityThread.attach
+### 4.1.1 ActivityThread.attach
 
 上一小节的最后，ActivityThread 的 main 通过反射被运行起来了，接着会调用 ActivityThread 的 attach 方法：
 
@@ -1065,7 +1064,7 @@ private void attach(boolean system) {
 
 这里，我们再一次通过 Binder IPC 机制跟 AMS 通信，通信模型跟前面 Launcher App 调用 AMS 的 startActivity 方法一样，getDefault 过程不重复分析，这次是调用了 AMS 的 attachApplication 方法，注意这里将 ApplicationThead 类型的 mAppThread 对象作为参数传递了过去，ApplicationThead 是 ActivityThread 的一个内部类，后面我们会讲到，先查看 AMP 的 attachApplication 方法：
 
-#### 4.1.2 ActivityManagerProxy.attachApplication
+### 4.1.2 ActivityManagerProxy.attachApplication
 
 ```java
 public void attachApplication(IApplicationThread app) throws RemoteException {
@@ -1080,7 +1079,7 @@ public void attachApplication(IApplicationThread app) throws RemoteException {
 }
 ```
 
-#### 4.1.3 ActivityManagerNative.onTransact
+### 4.1.3 ActivityManagerNative.onTransact
 
 ```java
 public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
@@ -1105,7 +1104,7 @@ public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws
 
 asInterface 将 ActivityThread 对象转换成了 [ApplicationThreadNative(ATN)]([https://android.googlesource.com/platform/frameworks/base/](https://android.googlesource.com/platform/frameworks/base/) /nougat-release/core/java/android/app/ActivityManagerNative.java) 的 Binder 代理对象 ApplicationThreadProxy(ATP)，并作为参数传给 attachApplication 方法，其中 ATP 是 ATN 的内部类。
 
-#### 4.1.4 ActivityManagerService.attachApplication
+### 4.1.4 ActivityManagerService.attachApplication
 
 ```java
 public final void attachApplication(IApplicationThread thread) {
@@ -1118,7 +1117,7 @@ public final void attachApplication(IApplicationThread thread) {
 }
 ```
 
-#### 4.1.5 ActivityManagerService.attachApplicationLocked
+### 4.1.5 ActivityManagerService.attachApplicationLocked
 
 ```java
 private final boolean attachApplicationLocked(IApplicationThread thread, int pid) {
@@ -1212,7 +1211,7 @@ private final boolean attachApplicationLocked(IApplicationThread thread, int pid
 
 首先，通过 ATP 使用 Binder 向 ATN 发起 bindApplication 请求，然后通过 normalMode 字段判断是否为 Activity，如果是则执行 ActivityStackSupervisor 的 attachApplicationLocked 方法。
 
-##### <strong>4.1.5.1 ActivityThread.java::ApplicationThread.bindApplication</strong>
+#### <strong>4.1.5.1 ActivityThread.java::ApplicationThread.bindApplication</strong>
 
 thread 对象类型是 ATP，通过 Binder 驱动调到了 ATN 的方法，ATN 是一个抽象类，它的实现都委托给了 ApplicationThread(这跟 AMS 跟 AMN 的关系一样)，ApplicationThread 作为 ActivityThread 的内部类存在，它的 binderApplication 方法如下：
 
@@ -1286,7 +1285,7 @@ private void handleBindApplication(AppBindData data) {
 }
 ```
 
-##### <strong>4.1.5.2 ActivityStackSupervisor.attachApplicationLocked</strong>
+#### <strong>4.1.5.2 ActivityStackSupervisor.attachApplicationLocked</strong>
 
 在 <strong>4.1.4</strong> 小节中通过 Binder 向 ActivityThread 发起 bindApplication 请求后，会根据启动组件的类型去做相应的处理，如果是 Acitivity，则会调用 ActivityStackSupervisor 的 attachApplicationLocked 方法：
 
@@ -1322,7 +1321,7 @@ boolean attachApplicationLocked(ProcessRecord app) throws RemoteException {
 }
 ```
 
-###### <strong>4.1.5.2.1 ActivityStackSupervisor.realStartActivityLocked</strong>
+##### <strong>4.1.5.2.1 ActivityStackSupervisor.realStartActivityLocked</strong>
 
 前面 <strong>2.1.8 ActivityStackSupervisor.startSpecificActivityLocked</strong> 小节中分析过，如果当前 Activity 依附的 Application 已经被启动，则调用 realStartActivityLocked 方法，否则创建新的进程，再创建新的进程之后，两个流程的在这里合并起来了：
 
@@ -1359,7 +1358,7 @@ final boolean realStartActivityLocked(ActivityRecord r, ProcessRecord app, boole
 
 这里有一次使用 Binder 调用 ApplicationThread 的 scheduleLaunchActivity 方法。
 
-###### <strong>4.1.5.2.2 ApplicationThread.scheduleLaunchActivity</strong>
+##### <strong>4.1.5.2.2 ApplicationThread.scheduleLaunchActivity</strong>
 
 ```java
 public final void scheduleLaunchActivity(Intent intent, IBinder token, int ident, ActivityInfo 
@@ -1378,7 +1377,7 @@ public final void scheduleLaunchActivity(Intent intent, IBinder token, int ident
 
 上面提到过，H 是 ActivityThread 中一个 Handler 类，它接收到 LAUNCH_ACTIVITY 消息后会调用 handleLaunchActivity 方法。
 
-###### <strong>4.1.5.2.3 ActivityThread.handleLaunchActivity</strong>
+##### <strong>4.1.5.2.3 ActivityThread.handleLaunchActivity</strong>
 
 ```java
 private void handleLaunchActivity(ActivityClientRecord r, Intent customIntent) {
@@ -1407,7 +1406,7 @@ private void handleLaunchActivity(ActivityClientRecord r, Intent customIntent) {
 }
 ```
 
-###### <strong>4.1.4.2.4 ApplicationThread.performLaunchActivity</strong>
+##### <strong>4.1.4.2.4 ApplicationThread.performLaunchActivity</strong>
 
 ```java
 private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
@@ -1469,7 +1468,7 @@ private Activity performLaunchActivity(ActivityClientRecord r, Intent customInte
 }
 ```
 
-###### <strong>4.1.5.2.5 Instrumentation.callActivityOnCreate</strong>
+##### <strong>4.1.5.2.5 Instrumentation.callActivityOnCreate</strong>
 
 ```java
 public void callActivityOnCreate(Activity activity, Bundle icicle,
@@ -1481,7 +1480,7 @@ public void callActivityOnCreate(Activity activity, Bundle icicle,
 }
 ```
 
-###### <strong>4.1.5.2.6 Activity.performCreate</strong>
+##### <strong>4.1.5.2.6 Activity.performCreate</strong>
 
 ```java
 final void performCreate(Bundle icicle, PersistableBundle persistentState) {
@@ -1494,13 +1493,13 @@ final void performCreate(Bundle icicle, PersistableBundle persistentState) {
 
 终于，onCreate 方法被调用了！！！
 
-### 4.2 小结
+## 4.2 小结
 
 从 ActivityThread 到最终 Activity 被创建及生命周期被调用，核心过程涉及到了三次 Binder IPC 过程，分别是：ActivityThread 调用 AMS 的 attachApplication 方法、AMS 调用 ApplicationThread 的 bindApplication 方法、ASS 调用 Application 的 attachApplicationLocked 方法，整个过程的时序图如下：
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/App-Startup/clipboard_20230323_045420.png)
 
-## 5. 总结
+# 5. 总结
 
 纵观整个过程，从 Launcher 到 AMS、从 AMS 再到 Zygote、再从 Zygote 到 ActivityThread，最后在 ActivitThread 中层层调用到 Activity 的生命周期方法，中间涉及到了无数的细节，但总体上脉络还是非常清晰的，各个 Android 版本的 Framework 层代码可以某些过程的实现不太一样，但是整个调用流程大体上也是相同的，借用 [Gityuan](http://gityuan.com/android/) 大神的一张图作为结尾：
 

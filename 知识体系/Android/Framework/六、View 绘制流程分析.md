@@ -14,7 +14,7 @@ date modified: 2023-03-24
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045616.png)
 
-## 步骤一：初始化 PhoneWindow 和 WindowManager
+# 一：初始化 PhoneWindow 和 WindowManager
 
 如上图所示，在 Activity 的 onCreate()、onStart() 和 onResume() 等生命周期被调用之前，它的 attach() 方法将会先被调用，因此，我们将 attach() 方法作为这篇文章主线的开头：
 
@@ -62,9 +62,9 @@ public void setWindowManager(WindowManager wm, IBinder appToken, String appName,
 
 因此，Acitvity 中的 mWindow 变量就是 PhoneWindow 类的实例，而 mWindowManager 是 WindowManagerImpl 类的实例，attach() 方法的主要工作就是初始化这两个变量。
 
-## 步骤二：初始化 DecorView
+# 二：初始化 DecorView
 
-### 源码分析
+## 源码分析
 
 接下来到了 onCreate 方法，我们都知道，如果想要让自己设计的 layout 布局文件或者 View 显示在 Activity 中，必须要在 Activity 的 onCreate() 方法中应该调用 setContentView() 方法将我们的布局 id 或者 View 传递过去，查看其中一个 setContentView() 方法：
 
@@ -276,7 +276,7 @@ public void setContentView(int layoutResID) {
 }
 ```
 
-### 小结
+## 小结
 
 至此，setContentView() 方法的流程就走完了，总体来看分为三个步骤：
 
@@ -294,9 +294,9 @@ Activity、PhoneWindow、DecorView 和 ContentView 的关系如下图所示：
 
 但是，此时我们的布局还没有显示出来，接着往下看。
 
-## 步骤三：初始化 ViewRootImpl 并关联 DecorView
+# 三：初始化 ViewRootImpl 并关联 DecorView
 
-### 源码分析
+## 源码分析
 
 在开篇的时序图中我们可以看到，ActivityThread 在 handleLaunchActivity() 方法中的 performLaunchActivity() 操作间接调用了 Activity 的 attach() 和 onCreate()：
 
@@ -447,15 +447,15 @@ public void addView(View view, ViewGroup.LayoutParams params,
 
 上面的变量中，mViews 存储的是所有 Window 对应的 View，mRoots 存储的是所有 Window 对应的 ViewRootImpl 对象，mParams 存储的是所有 Window 对应的布局参数。
 
-### 小结
+## 小结
 
 可以看到，ViewRootImpl 是 DecorView 的管理者，它负责 View Tree 的测量、布局和绘制，以及后面会说到的通过 Choreographer 来控制 View Tree 的刷新操作。
 
-## 步骤四：建立 PhoneWindow 和 WindowManagerService 之间的连接
+# 四：建立 PhoneWindow 和 WindowManagerService 之间的连接
 
 WMS 是所有 Window 窗口的管理员，负责 Window 的添加和删除、Surface 的管理和事件的派发等等，因此每一个 Activity 中的 PhoneWindow 对象如果需要显示等操作，就必须通过与 WMS 的交互才能进行。
 
-### 源码分析
+## 源码分析
 
 接着上一个步骤的流程，查看 ViewRootImpl 的 setView 方法：
 
@@ -514,17 +514,17 @@ public int addToDisplay(IWindow window, int seq, WindowManager.LayoutParams attr
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045637.png)
 
-### 小结
+## 小结
 
 用一张图总结 Activity、Window 和 WMS 之间的关系：
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045640.png)
 
-## 步骤五：建立与 SurfaceFlinger 的连接
+# 五：建立与 SurfaceFlinger 的连接
 
 SurfaceFlinger 是 Android 最重要的系统服务之一，它的职责主要是进行 Layer(Surface 在 Native 叫法) 的合成和渲染。
 
-### 源码分析
+## 源码分析
 
 接上面的步骤，WindowState 的 attach() 方法将会调用到 Session 的 windowAddedLocked() 方法：
 
@@ -612,13 +612,13 @@ Client 类实现了 ISurfaceComposerClient(继承了 IInterface) 接口，因此
 
 initClicent 方法做了一些错误检查，然后返回 Client 本身。
 
-### 小结
+## 小结
 
 这个过程如下图：
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045645.png)
 
-## 步骤六：申请 Surface
+# 六：申请 Surface
 
 经过步骤四和步骤五，ViewRootImpl 与 WMS、SurfaceFlinger 都已经建立连接，但是这时 View 还是没有显示出来。我们都知道，所有的 UI 最终都是要通过 Surface 来显示的，那么 Surface 是什么时候创建的呢？回到步骤四开头部分 ViewRootImpl 的 setView 方法：
 
@@ -774,7 +774,7 @@ private int createSurfaceControl(Surface outSurface, int result, WindowState win
 
 这里首先调用 WindowStateAnimator 的 createSurfaceLocked 生成一个真正有效的 Surface 对象，这个对象是在 Native 层的，接着 getSurface 方法将 Java 层的 Surface 对象与其关联起来。
 
-## 步骤七：正式绘制 View
+# 七：正式绘制 View
 
 接上一步骤的内容，申请了 Surface 之后，ViewRootImpl 的 performTraversals() 方法将会继续执行，这个方法内容相当多，忽略条件判断，精简过后如下：
 
@@ -805,7 +805,7 @@ private void performTraversals() {
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045652.png)
 
-### 理解 MeasureSpec
+## 理解 MeasureSpec
 
 MeasureSpec 是 View 的一个内部类，简单来说就是一个 32 位的 int 值，采用它的高 2 位表示三种 SpecMode（测量模式），低 30 位用来表示 SpecSize（某种测量模式下的规格大小）。采用这种表示方法是为了避免创建过多的对象以减少内存分配，MeasureSpec 的定义如下：
 
@@ -982,7 +982,7 @@ public static int getChildMeasureSpec(int spec, int padding, int childDimesion) 
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045658.png)
 
-### Measure 流程分析
+## Measure 流程分析
 
 回到 performTraversals() 方法中，获取到 DecorView 的 MeasureSpec 后接着会调用 performMeasure() 方法：
 
@@ -1131,7 +1131,7 @@ protected void measureChildWithMargins(View child,
 
 此时实际上调用的也是 View 的 measure() 方法，从上面的内容可以知道，子元素的 onMeasure() 方法又会被调用，这样便实现了层层递归地调用到了每个子元素的 onMeasure() 方法进行测量。
 
-### Layout 流程分析
+## Layout 流程分析
 
 再次回到 performTraversals() 方法，执行完 performMeasure() 遍历测量所有子元素之后，接着会调用 performLayout() 方法：
 
@@ -1314,7 +1314,7 @@ void layoutChildren(int left, int top, int right, int bottom, boolean forceLeftG
 
 Layout 流程的作用是 ViewGroup 用来确定它的子元素的位置， 当 ViewGroup 的位置被确定后，在它的 onLayout() 方法中就会遍历调用所有子元素的 layout() 方法，子元素的 layout() 方法被调用的时候它的 onLayout() 方法又会被调用，这样就实现了层层递归。
 
-### Draw 流程分析
+## Draw 流程分析
 
 最后，又一次回到主线中的 performTraversals() 方法，此时，经过 Measure 流程确定了每个 View 的大小并且经过 Layout 流程确定了每个 View 的摆放位置，下面将进入下一个流程确定每个 View 的具体绘制细节。查看 performDraw() 方法内容：
 
@@ -1660,13 +1660,13 @@ protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
 
 在 ViewGroup 的 dispatchDraw() 中，遍历每个子元素并调用了它们的 draw() 方法，由此实现了层层递归调用，最终完成绘制。
 
-### 小结
+## 小结
 
 纵观整个 Measure、Layout 和 Draw 过程，使用流程图表示如下：
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/View-Draw/clipboard_20230323_045712.png)
 
-## 步骤五：显示 View
+# 八：显示 View
 
 不知道你还记不记得，上一步骤中执行的 View 的 Measure、Layout 和 Draw 流程都是前面 handleResumeActivity() 中的 wm.addView() 方法为源头的，回顾 handleResumeActivity() 方法：
 
@@ -1741,7 +1741,7 @@ void makeVisible() {
 
 执行 DecorView 的 setVisibility() 之后，我们的 View 才正式出现在屏幕上！
 
-## 总结
+# 总结
 
 - Window 是一个抽象类，提供了各种窗口操作的方法；
 - PhoneWindow 是 Window 的唯一实现类，每个 Acitvity 中都会有一个 PhoneWindw 实例；

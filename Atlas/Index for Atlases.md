@@ -4,9 +4,6 @@ date modified: 2022-08-20
 tags: dataview
 title: Index for Atlases
 ---
-
-up:: [[ACCESS 笔记组织法]]
-
 ```dataviewjs
 // 获取当前文件所在的文件夹
 const currentFolder = dv.current().file.folder

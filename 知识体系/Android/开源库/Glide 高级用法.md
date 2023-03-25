@@ -870,7 +870,7 @@ Display#getRealSize 返回的是屏幕真实的尺寸；而 Display#getSize 返�
 
 对于调用过 dontTransform() 方法的例子（例 2、例 4）来说，decodeHelper.getTransformation 返回的是一个 UnitTransformation，其 transform 没有干任何有意义的事情，也就是说不进行 transform。
 
-对于普通的 Glide 加载请求（例 1、例 3）来说，一个 URL 已经经过一系列 Registry 的变换，到这里就变成 了 Bitmap.class，所以在第 11 行调用的是 FitCenter().transform(Context, Resource<Bitmap>, int, int ) 方法。而 FitCenter 又是 BitmapTransformation 的子类，所以先看看 BitmapTransformation：
+对于普通的 Glide 加载请求（例 1、例 3）来说，一个 URL 已经经过一系列 Registry 的变换，到这里就变成 了 Bitmap.class，所以在第 11 行调用的是 `FitCenter().transform(Context, Resource<Bitmap>, int, int )` 方法。而 FitCenter 又是 BitmapTransformation 的子类，所以先看看 BitmapTransformation：
 
 ```java
 public abstract class BitmapTransformation implements Transformation<Bitmap> {
@@ -1109,7 +1109,7 @@ Rotate、RoundedCorners、CircleCrop 效果图如下：
 
 看完图后，这三个 Transformation 的特点一目了然了。注意上面第 2、3 个加载时，因为 ImageView 高度为 wrap_content，所以需要加上 FitCenter，使 Bitmap 的宽高达到我们的预期（图片宽高为 1920*1080，ImageView 宽度为 540，因此高度为 (540/1920*1080=303.75，转为 int 后为 303)），然后在此基础上进行圆角或圆形处理。
 
-Glide 使用 map 保存 transformation，所以调用多个 transform 方法，只有最后一个才会生效。如果我们想要使用多个 transformation，可以使用 MultiTransformation 类或者 transforms(Transformation<Bitmap>...) 以及 transform(Transformation<Bitmap>...) 方法。
+Glide 使用 map 保存 transformation，所以调用多个 transform 方法，只有最后一个才会生效。如果我们想要使用多个 transformation，可以使用 MultiTransformation 类或者 `transforms(Transformation<Bitmap>...)` 以及 `transform(Transformation<Bitmap>...)` 方法。
 
 ## 自定义 BitmapTransformation
 

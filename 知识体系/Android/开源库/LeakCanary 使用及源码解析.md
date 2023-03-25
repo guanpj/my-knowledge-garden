@@ -7,7 +7,7 @@ date created: 2023-03-23
 date modified: 2023-03-24
 ---
 
-## Reference 介绍
+# Reference 介绍
 
 Reference 即是我们平时所说的“引用”，与之对应的是一个泛型抽象类。四种引用类型：SoftReference(软引用)、WeakReference(弱引用)、PhantomReference（虚引用）都继承自 Reference。它的声明如下：
 
@@ -31,7 +31,7 @@ Reference 有四种状态：Active、Pending、Enqueued、Inactive，默认为 A
 
 ReferenceQueue 则是一个单向链表实现的队列数据结构，存储的是 Reference 对象。包含了入列 enqueue、出列 poll 和移除 remove 操作。
 
-## ReferenceQueue 原理和使用示例
+# ReferenceQueue 原理和使用示例
 
 Reference 配合 ReferenceQueue 可以实现对象回收监听，使用方法如下：
 

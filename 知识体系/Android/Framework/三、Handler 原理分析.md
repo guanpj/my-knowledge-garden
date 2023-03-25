@@ -10,6 +10,8 @@ date modified: 2023-03-24
 ---
 [看完这篇还不明白 Handler 你砍我 - 掘金](https://juejin.cn/post/6866015512192876557)
 
+# 基本使用
+
 Android 应用层通常使用 Handler 实现线程之间的消息通讯，Handler 是 Android 消息机制中非常重要的一员。以下分析通过剖析 Handler 的工作原理来深入了解 Android 应用开发过程中最常见也是最实用的消息收发机制。
 
 在分析之前，先回顾一下 Handler 的使用方式：首先，最常用的是子线程往主线程发送消息：

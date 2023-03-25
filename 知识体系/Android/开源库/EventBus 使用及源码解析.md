@@ -262,7 +262,7 @@ public class EventBus {
 
 在 `EventBus(EventBusBuilder builder)` 构造方法中：
 
-在注释 1 处，创建了一个 subscriptionsByEventType 对象，可以看到它是一个 HashMap，并且其 key 表示 Event 的类型，value 为 CopyOnWriteArrayList<Subscription>。这里的 Subscription 是一个订阅信息对象，它里面保存了两个重要的字段，一个是类型为 Object 的 subscriber，该字段即为注册的对象（在 Android 中时通常是 Activity 或着 Fragment 对象）；另一个是类型为 SubscriberMethod 的实例，它就是被 @Subscribe 注解的那个订阅方法，里面保存了一个重要的字段：eventType，它的类型为 Class<?>，表示 Event 的类型。
+在注释 1 处，创建了一个 subscriptionsByEventType 对象，可以看到它是一个 HashMap，并且其 key 表示 Event 的类型，value 为 `CopyOnWriteArrayList<Subscription>`。这里的 Subscription 是一个订阅信息对象，它里面保存了两个重要的字段，一个是类型为 Object 的 subscriber，该字段即为注册的对象（在 Android 中时通常是 Activity 或着 Fragment 对象）；另一个是类型为 SubscriberMethod 的实例，它就是被 @Subscribe 注解的那个订阅方法，里面保存了一个重要的字段：eventType，它的类型为 `Class<?>`，表示 Event 的类型。
 
 在注释 2 处，新建了一个类型为 HashMap 的 typesBySubscriber 对象，它的 key 为 subscriber 对象， value 为 subscriber 对象中所有的 Event 类型 List，日常使用中仅用于判断某个对象是否注册过。
 
