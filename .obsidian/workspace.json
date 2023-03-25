@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f70c643ae5fb902d",
+        "id": "c2cb0b7e6c87dc7f",
         "type": "tabs",
         "children": [
           {
-            "id": "04ca0f09947315d0",
+            "id": "f35c531a14190f83",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "a659a98bf749c120",
+            "id": "7cc5261216797594",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -133,6 +133,14 @@
                 "useHierarchy": true
               }
             }
+          },
+          {
+            "id": "dec914a424f9573c",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
           }
         ],
         "currentTab": 2
@@ -144,6 +152,7 @@
   "left-ribbon": {
     "hiddenItems": {
       "switcher:打开快速切换": false,
+      "workspaces:管理工作区布局": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
@@ -153,48 +162,49 @@
       "obsidian-textgenerator-plugin:Generate Text!": false,
       "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
       "templater-obsidian:Templater": false,
-      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "homepage:Open homepage": false
     }
   },
-  "active": "a659a98bf749c120",
+  "active": "7cc5261216797594",
   "lastOpenFiles": [
-    "Excalidraw/MyDraw.md",
+    "Templates/我的日记.md",
+    "Extras/Linter.md",
+    "模板/未命名",
     "Home.md",
-    "知识体系/Android/Framework/一、Binder 机制分析——概念篇.md",
+    "Temp",
+    "Knowledge/Java/并发/等待-通知机制.md",
+    "Knowledge/Kotlin/扩展函数.md",
+    "Excalidraw/MyDraw.md",
+    "Knowledge/Android/Framework/一、Binder 机制分析——概念篇.md",
     "Excalidraw/Drawing 2023-03-25 15.21.13.excalidraw.md",
     "Excalidraw/Drawing 2023-03-25 15.20.15.excalidraw.md",
     "未命名.canvas",
     "Excalidraw",
-    "知识体系/Android/Framework/三、Handler 原理分析.md",
-    "知识体系/Android/开源库/Glide 高级用法.md",
-    "知识体系/Android/Framework/六、View 绘制流程分析.md",
-    "知识体系/Android/Framework/二、Binder 机制分析——应用篇.md",
-    "知识体系/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
-    "知识体系/Python/遍历文件、重命名.md",
-    "知识体系/Kotlin/协程使用和原理分析.md",
-    "知识体系/Kotlin/委托.md",
-    "知识体系/Kotlin/扩展函数.md",
-    "知识体系/Android/开源库/EventBus 使用及源码解析.md",
-    "知识体系/Android/开源库/Glide 基本使用.md",
-    "知识体系/Android/开源库/Glide 加载流程和缓存原理分析.md",
-    "知识体系/Android/开源库/LeakCanary 使用及源码解析.md",
-    "知识体系/Android/开源库/OkHttp 使用及源码解析.md",
-    "知识体系/Android/开源库/Retrofit 使用及源码解析.md",
-    "知识体系/Android/开源库/RxJava 使用及源码解析.md",
-    "知识体系/Android/热修复&插件化/Java 静态代理 & 动态代理.md",
-    "知识体系/Android/Framework/七、View 事件机制分析.md",
-    "知识体系/Android/Framework/五、App 启动流程分析.md",
-    "知识体系/Android/Framework/四、系统启动流程分析.md",
-    "知识体系/计算机相关/HTTP 基础.md",
+    "Knowledge/Android/Framework/三、Handler 原理分析.md",
+    "Knowledge/Android/开源库/Glide 高级用法.md",
+    "Knowledge/Android/Framework/六、View 绘制流程分析.md",
+    "Knowledge/Android/Framework/二、Binder 机制分析——应用篇.md",
+    "Knowledge/计算机相关/计算机网络体系结构、TCP&IP 和 HTTPS.md",
+    "Knowledge/Python/遍历文件、重命名.md",
+    "Knowledge/Kotlin/协程使用和原理分析.md",
+    "Knowledge/Kotlin/委托.md",
+    "Knowledge/Android/开源库/EventBus 使用及源码解析.md",
+    "Knowledge/Android/开源库/Glide 基本使用.md",
+    "Knowledge/Android/开源库/Glide 加载流程和缓存原理分析.md",
+    "Knowledge/Android/开源库/LeakCanary 使用及源码解析.md",
+    "Knowledge/Android/开源库/OkHttp 使用及源码解析.md",
+    "Knowledge/Android/开源库/Retrofit 使用及源码解析.md",
+    "Knowledge/Android/开源库/RxJava 使用及源码解析.md",
+    "Knowledge/Android/热修复&插件化/Java 静态代理 & 动态代理.md",
+    "Knowledge/Android/Framework/七、View 事件机制分析.md",
     "其他",
-    "知识体系/Android/Android 基础",
-    "知识体系/Android/热修复&插件化",
-    "知识体系/Android/性能优化",
-    "知识体系/Android/开源库",
-    "知识体系/Android/Jetpack",
-    "知识体系/Android/Gradle",
-    "知识体系/Android/Framework",
-    "知识体系/Kotlin",
+    "Knowledge/Android/Android 基础",
+    "Knowledge/Android/热修复&插件化",
+    "Knowledge/Android/性能优化",
+    "Knowledge/Android/开源库",
+    "Knowledge/Android/Jetpack",
+    "Knowledge/Android/Gradle",
     "Pasted image 20230323005121.png",
     "Pasted image 20230322160516.png",
     "Extras/Draws/README 2022-08-21.svg",

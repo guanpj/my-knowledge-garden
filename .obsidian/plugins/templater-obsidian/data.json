@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "模板",
+  "templates_folder": "Templates",
   "templates_pairs": [
     [
       "",
@@ -13,16 +13,7 @@
   "shell_path": "",
   "user_scripts_folder": "",
   "enable_folder_templates": true,
-  "folder_templates": [
-    {
-      "folder": "知识体系",
-      "template": "模板/技术文章.md"
-    },
-    {
-      "folder": "日记",
-      "template": "模板/我的日记.md"
-    }
-  ],
+  "folder_templates": [],
   "syntax_highlighting": true,
   "enabled_templates_hotkeys": [
     ""

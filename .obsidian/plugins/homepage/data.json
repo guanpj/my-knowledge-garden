@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "defaultNote": "Home",
+  "useMoment": false,
+  "momentFormat": "YYYY-MM-DD",
+  "workspace": "MainWorkSpace",
+  "workspaceEnabled": true,
+  "openOnStartup": true,
+  "hasRibbonIcon": true,
+  "openMode": "Replace all open notes",
+  "manualOpenMode": "Keep open notes",
+  "view": "Default view",
+  "revertView": true,
+  "refreshDataview": false,
+  "autoCreate": true,
+  "autoScroll": false,
+  "pin": false
+}
