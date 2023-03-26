@@ -6,7 +6,7 @@
       "type": "Capture",
       "command": true,
       "appendLink": false,
-      "captureTo": "Temp/MyIdeas.md",
+      "captureTo": "Extras/Temp/MyIdeas.md",
       "captureToActiveFile": false,
       "createFileIfItDoesntExist": {
         "enabled": true,
