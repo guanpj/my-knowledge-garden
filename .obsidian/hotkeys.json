@@ -42,5 +42,14 @@
       ],
       "key": "I"
     }
+  ],
+  "templater-obsidian:Extras/Templates/技术文章.md": [
+    {
+      "modifiers": [
+        "Ctrl",
+        "Mod"
+      ],
+      "key": "T"
+    }
   ]
 }
