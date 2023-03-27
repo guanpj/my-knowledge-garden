@@ -24,8 +24,8 @@
   "dropShadow": true,
   "hideEmpty": false,
   "open": {
-    "admonitions": false,
-    "icons": false,
+    "admonitions": true,
+    "icons": true,
     "other": true,
     "advanced": false
   },
