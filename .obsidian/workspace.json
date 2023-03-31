@@ -40,7 +40,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Knowledge/Git.md",
+                "file": "Knowledge/Android/Framework/一、Binder 机制分析——概念篇.md",
                 "mode": "source",
                 "source": false
               }
@@ -160,7 +160,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/Git.md",
+                "file": "Knowledge/Android/Framework/一、Binder 机制分析——概念篇.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -178,7 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/Git.md",
+                "file": "Knowledge/Android/Framework/一、Binder 机制分析——概念篇.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -215,8 +215,10 @@
   },
   "active": "981b82d3746bcede",
   "lastOpenFiles": [
-    "Extras/Temp/MyIdeas.md",
+    "Dashborad/ControlPanel.md",
+    "Knowledge/Android/Framework/一、Binder 机制分析——概念篇.md",
     "Knowledge/Git.md",
+    "Extras/Temp/MyIdeas.md",
     "English/词性.md",
     "Dashborad/Kanban.md",
     "Home.md",
@@ -242,8 +244,6 @@
     "Notes",
     "Knowledge/AAA/Android.md",
     "sdf.md",
-    "sad.md",
-    "aa.md",
     "Knowledge/AAA",
     "Knowledge/Android/性能优化",
     "Knowledge/Android/Gradle",
