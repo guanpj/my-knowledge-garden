@@ -38,7 +38,6 @@ public class PersonProxy implements Person {
     private Worker worker = null;  
   
     @Override  
-  
     public String doSomething(int i) {  
         beforeDoSomething();  
         if(worker == null) {  
@@ -221,7 +220,6 @@ public static class InvocationHandlerImpl implements InvocationHandler {
     Person person;  
 
     //注入目标对象  
-  
     public InvocationHandlerImpl(Person person) {  
         this.person = person;  
     }  
