@@ -8,7 +8,7 @@
           {
             "id": "c2cb0b7e6c87dc7f",
             "type": "tabs",
-            "dimension": 71.86520376175548,
+            "dimension": 70.84639498432603,
             "children": [
               {
                 "id": "f35c531a14190f83",
@@ -27,12 +27,12 @@
             ]
           },
           {
-            "id": "d5c811be5d21dbac",
+            "id": "34798074c47221b1",
             "type": "tabs",
-            "dimension": 28.134796238244515,
+            "dimension": 29.153605015673982,
             "children": [
               {
-                "id": "fb6200da998620c7",
+                "id": "368a0319da8d2bab",
                 "type": "leaf",
                 "pinned": true,
                 "state": {
@@ -123,9 +123,19 @@
                   "type": "calendar",
                   "state": {}
                 }
+              },
+              {
+                "id": "3f128db45b75dddb",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "Home.md"
+                  }
+                }
               }
             ],
-            "currentTab": 1
+            "currentTab": 2
           },
           {
             "id": "18d12f56995dd62f",
@@ -174,6 +184,7 @@
       },
       "left-ribbon": {
         "hiddenItems": {
+          "table-editor-obsidian:Advanced Tables Toolbar": false,
           "switcher:打开快速切换": false,
           "workspaces:管理工作区布局": false,
           "graph:查看关系图谱": false,
@@ -190,7 +201,22 @@
         }
       },
       "active": "f35c531a14190f83",
-      "workspaces-plus:settings-v1": {}
+      "workspaces-plus:settings-v1": {
+        "explorerFoldState": [
+          "/",
+          "Dashborad",
+          "Knowledge",
+          "Knowledge/Java",
+          "Knowledge/Kotlin",
+          "Knowledge/算法&数据结构",
+          "Knowledge/计算机相关",
+          "Knowledge/Android/Framework",
+          "Knowledge/Android/Android 基础",
+          "Knowledge/Android/开源库",
+          "Knowledge/Java/并发",
+          "Knowledge/Android/热修复&插件化"
+        ]
+      }
     }
   },
   "active": "MainWorkspace"
