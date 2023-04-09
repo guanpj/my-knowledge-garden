@@ -6,5 +6,4 @@ aliases:
 date created: 2023-03-25
 date modified: 2023-03-26
 ---
-- [ ] sldfj
-- [ ] 撒地
+- [ ] inline 的另一种用法
