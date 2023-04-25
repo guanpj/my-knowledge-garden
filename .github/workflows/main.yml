@@ -12,7 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: guanpj/quartz
+          repository: |
+            guanpj/quartz
+            guanpj/second-brain-public
           token: ${{ secrets.TOKEN }}
           submodules: 'true'
 
