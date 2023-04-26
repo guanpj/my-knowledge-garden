@@ -1,7 +1,7 @@
 ---
 title: 锁
 date created: 2023-03-23
-date modified: 2023-03-23
+date modified: 2023-04-26
 tags:
   - 并发
   - 公平锁
@@ -11,6 +11,7 @@ tags:
   - synchrionized
   - Java
 ---
+
 # 锁的分类
 
 ![](https://my-bucket-1251125515.cos.ap-guangzhou.myqcloud.com/Concurrent-Lock/clipboard_20230323_094809.png)
