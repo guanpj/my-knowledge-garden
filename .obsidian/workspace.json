@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Extras/Templates/其他文章.md",
+                "file": "Extras/Templates/技术文章.md",
                 "mode": "source",
                 "source": false
               }
@@ -141,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Extras/Templates/其他文章.md"
+                "file": "Extras/Templates/技术文章.md"
               }
             }
           }
@@ -158,7 +158,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Extras/Templates/其他文章.md",
+                "file": "Extras/Templates/技术文章.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -176,7 +176,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Extras/Templates/其他文章.md",
+                "file": "Extras/Templates/技术文章.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -213,10 +213,10 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "b04b411c405c4fc1",
+  "active": "815115909afc80af",
   "lastOpenFiles": [
-    "Extras/Templates/我的日记.md",
     "Extras/Templates/其他文章.md",
+    "Extras/Templates/我的日记.md",
     "Extras/Templates/其他模版.md",
     "Extras/Templates/技术文章.md",
     "Knowledge/Git.md",
