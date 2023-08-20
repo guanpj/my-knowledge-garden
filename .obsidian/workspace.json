@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dashborad/ControlPanel.md",
+                "file": "Knowledge/Git.md",
                 "mode": "source",
                 "source": false
               }
@@ -141,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dashborad/ControlPanel.md"
+                "file": "Knowledge/Git.md"
               }
             }
           }
@@ -158,7 +158,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Dashborad/ControlPanel.md",
+                "file": "Knowledge/Git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -176,7 +176,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Dashborad/ControlPanel.md",
+                "file": "Knowledge/Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -215,8 +215,9 @@
   },
   "active": "b04b411c405c4fc1",
   "lastOpenFiles": [
-    "Diary/2023-03-24.md",
     "Dashborad/ControlPanel.md",
+    "Extras/Temp/MyIdeas.md",
+    "Diary/2023-03-24.md",
     "Home.md",
     "Knowledge/Android/开源库/Glide 高级用法.md",
     "Knowledge/Android/开源库/EventBus 使用及源码解析.md",
@@ -241,7 +242,6 @@
     "Diary/2023-04-09.md",
     "Diary/2023-04-12.md",
     "Diary/2023-03-27.md",
-    "Extras/Temp/MyIdeas.md",
     "Knowledge/Java/并发/线程池和 BlockingQueue.md",
     "Knowledge/Java/并发/并发容器.md",
     "Knowledge/Java/并发/等待-通知机制.md",
