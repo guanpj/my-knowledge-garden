@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "Extras/Templates/我的日记.md",
                 "mode": "source",
                 "source": false
               }
@@ -141,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md"
+                "file": "Extras/Templates/我的日记.md"
               }
             }
           }
@@ -158,7 +158,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "index.md",
+                "file": "Extras/Templates/我的日记.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -176,7 +176,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
+                "file": "Extras/Templates/我的日记.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -213,17 +213,17 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "815115909afc80af",
+  "active": "b04b411c405c4fc1",
   "lastOpenFiles": [
     "Extras/Templates/技术文章.md",
-    "Extras/Templates/其他文章.md",
+    "Extras/Templates/其它文章.md",
     "Extras/Templates/我的日记.md",
+    "index.md",
     "Extras/Templates/其他模版.md",
     "Knowledge/Git.md",
     "Dashborad/ControlPanel.md",
     "Extras/Temp/MyIdeas.md",
     "Diary/2023-03-24.md",
-    "index.md",
     "Knowledge/Android/开源库/Glide 高级用法.md",
     "Knowledge/Android/开源库/EventBus 使用及源码解析.md",
     "Knowledge/计算机相关/HTTP 基础.md",
