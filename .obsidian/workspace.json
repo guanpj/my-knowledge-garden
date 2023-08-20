@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Knowledge/Git.md",
+                "file": "Extras/Templates/其他文章.md",
                 "mode": "source",
                 "source": false
               }
@@ -141,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/Git.md"
+                "file": "Extras/Templates/其他文章.md"
               }
             }
           }
@@ -158,7 +158,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/Git.md",
+                "file": "Extras/Templates/其他文章.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -176,7 +176,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/Git.md",
+                "file": "Extras/Templates/其他文章.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -215,6 +215,11 @@
   },
   "active": "b04b411c405c4fc1",
   "lastOpenFiles": [
+    "Extras/Templates/我的日记.md",
+    "Extras/Templates/其他文章.md",
+    "Extras/Templates/其他模版.md",
+    "Extras/Templates/技术文章.md",
+    "Knowledge/Git.md",
     "Dashborad/ControlPanel.md",
     "Extras/Temp/MyIdeas.md",
     "Diary/2023-03-24.md",
@@ -224,8 +229,6 @@
     "Knowledge/计算机相关/HTTP 基础.md",
     "Knowledge/算法&数据结构/二叉树遍历.md",
     "Knowledge/计算机相关/编码、加密、Hash、序列化和字符集.md",
-    "Extras/Templates/其他模版.md",
-    "Extras/Templates/技术文章.md",
     "Knowledge/算法&数据结构/C 指针.md",
     "Knowledge/算法&数据结构/C 引用.md",
     "未命名",
@@ -242,9 +245,6 @@
     "Diary/2023-04-09.md",
     "Diary/2023-04-12.md",
     "Diary/2023-03-27.md",
-    "Knowledge/Java/并发/线程池和 BlockingQueue.md",
-    "Knowledge/Java/并发/并发容器.md",
-    "Knowledge/Java/并发/等待-通知机制.md",
     "English",
     "Diary",
     "Notes",
