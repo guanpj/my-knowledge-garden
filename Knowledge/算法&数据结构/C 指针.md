@@ -1,0 +1,44 @@
+C 指针
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+int main ()
+{
+    int  var;
+    int  *ptr;
+    int  **pptr;
+    int  ***ppptr;
+ 
+    var = 3000;
+ 
+    // 获取 var 的地址
+    ptr = &var;
+ 
+    // 使用运算符 & 获取 ptr 的地址
+    pptr = &ptr;
+
+    ppptr = &pptr;
+
+    cout << "var 值为 :" << var << endl;
+    cout << "ptr 值为:" << ptr << endl;
+    cout << "pptr 值为:" << pptr << endl;
+    cout << "ppptr 值为:" << ppptr << endl;
+
+    cout << "-------------------" << endl;
+
+    cout << "*&var 值为:" << *&*&var << endl;
+    //cout << "pptr 值为:" << pptr << endl;
+    //cout << "ppptr 值为:" << ppptr << endl;
+
+    cout << "-------------------" << endl;
+ 
+    cout << "var 值为 :" << var << endl;
+    cout << "*ptr 值为:" << *ptr << endl;
+    cout << "**pptr 值为:" << **pptr << endl;
+    cout << "***ppptr 值为:" << ***ppptr << endl;
+ 
+    return 0;
+}
+```

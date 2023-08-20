@@ -2,8 +2,10 @@
 title: Home
 date created: 2022-08-06
 date modified: 2023-04-26
+dg-publish: true
+dg-home: true
 ---
-Nothing!
+Home!
 
 # 标题一
 
@@ -26,3 +28,5 @@ Nothing!
 
 士大夫拉萨的飞机
 [[静态代理和动态代理]]
+
+[[编码、加密、Hash、序列化和字符集]]
